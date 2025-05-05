@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">  
+  <polygon
+    points="100,10 40,198 190,78 10,78 160,198"
+    fill="white"
+    opacity="0.6"
+    transform="translate(7.5,17.5) scale(.09)"
+  />
+  <polygon
+    points="100,10 40,198 190,78 10,78 160,198"
+    fill="white"
+    opacity="0.6"
+    transform="translate(57.5,57.5) scale(.2)"
+  />
+</svg>
