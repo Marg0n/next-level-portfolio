@@ -17,7 +17,7 @@ export default function GlassNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 dark:bg-black/20 shadow-sm border-b border-white/10">
+    <header className="sticky top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 dark:bg-black/20 shadow-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold tracking-tight text-black dark:text-white">
           <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
