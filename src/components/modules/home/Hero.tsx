@@ -7,6 +7,8 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
+import Pic from "@/assets/images/SMD.png";
+import Image from "next/image";
 
 const Hero = () => {
   // AOS animation useEffect
@@ -29,22 +31,22 @@ const Hero = () => {
   }, []);
 
   return (
-    <>
-
-      <div className="">
+    <div className="flex flex-col-reverse lg:flex-row justify-center items-center lg:gap-10 gap-4 w-full min-h-screen p-5 ">
+      {/* writings */}
+      <div className="flex flex-col gap-6 w-full lg:w-2/3">
         {/* intro */}
-        <div className="flex flex-col justify-center items-start h-full">
-          <h3 className="banner-greeting dark2" data-aos="fade-down">
+        <div className="flex flex-col justify-center items-start gap-6 h-full">
+          <h3 className="banner-greeting text-xl" data-aos="fade-down">
             Hi, I am
           </h3>
           <h1
-            className="text-5xl text-pretty lg:text-8xl w-full"
+            className="text-5xl text-pretty lg:text-7xl xl:text-8xl w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
             data-aos="fade-right"
             data-aos-duration="1500"
           >
             Sokhorio Margon D<span className="primary-color">&apos;</span> Costa
           </h1>
-          <p className="text-wrap" data-aos="fade-up">
+          <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
             I am a <strong className="primary-color">MERN stack</strong> web
             developer. I am knowledgeable with{" "}
             <i className="primary-color">HTML</i>,{" "}
@@ -119,7 +121,19 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </>
+
+      {/* image */}
+      <div className="lg:w-1/3 flex items-center justify-center" data-aos="fade" data-aos-duration="2000">
+        <Image
+          id="profile-pic"
+          src={Pic}
+          alt="Profile Pic"
+          width={500}
+          height={500}
+          className="w-60 lg:w-72 xl:w-92 h-60 lg:h-72 xl:h-92 object-contain border-2 rounded-full"
+        />
+      </div>
+    </div>
   );
 };
 

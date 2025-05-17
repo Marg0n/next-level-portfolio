@@ -3,7 +3,7 @@ import React from "react";
 
 // meta tags
 export const metadata = {
-  title: "Portfolio Of Margon",
+  title: "Portfolio | Sokhorio Margon D' Costa",
   description: "Portfolio of Sokhorio Margon D' Costa",
 };
 
