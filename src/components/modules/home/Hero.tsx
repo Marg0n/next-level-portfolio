@@ -2,7 +2,7 @@
 
 import CustomButton from "@/components/shared/buttons/CustomButton";
 import { Button } from "@/components/ui/button";
-import { Download, FileText, View } from "lucide-react";
+import { Download, FileText, View, Activity } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import AOS from "aos";
@@ -73,6 +73,7 @@ const Hero = () => {
               href="https://drive.google.com/file/d/1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
+              className="relative"
             >
               <CustomButton
                 textName={`CV`}
@@ -80,6 +81,9 @@ const Hero = () => {
                 className="flex-nowrap min-w-28 p-1.5!"
               />
             </Link>
+            <span className="absolute left-32">
+              <Activity size={25}/>
+            </span>
             <Link
               href="https://drive.google.com/uc?export=download&id=1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx"
               rel="noopener noreferrer"
@@ -92,6 +96,9 @@ const Hero = () => {
                 <Download size={25} />
               </Button>
             </Link>
+            <span className="absolute left-77">
+              <Activity />
+            </span>
           </div>
 
           <div className="gap-4  flex md:flex-row justify-start items-center ">
@@ -124,14 +131,16 @@ const Hero = () => {
 
       {/* image */}
       <div className="lg:w-1/3 flex items-center justify-center" data-aos="fade" data-aos-duration="2000">
-        <Image
-          id="profile-pic"
-          src={Pic}
-          alt="Profile Pic"
-          width={500}
-          height={500}
-          className="w-60 lg:w-72 xl:w-92 h-60 lg:h-72 xl:h-92 object-contain border-2 rounded-full"
-        />
+        <div className="p-[3px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+          <Image
+            id="profile-pic"
+            src={Pic}
+            alt="Profile Pic"
+            width={500}
+            height={500}
+            className="w-60 lg:w-72 xl:w-92 h-60 lg:h-72 xl:h-92 object-contain border-2 rounded-full"
+          />
+        </div>
       </div>
     </div>
   );
