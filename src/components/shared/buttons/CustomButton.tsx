@@ -27,7 +27,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   disabled = false, // default value for 'disabled'
 }) => {
   return (
-    <>
+    <div className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all">
       <button
         onClick={(e) => {
           if (disabled) return; // 🔒 Ignore click if disabled, so prevents any click handler if disabled
@@ -36,7 +36,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         type={type} // the `type` prop here
         disabled={disabled}
         className={clsx(
-          "relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-primary transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group",
+          "relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-primary transition duration-300 ease-out rounded-full shadow-md group bg-white",
           disabled && "opacity-50 cursor-not-allowed",
           className,
         )}
@@ -49,7 +49,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         </span>
         <span className="relative invisible">{textName}</span>
       </button>
-    </>
+    </div>
   );
 };
 

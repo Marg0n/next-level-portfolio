@@ -15,7 +15,7 @@ const Hero = () => {
   useEffect(() => {
     AOS.init({
       duration: 500,
-      once: false,
+      once: true,
       mirror: true,
     });
 
@@ -59,7 +59,8 @@ const Hero = () => {
             <i className="primary-color">Firebase</i>,{" "}
             <i className="primary-color">Node JS</i>,{" "}
             <i className="primary-color">Express JS</i>,{" "}
-            <i className="primary-color">MongoDB</i> and{" "}
+            <i className="primary-color">MongoDB</i>,{" "}
+            <i className="primary-color">Mongoose</i>, and{" "}
             <i className="primary-color">MySQL</i>. I love coding, as it gives
             me the feelings of fulfillment. In the future, I also love to learn,
             know and work more about these and the similar technologies.
@@ -67,7 +68,8 @@ const Hero = () => {
         </div>
 
         {/* buttons */}
-        <div className="flex md:flex-row flex-col justify-start items-start gap-4">
+        <div className="flex md:flex-row flex-col justify-start items-start gap-4" data-aos="fade-up">
+          {/* cv */}
           <div className="gap-4 flex  md:flex-row justify-start items-center">
             <Link
               href="https://drive.google.com/file/d/1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx/view?usp=drive_link"
@@ -82,58 +84,67 @@ const Hero = () => {
               />
             </Link>
             <span className="absolute left-32">
-              <Activity size={25}/>
+              <Activity size={25} />
             </span>
             <Link
               href="https://drive.google.com/uc?export=download&id=1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx"
               rel="noopener noreferrer"
+              className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all duration-300"
             >
               <Button
                 variant="outline"
                 size="icon"
-                className="rounded-full border-2 border-black hover:!border-4 hover:!border-x-[#fd6e0a] hover:!border-y-[cornflowerblue] hover:!animate-none"
+                className="rounded-full"
               >
                 <Download size={25} />
               </Button>
             </Link>
-            <span className="absolute left-77">
-              <Activity />
-            </span>
           </div>
 
-          <div className="gap-4  flex md:flex-row justify-start items-center ">
-            <Link
-              href="https://drive.google.com/file/d/182h1SzIacu1unDzos_O_uFXxLlRYHPNq/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CustomButton
-                textName={`Resume`}
-                icon={<FileText />}
-                className="flex-nowrap min-w-28 p-1.5!"
-              />
-            </Link>
-            <Link
-              href="https://drive.google.com/uc?export=download&id=182h1SzIacu1unDzos_O_uFXxLlRYHPNq"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full border-2 border-black hover:!border-4 hover:!border-x-[#fd6e0a] hover:!border-y-[cornflowerblue] hover:!animate-none hover:!bg-white"
+          {/* resume */}
+          <div className="relative flex md:flex-row justify-start items-center ">
+            <div className="flex items-center space-x-4">
+              <Link
+                href="https://drive.google.com/file/d/182h1SzIacu1unDzos_O_uFXxLlRYHPNq/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Download size={25} />
-              </Button>
-            </Link>
+                <CustomButton
+                  textName={`Resume`}
+                  icon={<FileText />}
+                  className="flex-nowrap min-w-28 p-1.5!"
+                />
+              </Link>
+              <Link
+                href="https://drive.google.com/uc?export=download&id=182h1SzIacu1unDzos_O_uFXxLlRYHPNq"
+                rel="noopener noreferrer"
+                className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all duration-300"
+              >
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <Download size={25} />
+                </Button>
+              </Link>
+            </div>
+
+            <span className="absolute left-27">
+              <Activity size={25} />
+            </span>
           </div>
         </div>
       </div>
 
       {/* image */}
-      <div className="lg:w-1/3 flex items-center justify-center" data-aos="fade" data-aos-duration="2000">
+      <div
+        className="lg:w-1/3 flex items-center justify-center"
+        data-aos="fade"
+        data-aos-duration="2000"
+      >
         <div className="p-[3px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
           <Image
-            id="profile-pic"
             src={Pic}
             alt="Profile Pic"
             width={500}
