@@ -70,35 +70,37 @@ const Hero = () => {
         {/* buttons */}
         <div className="flex md:flex-row flex-col justify-start items-start gap-4" data-aos="fade-up">
           {/* cv */}
-          <div className="gap-4 flex  md:flex-row justify-start items-center">
-            <Link
-              href="https://drive.google.com/file/d/1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative"
-            >
-              <CustomButton
-                textName={`CV`}
-                icon={<View />}
-                className="flex-nowrap min-w-28 p-1.5!"
-              />
-            </Link>
-            <span className="absolute left-32">
-              <Activity size={25} />
-            </span>
-            <Link
-              href="https://drive.google.com/uc?export=download&id=1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx"
-              rel="noopener noreferrer"
-              className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all duration-300"
-            >
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full"
+          <div className="flex relative md:flex-row justify-start items-center">
+            <div className="flex items-center space-x-4">
+              <Link
+                href="https://drive.google.com/file/d/1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Download size={25} />
-              </Button>
-            </Link>
+                <CustomButton
+                  textName={`CV`}
+                  icon={<View />}
+                  className="flex-nowrap min-w-28 p-1.5!"
+                />
+              </Link>
+              <Link
+                href="https://drive.google.com/uc?export=download&id=1zqhoaQmDb2hKXJwM24wm3cjEraG0_Ljx"
+                rel="noopener noreferrer"
+                className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all duration-300"
+              >
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <Download size={25} />
+                </Button>
+              </Link>
+            </div>
+
+            <span className="absolute left-28">
+              <Activity size={22} />
+            </span>
           </div>
 
           {/* resume */}
@@ -130,8 +132,8 @@ const Hero = () => {
               </Link>
             </div>
 
-            <span className="absolute left-27">
-              <Activity size={25} />
+            <span className="absolute left-28">
+              <Activity size={22} />
             </span>
           </div>
         </div>
