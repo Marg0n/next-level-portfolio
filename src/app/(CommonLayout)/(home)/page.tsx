@@ -1,4 +1,5 @@
 import Hero from "@/components/modules/home/Hero";
+import SectionDivider from "@/components/shared/SectionDivider";
 import React from "react";
 
 // meta tags
@@ -11,6 +12,8 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
+      <Hero />
+      <SectionDivider />
       <Hero />
     </div>
   );
