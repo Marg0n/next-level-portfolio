@@ -9,7 +9,7 @@ export const metadata = {
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center space-y-6 overflow-x-hidden ">
+    <div className="min-h-screen flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
       <Hero />
     </div>

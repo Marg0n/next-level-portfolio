@@ -31,7 +31,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row justify-center items-center lg:gap-10 gap-4 w-full min-h-screen p-5 ">
+    <div className="flex flex-col-reverse lg:flex-row justify-center items-center lg:gap-10 gap-4 w-full max-h-screen p-5 ">
       {/* writings */}
       <div className="flex flex-col gap-6 w-full lg:w-2/3">
         {/* intro */}
