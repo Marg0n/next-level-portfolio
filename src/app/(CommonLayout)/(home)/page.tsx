@@ -1,5 +1,5 @@
 import Hero from "@/components/modules/home/Hero";
-import SectionDivider from "@/components/shared/SectionDivider";
+import { DashedDivider, GradientDivider, IconDivider, LabelDivider, SectionDivider } from "@/components/shared/divider/Divider";
 import React from "react";
 
 // meta tags
@@ -14,6 +14,10 @@ const LandingPage = () => {
       {/* components */}
       <Hero />
       <SectionDivider />
+      <GradientDivider />
+      <DashedDivider />
+      <LabelDivider label="About Me" />
+      <IconDivider icon="★" />
       <Hero />
     </div>
   );
