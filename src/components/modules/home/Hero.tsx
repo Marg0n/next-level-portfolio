@@ -36,7 +36,7 @@ const Hero = () => {
       <div className="flex flex-col gap-6 w-full lg:w-2/3">
         {/* intro */}
         <div className="flex flex-col justify-center items-start gap-6 h-full">
-          <h3 className="banner-greeting text-xl" data-aos="fade-down">
+          <h3 className="text-2xl font-semibold" data-aos="fade-down">
             Hi, I am
           </h3>
           <h1
@@ -46,7 +46,7 @@ const Hero = () => {
           >
             Sokhorio Margon D<span className="primary-color">&apos;</span> Costa
           </h1>
-          <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
+          {/* <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
             I am a <strong className="primary-color">MERN stack</strong> web
             developer. I am knowledgeable with{" "}
             <i className="primary-color">HTML</i>,{" "}
@@ -64,7 +64,7 @@ const Hero = () => {
             <i className="primary-color">MySQL</i>. I love coding, as it gives
             me the feelings of fulfillment. In the future, I also love to learn,
             know and work more about these and the similar technologies.
-          </p>
+          </p> */}
         </div>
 
         {/* buttons */}
