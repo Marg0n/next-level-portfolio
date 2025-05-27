@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
+        <div className='flex flex-col gap-6 w-full lg:w-2/3 p-5'>
             <h2 className="text-xl" data-aos="fade-down">Who Am I?</h2>
             <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
                 I am a passionate web developer with experience in building dynamic and responsive web applications.
