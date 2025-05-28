@@ -1,0 +1,100 @@
+
+@keyframes coinFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.coin-flip {
+  animation: coinFlip 1.5s linear infinite;
+  transform-style: preserve-3d; /*? helps maintain the 3D effect during the spin. */
+}
+
+@keyframes coinWobble {
+  0% {
+    transform: rotateY(0deg) rotateZ(0deg);
+  }
+  25% {
+    transform: rotateY(90deg) rotateZ(5deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateZ(0deg);
+  }
+  75% {
+    transform: rotateY(270deg) rotateZ(-5deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+.coin-wobble {
+  animation: coinWobble 1.5s ease-in-out infinite;
+  transform-style: preserve-3d;
+  /* backface-visibility: hidden; */
+  display: inline-block;
+}
+
+@keyframes coinSpin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.coin {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  animation: coinSpin 1.5s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.coin-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.coin-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: transparent;
+}
+
+.coin-edge {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    to right,
+    #aaa,
+    #ccc 2px,
+    #888 4px
+  );
+  transform: rotateY(90deg) scaleX(0.5); /* Thickness */
+  transform-origin: center;
+  /* translate: 75px 0; */
+}
+
+.edgeSlice {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 150px;
+  background-color: #888;
+  transform-origin: center center;
+}
