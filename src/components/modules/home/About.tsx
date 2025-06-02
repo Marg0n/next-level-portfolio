@@ -22,11 +22,10 @@ const About = () => {
                 </div> */}
             <>
                 <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
-                I am a passionate web developer with experience in building dynamic and responsive web applications.
+                I am a dedicated web developer with experience in creating dynamic and responsive web applications. 
                 </p>
                 <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
-                    I am a <strong className="primary-color">MERN stack</strong> web
-                    developer. I am knowledgeable with{" "}
+                    Expert in the <strong className="primary-color">MERN stack</strong>, I possess knowledge of{" "}
                     {/* <ul>
                         <li><i className="primary-color">HTML</i></li>
                         <li><i className="primary-color">CSS</i></li>
@@ -55,9 +54,9 @@ const About = () => {
                     <i className="primary-color">MongoDB</i>,{" "}
                     <i className="primary-color">Mongoose</i>, and{" "}
                     <i className="primary-color">MySQL</i>. 
-                    I love coding, as it gives
-                    me the feelings of fulfillment. In the future, I also love to learn,
-                    know and work more about these and the similar technologies.
+                    <br />
+                    <br />
+                    My passion for coding provides a profound sense of fulfillment. Furthermore, I am eager to expand my knowledge of these technologies and explore additional related fields in the future.
                 </p>
             </>
             
