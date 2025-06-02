@@ -1,6 +1,4 @@
-import About from "@/components/modules/home/About";
-import Hero from "@/components/modules/home/Hero";
-import { LabelDivider } from "@/components/shared/divider/Divider";
+import LandingPageContent from "@/components/modules/home/LandingPageContent";
 
 // meta tags
 export const metadata = {
@@ -9,14 +7,7 @@ export const metadata = {
 };
 
 const LandingPage = () => {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
-      {/* components */}
-      <Hero />
-      <LabelDivider label="About Me" />
-      <About />
-    </div>
-  );
+  return <LandingPageContent />;
 };
 
 export default LandingPage;

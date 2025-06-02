@@ -1,34 +1,33 @@
 "use client";
 
+import Pic from "@/assets/images/SMD.png";
 import CustomButton from "@/components/shared/buttons/CustomButton";
 import { Button } from "@/components/ui/button";
-import { Download, FileText, View, Activity } from "lucide-react";
-import Link from "next/link";
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
-import Pic from "@/assets/images/SMD.png";
+import { useAOS } from "@/hooks/useAOS";
+import { Activity, Download, FileText, View } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   // AOS animation useEffect
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-      once: true,
-      mirror: true,
-    });
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 500,
+  //     once: true,
+  //     mirror: true,
+  //   });
 
-    const handleScroll = () => {
-      AOS.refresh();
-    };
+  //   const handleScroll = () => {
+  //     AOS.refresh();
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+  useAOS();
 
   return (
     <div className="flex flex-col-reverse lg:flex-row justify-center items-center lg:gap-10 gap-4 w-full max-h-screen p-5 ">
@@ -68,7 +67,10 @@ const Hero = () => {
         </div>
 
         {/* buttons */}
-        <div className="flex md:flex-row flex-col justify-start items-start gap-4" data-aos="fade-up">
+        <div
+          className="flex md:flex-row flex-col justify-start items-start gap-4"
+          data-aos="fade-up"
+        >
           {/* cv */}
           <div className="flex relative md:flex-row justify-start items-center">
             <div className="flex items-center space-x-4">
@@ -88,11 +90,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all duration-300"
               >
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                >
+                <Button variant="outline" size="icon" className="rounded-full">
                   <Download size={25} />
                 </Button>
               </Link>
@@ -122,11 +120,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  transition-all duration-300"
               >
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                >
+                <Button variant="outline" size="icon" className="rounded-full">
                   <Download size={25} />
                 </Button>
               </Link>
