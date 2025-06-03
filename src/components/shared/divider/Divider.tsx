@@ -1,11 +1,8 @@
 //? Dashed divider
-function DashedDivider({ 
-  className = "", 
-  ...rest
-}) {
+function DashedDivider({ className = "", ...rest }) {
   return (
-    <div 
-      className={`w-full border-t border-dashed border-gray-400 my-8 ${className}`} 
+    <div
+      className={`w-full border-t border-dashed border-gray-400 my-8 ${className}`}
       {...rest}
     />
   );
@@ -14,8 +11,8 @@ function DashedDivider({
 //? Add animate-pulse, transition-opacity, or group-hover: effects.
 function GradientDivider({ className = "", ...rest }) {
   return (
-    <div 
-      className={`w-full h-[1px] my-10 bg-gradient-to-r from-transparent via-blue-500 to-transparent ${className}`} 
+    <div
+      className={`w-full h-[1px] my-10 bg-gradient-to-r from-transparent via-blue-500 to-transparent ${className}`}
       {...rest}
     />
   );
@@ -25,7 +22,7 @@ function GradientDivider({ className = "", ...rest }) {
 //? Add animate-pulse, transition-opacity, or group-hover: effects.
 function IconDivider({ icon = "✨", className = "", ...rest }) {
   return (
-    <div 
+    <div
       className={`relative w-full my-12 flex items-center justify-center ${className}`}
       {...rest}
     >
@@ -41,22 +38,25 @@ function IconDivider({ icon = "✨", className = "", ...rest }) {
 
 //? Use: <LabelDivider label="About Me" />
 //? Add animate-pulse, transition-opacity, or group-hover: effects.
-function LabelDivider({ 
-  label = "Section", 
-  className = "", 
+function LabelDivider({
+  label = "Section",
+  className = "",
   ...rest //! catch any additional props like `data-aos`
 }) {
   return (
-    <div 
+    <div
       className={`relative w-full my-12 flex items-center justify-center ${className}`}
       {...rest} //! spread them onto the div
     >
       <div className="absolute inset-0 flex items-center" aria-hidden="true">
-        <div className="w-full border-t border-gray-300 dark:border-gray-700" />
+        {/* <div className="w-full border-t border-gray-300 dark:border-gray-700" /> */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
       </div>
-      <span className="relative px-4 bg-white dark:bg-gray-900 text-gray-500 text-xs uppercase tracking-widest">
-        {label}
-      </span>
+      <div className="relative px-4 bg-white dark:bg-gray-900 text-xs uppercase tracking-widest">
+        <p className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent text-xs uppercase tracking-widest">
+          {label}
+        </p>
+      </div>
     </div>
   );
 }
@@ -64,11 +64,11 @@ function LabelDivider({
 //? can pass through className
 //? Add animate-pulse, transition-opacity, or group-hover: effects.
 function SectionDivider({
-   className = "",
-   ...rest 
-  }: { className?: string } & React.HTMLAttributes<HTMLDivElement>) {
+  className = "",
+  ...rest
+}: { className?: string } & React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div 
+    <div
       className={`relative w-full my-12 flex items-center justify-center ${className}`}
       {...rest}
     >
@@ -82,5 +82,10 @@ function SectionDivider({
   );
 }
 
-
-export { LabelDivider, DashedDivider, GradientDivider, IconDivider, SectionDivider };
+export {
+  LabelDivider,
+  DashedDivider,
+  GradientDivider,
+  IconDivider,
+  SectionDivider,
+};
