@@ -18,8 +18,9 @@ const About = () => {
                     width={500}
                     height={500}
                     className="w-60 lg:w-72 xl:w-92 h-60 lg:h-72 xl:h-92 object-contain border-2 rounded-full"
+                     data-aos="fade-right"
                 />
-                <div>
+                <div className="space-y-6 min-h-min">
                     <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
                     I am a dedicated web developer with experience in creating dynamic and responsive web applications. 
                     </p>
