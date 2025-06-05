@@ -5,7 +5,7 @@ import './Footer.css'
 
 export function Footer() {
   return (
-    <footer className="relative bg-black text-white py-12">
+    <footer className="relative bg-black text-white py-12 w-full">
       {/* Cosmic Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
       {/* Animated Stars */}

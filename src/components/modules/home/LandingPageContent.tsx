@@ -10,7 +10,7 @@ const LandingPageContent = () => {
   useAOS();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
+    <div className="min-h-max flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
       <Hero />
       <LabelDivider label="About Me" data-aos="fade-down"/>

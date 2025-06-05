@@ -5,7 +5,7 @@ import Image from 'next/image';
 const About = () => {
     return (
         <div 
-            className='flex flex-col gap-6 w-full h-[500px] p-5 relative' 
+            className='flex flex-col gap-6 w-full p-5 relative' 
             // style={{backgroundImage: `url(${aboutImage.src})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}
         >
             {/* <div className="absolute inset-0 rounded-3xl container mx-auto opacity-60 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div> */}
@@ -20,7 +20,7 @@ const About = () => {
                     className="w-60 lg:w-72 xl:w-92 h-60 lg:h-72 xl:h-92 object-contain border-2 rounded-full"
                      data-aos="fade-right"
                 />
-                <div className="space-y-6 min-h-min">
+                <div className="space-y-6 ">
                     <p className="text-wrap xl:text-xl text-base" data-aos="fade-up">
                     I am a dedicated web developer with experience in creating dynamic and responsive web applications. 
                     </p>
