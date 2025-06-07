@@ -4,7 +4,7 @@
 import { useAOS } from "@/hooks/useAOS";
 import Hero from "@/components/modules/home/Hero";
 import About from "@/components/modules/home/About";
-import { LabelDivider } from "@/components/shared/divider/Divider";
+import { LabelDivider } from "@/components/shared/divider/Dividers";
 
 const LandingPageContent = () => {
   useAOS();
