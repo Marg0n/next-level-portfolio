@@ -4,7 +4,7 @@ import React from "react";
 
 const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="space-y-6">
+    <section className="">
       <GlassNavbar />
       <main className="">{children}</main>
       <Footer/>

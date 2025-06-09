@@ -34,7 +34,7 @@ const Hero = () => {
       {/* writings */}
       <div className="flex flex-col gap-6 w-full lg:w-2/3">
         {/* intro */}
-        <div className="flex flex-col justify-center items-start gap-6 h-full">
+        <div className="flex flex-col justify-center items-start gap-6 h-full z-10">
           <h3 className="text-2xl font-semibold" data-aos="fade-down">
             Hi, I am
           </h3>
@@ -135,7 +135,7 @@ const Hero = () => {
 
       {/* image */}
       <div
-        className="lg:w-1/3 flex items-center justify-center"
+        className="lg:w-1/3 flex items-center justify-center z-10"
         data-aos="fade"
         data-aos-duration="2000"
       >
