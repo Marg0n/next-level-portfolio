@@ -279,7 +279,7 @@ const CircuitBoard = ({ children }: any) => {
   }, [dimensions, mousePosition]);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center flex-col overflow-hidden rounded-high bg-transparent">
+    <div className="relative w-full h-full flex items-center justify-center flex-col overflow-hidden rounded-high bg-transparent -z-10">
       <canvas ref={canvasRef} className="absolute inset-0 !w-full !h-full" />
 
       {children}

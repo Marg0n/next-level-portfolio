@@ -1,16 +1,15 @@
+import ProjectLandingPage from '@/components/modules/projects/ProjectLandingPage';
 import React from 'react';
 
 // meta tags
 export const metadata = {
-  title: "Blog | Sokhorio Margon D' Costa",
-  description: "Blogs of Sokhorio Margon D' Costa",
+  title: "Projects | Sokhorio Margon D' Costa",
+  description: "Projects of Sokhorio Margon D' Costa",
 };
 
 const Projects = () => {
     return (
-        <div>
-            this is the project page
-        </div>
+        <ProjectLandingPage/>
     );
 };
 
