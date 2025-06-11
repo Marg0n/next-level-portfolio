@@ -7,6 +7,7 @@ import About from "@/components/modules/home/About";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 // import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
 import CircuitBoard from "@/components/shared/motion/CircuitBoard";
+import Experience from "./Experience";
 
 const LandingPageContent = () => {
   useAOS();
@@ -18,6 +19,8 @@ const LandingPageContent = () => {
       <Hero />
       <LabelDivider label="About Me" data-aos="fade-down"/>
       <About />
+      <LabelDivider label="Recent Work Experiences" data-aos="fade-down"/>
+      <Experience/>
       </CircuitBoard>
     </div>
   );
