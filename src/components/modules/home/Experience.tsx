@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedCardFlip, AnimatedCardForPerson, AnimatedCardHoverButtonWithPic, AnimatedCardWithImageTilt, AnimatedCardZoomInWithDesc } from '@/components/shared/cards/HoverAnimatedCards';
 import React from 'react';
 
 const Experience = () => {
@@ -11,6 +14,11 @@ const Experience = () => {
                         <p className="text-base" data-aos="fade-up">
                             Description of job responsibilities and achievements.
                         </p>
+                        <AnimatedCardZoomInWithDesc/>
+                        {/* <AnimatedCardHoverButtonWithPic/>
+                        <AnimatedCardForPerson/>
+                        <AnimatedCardFlip/>
+                        <AnimatedCardWithImageTilt/> */}
                     </div>
                 </div>
             </div>

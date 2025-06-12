@@ -69,6 +69,8 @@ export const AnimatedCardHoverButtonWithPic = () => {
         src="https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-700"
+        width={360}
+        height={360}
       />
 
       {/*  text  */}
@@ -99,6 +101,8 @@ export const AnimatedCardForPerson = () => {
         src="https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
         alt="animated_cards"
         className="w-full h-[350px] object-cover"
+        width={996}
+        height={350}
       />
 
       {/*  texts  */}
@@ -137,6 +141,8 @@ export const AnimatedCardFlip = () => {
             src="https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
             alt="animated_card"
             className="w-full h-full cursor-pointer object-cover rounded-lg shadow-lg"
+            width={996}
+            height={350}
           />
           <h2 className="text-[1.5rem] [text-shadow:2px_2px_4px_rgba(0,0,0,0.9)] font-bold text-white absolute bottom-5 left-5">
             Marketing Strategy
@@ -183,6 +189,8 @@ export const AnimatedCardWithImageTilt = (
         }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.15] group-hover:rotate-[8deg] transition-all duration-300 ease-out"
+        width={750}
+        height={450}
       />
 
       {/*  texts  */}
