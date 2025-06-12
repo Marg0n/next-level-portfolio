@@ -24,7 +24,7 @@ const XIcon = createLucideIcon("X", [
 
 export const AnimatedCardZoomInWithDesc = () => {
   return (
-    <div className="w-full shadow-md h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group">
+    <div className="w-full md:w-96 shadow-md h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group">
       {/*  icons  */}
       <div className="absolute top-0 left-0 opacity-100 z-[-1] group-hover:opacity-100 group-hover:z-[1] ease-out transition-all duration-300 flex items-center justify-between w-full p-[15px]">
         <Heart className="text-[1.1rem] dark:text-[#abc2d3] text-gray-600" />

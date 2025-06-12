@@ -16,11 +16,13 @@ const LandingPageContent = () => {
     <div className="min-h-max w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
       <CircuitBoard>
-      <Hero />
-      <LabelDivider label="About Me" data-aos="fade-down"/>
-      <About />
-      <LabelDivider label="Recent Work Experiences" data-aos="fade-down"/>
-      <Experience/>
+        <div className="mb-6">
+          <Hero />
+          <LabelDivider label="About Me" data-aos="fade-down"/>
+          <About />
+          <LabelDivider label="Recent Work Experiences" data-aos="fade-down"/>
+          <Experience/>
+        </div>
       </CircuitBoard>
     </div>
   );

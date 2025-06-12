@@ -3,7 +3,7 @@
 
 import { useAOS } from "@/hooks/useAOS";
 import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
-import Hero from "../home/Hero";
+import { AnimatedCardFlip, AnimatedCardForPerson, AnimatedCardHoverButtonWithPic, AnimatedCardWithImageTilt, AnimatedCardZoomInWithDesc } from '@/components/shared/cards/HoverAnimatedCards';
 
 const ProjectLandingPage = () => {
   useAOS();
@@ -11,10 +11,16 @@ const ProjectLandingPage = () => {
   return (
     <div className="min-h-max w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
-      <StarfieldWarp>
+      {/* <StarfieldWarp> */}
         this is the project page
-        <Hero/>
-      </StarfieldWarp>
+        
+        
+                        <AnimatedCardZoomInWithDesc/>
+                        {/* <AnimatedCardHoverButtonWithPic/>
+                        <AnimatedCardForPerson/>
+                        <AnimatedCardFlip/>
+                        <AnimatedCardWithImageTilt/> */}
+      {/* </StarfieldWarp> */}
     </div>
   );
 };
