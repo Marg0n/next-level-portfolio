@@ -9,7 +9,7 @@ const ProjectLandingPage = () => {
   useAOS();
 
   return (
-    <div className="min-h-max w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
+    <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
       {/* <StarfieldWarp> */}
         this is the project page
