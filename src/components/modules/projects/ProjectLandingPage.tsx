@@ -16,10 +16,10 @@ const ProjectLandingPage = () => {
         
         
         <AnimatedCardZoomInWithDesc/>
-        {/* <AnimatedCardHoverButtonWithPic/>
+        <AnimatedCardHoverButtonWithPic/>
         <AnimatedCardForPerson/>
         <AnimatedCardFlip/>
-        <AnimatedCardWithImageTilt/> */}
+        {/* <AnimatedCardWithImageTilt/> */}
       {/* </StarfieldWarp> */}
     </div>
   );

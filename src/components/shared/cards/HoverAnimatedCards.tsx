@@ -4,16 +4,16 @@ import { ReactNode } from "react";
 
 //* Define types for the props
 interface CustomCardProps {
-  textName: ReactNode; // Allow textName to be a ReactNode (string, element, etc.)
-  icon?: ReactNode; // Optional icon prop
+  description?: string;
+  icon?: ReactNode; // Allow Optional icon prop to be a ReactNode (string, element, etc.)
   handleAnything?: (
     event:
       | React.MouseEvent<HTMLButtonElement>
       | React.FormEvent<HTMLFormElement>,
   ) => void; // Supports both click and form submit events
   className?: string; // Allow className to be passed as a prop
-  timeToRead?: string; 
-  image?: ReactNode;
+  timeToRead?: string;
+  image?: string; // Only allow string URLs for image prop
   genre?: string;
   developer?: string;
   title?: string;
@@ -28,6 +28,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import Image from "next/image";
+import { calculateReadingTime } from "@/utils/readingTime";
 
 //* creating x logo
 const XIcon = createLucideIcon("X", [
@@ -42,18 +43,26 @@ const XIcon = createLucideIcon("X", [
 ]);
 
 export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
-  // textName,
+  // description,
   // icon,
   // handleAnything,
-  // className,
+  className = "",
   timeToRead,
   image,
   genre,
   developer,
   title,
 }) => {
+  //* calculating reading time
+  // const readingTime = calculateReadingTime(description);
+
   return (
-    <div className="w-full md:w-96 shadow-md h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group">
+    <div
+      className={clsx(
+        "w-full md:w-96 shadow-md h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group",
+        className,
+      )}
+    >
       {/*  icons  */}
       <div className="absolute top-0 left-0 opacity-100 z-[-1] group-hover:opacity-100 group-hover:z-[1] ease-out transition-all duration-300 flex items-center justify-between w-full p-[15px]">
         {/* <Heart className="text-[1.1rem] dark:text-[#abc2d3] text-gray-600" /> */}
@@ -67,7 +76,10 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
 
       {/*  image  */}
       <Image
-        src="https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        src={
+          image ??
+          "https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        } //? If image is defined (not null or undefined), it will be used as the source of the image if not then the fallback URL will be used.
         alt="animated_card"
         className="w-full h-[60%] object-cover group-hover:opacity-40 group-hover:h-full transition-all duration-300 ease-out"
         width={750}
@@ -77,13 +89,13 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
       {/*  texts  */}
       <div className="absolute bottom-0 left-0 py-[20px] pb-[40px] px-[20px] w-full">
         <p className="text-[1rem] dark:text-[#abc2d3]/80 uppercase text-gray-600">
-          Travel
+          {genre ? genre : "Travel"}
         </p>
         <h3 className="text-[1.4rem] dark:text-[#abc2d3] font-bold text-gray-900">
-          Discover the sea
+          {title ? title : "Discover the sea"}
         </h3>
         <p className="text-[0.9rem] dark:text-[#abc2d3]/90 text-gray-600 mt-2">
-          by John Doe
+          by {developer ? developer : "John Doe"}
         </p>
       </div>
     </div>
@@ -212,9 +224,8 @@ export const AnimatedCardWithImageTilt = (
       {/*  image  */}
       <Image
         src={
-          src
-            ? src
-            : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample9.jpg"
+          src ??
+          "https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
         }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.15] group-hover:rotate-[8deg] transition-all duration-300 ease-out"
