@@ -1,9 +1,28 @@
 import React from "react";
+import clsx from "clsx";
+import { ReactNode } from "react";
+
+//* Define types for the props
+interface CustomCardProps {
+  textName: ReactNode; // Allow textName to be a ReactNode (string, element, etc.)
+  icon?: ReactNode; // Optional icon prop
+  handleAnything?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.FormEvent<HTMLFormElement>,
+  ) => void; // Supports both click and form submit events
+  className?: string; // Allow className to be passed as a prop
+  timeToRead?: string; 
+  image?: ReactNode;
+  genre?: string;
+  developer?: string;
+  title?: string;
+}
 
 //* react icons
 import {
   createLucideIcon,
-  Heart,
+  // Heart,
   Timer,
   Facebook,
   Linkedin,
@@ -22,16 +41,26 @@ const XIcon = createLucideIcon("X", [
   ],
 ]);
 
-export const AnimatedCardZoomInWithDesc = () => {
+export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
+  // textName,
+  // icon,
+  // handleAnything,
+  // className,
+  timeToRead,
+  image,
+  genre,
+  developer,
+  title,
+}) => {
   return (
     <div className="w-full md:w-96 shadow-md h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group">
       {/*  icons  */}
       <div className="absolute top-0 left-0 opacity-100 z-[-1] group-hover:opacity-100 group-hover:z-[1] ease-out transition-all duration-300 flex items-center justify-between w-full p-[15px]">
-        <Heart className="text-[1.1rem] dark:text-[#abc2d3] text-gray-600" />
+        {/* <Heart className="text-[1.1rem] dark:text-[#abc2d3] text-gray-600" /> */}
         <div className="flex items-center gap-[5px]">
           <Timer className="dark:text-orange-600 text-orange-700 text-[1.1rem]" />
           <p className="text-[1rem] dark:text-orange-600 text-orange-700">
-            5 min
+            <em>{timeToRead ? timeToRead : "5 min"}</em>
           </p>
         </div>
       </div>

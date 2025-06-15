@@ -4,7 +4,7 @@ import React from "react";
 import clsx from "clsx";
 import { ReactNode } from "react";
 
-// Define types for the props
+//* Define types for the props
 interface CustomButtonProps {
   textName: ReactNode; // Allow textName to be a ReactNode (string, element, etc.)
   icon?: ReactNode; // Optional icon prop
