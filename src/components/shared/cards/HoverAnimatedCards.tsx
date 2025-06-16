@@ -12,7 +12,6 @@ interface CustomCardProps {
       | React.FormEvent<HTMLFormElement>,
   ) => void; // Supports both click and form submit events
   className?: string; // Allow className to be passed as a prop
-  timeToRead?: string;
   image?: string; // Only allow string URLs for image prop
   genre?: string;
   developer?: string;
@@ -43,18 +42,18 @@ const XIcon = createLucideIcon("X", [
 ]);
 
 export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
-  // description,
+  description=``,
   // icon,
   // handleAnything,
-  className = "",
-  timeToRead,
+  className = ``,
   image,
   genre,
   developer,
   title,
 }) => {
+
   //* calculating reading time
-  // const readingTime = calculateReadingTime(description);
+  const readingTime = calculateReadingTime(description);
 
   return (
     <div
@@ -69,7 +68,7 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
         <div className="flex items-center gap-[5px]">
           <Timer className="dark:text-orange-600 text-orange-700 text-[1.1rem]" />
           <p className="text-[1rem] dark:text-orange-600 text-orange-700">
-            <em>{timeToRead ? timeToRead : "5 min"}</em>
+            <em>{readingTime ? readingTime : 5} min read</em>
           </p>
         </div>
       </div>
@@ -104,7 +103,7 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
 
 export const AnimatedCardHoverButtonWithPic = () => {
   return (
-    <div className="w-full relative overflow-hidden group cursor-pointer rounded-md">
+    <div className="p-4 md:p-0 w-full md:w-96 h-96 relative overflow-hidden group cursor-pointer rounded-md">
       {/*  image  */}
       <Image
         src="https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"
@@ -136,7 +135,7 @@ export const AnimatedCardHoverButtonWithPic = () => {
 
 export const AnimatedCardForPerson = () => {
   return (
-    <div className="w-full rounded-md relative group overflow-hidden">
+    <div className="p-4 md:p-0 w-full md:w-96 h-96 rounded-md relative group overflow-hidden">
       {/*  image  */}
       <Image
         src="https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
@@ -174,7 +173,7 @@ export const AnimatedCardForPerson = () => {
 
 export const AnimatedCardFlip = () => {
   return (
-    <div className="group [perspective:1000px] w-full h-[350px]">
+    <div className="group [perspective:1000px] p-4 md:p-0 h-96 w-full md:w-96">
       <div className="relative w-full h-full transition-transform duration-[600ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front Side */}
         <div className="absolute w-full h-full backface-hidden [backface-visibility:hidden]">
@@ -220,7 +219,7 @@ export const AnimatedCardWithImageTilt = (
   text2Class?: string,
 ) => {
   return (
-    <div className="w-full sm:w-[80%] lg:w-[60%] h-[350px] overflow-hidden rounded-md relative cursor-pointer group">
+    <div className="p-4 md:p-0 w-full md:w-96 sm:w-[80%] lg:w-[60%] h-[350px] overflow-hidden rounded-md relative cursor-pointer group">
       {/*  image  */}
       <Image
         src={
