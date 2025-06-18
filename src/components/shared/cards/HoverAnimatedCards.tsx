@@ -34,6 +34,7 @@ const XIcon = createLucideIcon("X", [
   [
     "path",
     {
+      key: "unique-path-key-1",
       d: "M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z",
       stroke: "none",
       fill: "currentColor",
@@ -159,7 +160,7 @@ export const AnimatedCardForPerson = () => {
           <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
             <Facebook className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
           </div>
-          <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[800ms] opacity-0 group-hover:opacity-100">
+          <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[800ms] opacity-0 group-hover:opacity-100" >
             <XIcon className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
           </div>
           <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[1100ms] opacity-0 group-hover:opacity-100">
