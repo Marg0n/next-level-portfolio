@@ -108,8 +108,6 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
   // handleAnything,
   className = ``,
   image,
-  genre,
-  developer,
   title,
 }) => {
   return (
