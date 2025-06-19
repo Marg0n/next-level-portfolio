@@ -102,12 +102,24 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
   );
 };
 
-export const AnimatedCardHoverButtonWithPic = () => {
+export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
+  description=``,
+  // icon,
+  // handleAnything,
+  className = ``,
+  image,
+  genre,
+  developer,
+  title,
+}) => {
   return (
-    <div className="p-4 md:p-0 w-full md:w-96 h-96 relative overflow-hidden group cursor-pointer rounded-md">
+    <div className={clsx(
+      "p-4 md:p-0 w-full md:w-96 h-96 relative overflow-hidden group cursor-pointer rounded-md",
+      className,
+      )}>
       {/*  image  */}
       <Image
-        src="https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"
+        src={image ?? "https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"}
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-700"
         width={360}
@@ -117,11 +129,10 @@ export const AnimatedCardHoverButtonWithPic = () => {
       {/*  text  */}
       <div className="absolute top-[50%] transform group-hover:translate-y-[-50%] transition-all duration-500 w-full h-full left-0 z-20 right-0 flex items-center justify-center flex-col">
         <h1 className="text-[1.5rem] font-bold text-white text-center capitalize">
-          domestic cat
+          {title ?? "domestic cat"}
         </h1>
         <p className="text-center z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 transition-all duration-700 text-white text-[0.9rem]">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          {description ? description.slice(0,50) : "Lorem Ipsum is simply dummy text of the printing and typesetting industry."}
         </p>
         <button className="bg-gray-400 z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 px-3 py-2 mt-3 hover:bg-gray-500 transition-all duration-1000 text-white rounded-md text-[0.9rem]">
           View Details
