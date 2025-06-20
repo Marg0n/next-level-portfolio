@@ -104,8 +104,6 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
 
 export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
   description=``,
-  // icon,
-  // handleAnything,
   className = ``,
   image,
   title,

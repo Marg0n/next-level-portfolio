@@ -6,7 +6,7 @@ import Hero from "@/components/modules/home/Hero";
 import About from "@/components/modules/home/About";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 // import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
-import CircuitBoard from "@/components/shared/motion/CircuitBoard";
+// import CircuitBoard from "@/components/shared/motion/CircuitBoard";
 import Experience from "./Experience";
 
 const LandingPageContent = () => {
@@ -15,7 +15,7 @@ const LandingPageContent = () => {
   return (
     <div className="min-h-max w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
       {/* components */}
-      <CircuitBoard>
+      {/* <CircuitBoard> */}
         <div className="mb-6">
           <Hero />
           <LabelDivider label="About Me" data-aos="fade-down"/>
@@ -23,7 +23,7 @@ const LandingPageContent = () => {
           <LabelDivider label="Recent Work Experiences" data-aos="fade-down"/>
           <Experience/>
         </div>
-      </CircuitBoard>
+      {/* </CircuitBoard> */}
     </div>
   );
 };
