@@ -1,23 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import clsx from "clsx";
 import { ReactNode } from "react";
-
-//* Define types for the props
-interface CustomCardProps {
-  description?: string;
-  icon?: ReactNode; // Allow Optional icon prop to be a ReactNode (string, element, etc.)
-  handleAnything?: (
-    event:
-      | React.MouseEvent<HTMLButtonElement>
-      | React.FormEvent<HTMLFormElement>,
-  ) => void; // Supports both click and form submit events
-  className?: string; // Allow className to be passed as a prop
-  image?: string; // Only allow string URLs for image prop
-  genre?: string;
-  developer?: string;
-  title?: string;
-}
-
 //* react icons
 import {
   createLucideIcon,
@@ -28,6 +12,25 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { calculateReadingTime } from "@/utils/readingTime";
+
+//* Define types for the props
+interface CustomCardProps {
+  description?: string;
+  icon?: ReactNode[]; // Allow Optional icon prop to be a ReactNode (string, element, etc.)
+  handleAnything?: (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.FormEvent<HTMLFormElement>,
+  ) => void; // Supports both click and form submit events
+  className?: string; // Allow className to be passed as a prop
+  image?: string; // Only allow string URLs for image prop
+  genre?: string;
+  designation?: string;
+  title?: string;
+  facebook?: boolean;
+  x?: boolean;
+  linkedin?: boolean;
+}
 
 //* creating x logo
 const XIcon = createLucideIcon("X", [
@@ -43,16 +46,15 @@ const XIcon = createLucideIcon("X", [
 ]);
 
 export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
-  description=``,
+  description = ``,
   // icon,
   // handleAnything,
   className = ``,
   image,
   genre,
-  developer,
+  designation,
   title,
 }) => {
-
   //* calculating reading time
   const readingTime = calculateReadingTime(description);
 
@@ -95,7 +97,7 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
           {title ? title : "Discover the sea"}
         </h3>
         <p className="text-[0.9rem] dark:text-[#abc2d3]/90 text-gray-600 mt-2">
-          by {developer ? developer : "John Doe"}
+          by {designation ? designation : "John Doe"}
         </p>
       </div>
     </div>
@@ -103,19 +105,24 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
 };
 
 export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
-  description=``,
+  description = ``,
   className = ``,
   image,
   title,
 }) => {
   return (
-    <div className={clsx(
-      "p-4 md:p-0 w-full md:w-96 h-96 relative overflow-hidden group cursor-pointer rounded-md",
-      className,
-      )}>
+    <div
+      className={clsx(
+        "p-4 md:p-0 w-full md:w-96 h-96 relative overflow-hidden group cursor-pointer rounded-md",
+        className,
+      )}
+    >
       {/*  image  */}
       <Image
-        src={image ?? "https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"}
+        src={
+          image ??
+          "https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"
+        }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-700"
         width={360}
@@ -128,7 +135,9 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
           {title ?? "domestic cat"}
         </h1>
         <p className="text-center z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 transition-all duration-700 text-white text-[0.9rem]">
-          {description ? description.slice(0,50) : "Lorem Ipsum is simply dummy text of the printing and typesetting industry."}
+          {description
+            ? description.slice(0, 50)
+            : "Lorem Ipsum is simply dummy text of the printing and typesetting industry."}
         </p>
         <button className="bg-gray-400 z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 px-3 py-2 mt-3 hover:bg-gray-500 transition-all duration-1000 text-white rounded-md text-[0.9rem]">
           View Details
@@ -141,13 +150,30 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
   );
 };
 
-export const AnimatedCardForPerson = () => {
+export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
+  className = ``,
+  image,
+  designation,
+  title,
+  facebook = true,
+  x = false,
+  linkedin = true,
+  icon = [],
+}) => {
   return (
-    <div className="p-4 md:p-0 w-full md:w-96 h-96 rounded-md relative group overflow-hidden">
+    <div
+      className={clsx(
+        "p-4 md:p-0 w-full md:w-96 h-96 rounded-md relative group overflow-hidden",
+        className,
+      )}
+    >
       {/*  image  */}
       <Image
-        src="https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
-        alt="animated_cards"
+        src={
+          image ??
+          "https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
+        }
+        alt={title ?? "Person Image"}
         className="w-full h-[350px] object-cover"
         width={996}
         height={350}
@@ -155,29 +181,68 @@ export const AnimatedCardForPerson = () => {
 
       {/*  texts  */}
       <div className="flex flex-col items-center justify-center backdrop-blur-md text-white absolute bottom-0 w-full pt-[15px] pb-[30px] translate-y-[200px] group-hover:translate-y-0 transition-all duration-[400ms] overflow-hidden">
-        <h3 className="text-[1.7rem] translate-y-[-50px] group-hover:translate-y-0 transition-all duration-700 font-bold tracking-[5px] leading-[30px] opacity-0 group-hover:opacity-100">
-          Jack Leo
+        <h3 className="text-[1.7rem] translate-y-[-50px] group-hover:translate-y-0 transition-all duration-700 font-bold tracking-[5px] leading-[30px] opacity-0 group-hover:opacity-100 px-3 text-center">
+          {title ?? "Sokhorio Margon D' Costa"}
         </h3>
         <p className="text-[1rem] translate-y-[100px] group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
-          Product Designer
+          {designation ?? "Software Engineer"}
         </p>
 
         {/*  socials icons  */}
         <div className="flex items-center gap-[20px] mt-[15px]">
-          <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100">
+          <div
+            className={clsx(
+              "translate-y-[100px] group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100",
+              !facebook && "hidden",
+            )}
+          >
             <Facebook className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
           </div>
-          <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[800ms] opacity-0 group-hover:opacity-100" >
+          <div
+            className={clsx(
+              "translate-y-[100px] group-hover:translate-y-0 transition-all duration-[800ms] opacity-0 group-hover:opacity-100",
+              !x && "hidden",
+            )}
+          >
             <XIcon className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
           </div>
-          <div className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[1100ms] opacity-0 group-hover:opacity-100">
+          <div
+            className={clsx(
+              "translate-y-[100px] group-hover:translate-y-0 transition-all duration-[1100ms] opacity-0 group-hover:opacity-100",
+              !linkedin && "hidden",
+            )}
+          >
             <Linkedin className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
           </div>
+          {/* Custom icons (optional) */}
+          {icon?.map((IconEl, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[1400ms] opacity-0 group-hover:opacity-100 cursor-pointer"
+              onClick={() => console.log(`Custom icon ${idx} clicked`)}
+            >
+              {
+                React.isValidElement(IconEl)
+                  ? React.cloneElement(
+                      IconEl as React.ReactElement<any>,
+                      {
+                        className: clsx(
+                          "text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200",
+                          (IconEl.props as any)?.className // allow merging user-passed classes
+                        ),
+                      }
+                    )
+                  : IconEl
+              }
+            </button>
+          ))}
         </div>
       </div>
     </div>
   );
 };
+//? React.cloneElement: It gives you control over props of children passed in as JSX. Very useful when children are components like icons where you want to enforce default behavior.
 
 export const AnimatedCardFlip = () => {
   return (
