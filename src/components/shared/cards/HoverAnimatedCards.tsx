@@ -30,6 +30,8 @@ interface CustomCardProps {
   facebook?: boolean;
   x?: boolean;
   linkedin?: boolean;
+  link?: string; // Optional link prop for Learn More button
+  buttonText?: string; // Optional button text prop
 }
 
 //* creating x logo
@@ -109,6 +111,7 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
   className = ``,
   image,
   title,
+  buttonText,
 }) => {
   return (
     <div
@@ -140,7 +143,7 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry."}
         </p>
         <button className="bg-gray-400 z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 px-3 py-2 mt-3 hover:bg-gray-500 transition-all duration-1000 text-white rounded-md text-[0.9rem]">
-          View Details
+          {buttonText ?? "View Details"}
         </button>
       </div>
 
@@ -222,19 +225,14 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
               className="translate-y-[100px] group-hover:translate-y-0 transition-all duration-[1400ms] opacity-0 group-hover:opacity-100 cursor-pointer"
               onClick={() => console.log(`Custom icon ${idx} clicked`)}
             >
-              {
-                React.isValidElement(IconEl)
-                  ? React.cloneElement(
-                      IconEl as React.ReactElement<any>,
-                      {
-                        className: clsx(
-                          "text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200",
-                          (IconEl.props as any)?.className // allow merging user-passed classes
-                        ),
-                      }
-                    )
-                  : IconEl
-              }
+              {React.isValidElement(IconEl)
+                ? React.cloneElement(IconEl as React.ReactElement<any>, {
+                    className: clsx(
+                      "text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200",
+                      (IconEl.props as any)?.className, // allow merging user-passed classes
+                    ),
+                  })
+                : IconEl}
             </button>
           ))}
         </div>
@@ -244,39 +242,55 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
 };
 //? React.cloneElement: It gives you control over props of children passed in as JSX. Very useful when children are components like icons where you want to enforce default behavior.
 
-export const AnimatedCardFlip = () => {
+export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
+  className = ``,
+  image,
+  description,
+  title,
+  link,
+  buttonText
+}) => {
   return (
-    <div className="group [perspective:1000px] p-4 md:p-0 h-96 w-full md:w-96">
+    <div
+      className={clsx(
+        "group [perspective:1000px] p-4 md:p-0 h-96 w-full md:w-96",
+        className,
+      )}
+    >
       <div className="relative w-full h-full transition-transform duration-[600ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front Side */}
         <div className="absolute w-full h-full backface-hidden [backface-visibility:hidden]">
           <Image
-            src="https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
-            alt="animated_card"
+            src={
+              image ??
+              "https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
+            }
+            alt={title ?? "animated_card"}
             className="w-full h-full cursor-pointer object-cover rounded-lg shadow-lg"
             width={996}
             height={350}
           />
           <h2 className="text-[1.5rem] [text-shadow:2px_2px_4px_rgba(0,0,0,0.9)] font-bold text-white absolute bottom-5 left-5">
-            Marketing Strategy
+            {title ?? "Marketing Strategy"}
           </h2>
         </div>
 
         {/* Back Side */}
         <div className="absolute w-full dark:bg-slate-800 h-full bg-white rounded-lg shadow-lg [transform:rotateY(180deg)] [backface-visibility:hidden] p-[25px]">
           <h2 className="text-[1.2rem] dark:text-[#abc2d3] font-semibold text-gray-800 mb-4">
-            Marketing Strategy
+            {title ?? "Marketing Strategy"}
           </h2>
           <p className="text-gray-600 dark:text-[#abc2d3]/80">
-            A marketing strategy is a plan to reach target customers, promote
+            {description ??
+              `A marketing strategy is a plan to reach target customers, promote
             products, and grow business. It uses tools like ads, social media,
-            and content to build brand awareness and drive sales.
+            and content to build brand awareness and drive sales.`}
           </p>
           <a
-            href="https://zenui.net"
+            href={link ?? "#"}
             className="inline-block mt-4 text-blue-500 hover:underline"
           >
-            Learn More
+            {buttonText ?? "Learn More"}
           </a>
         </div>
       </div>
