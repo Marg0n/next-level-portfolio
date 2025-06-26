@@ -19,7 +19,7 @@ const ProjectLandingPage = () => {
         <AnimatedCardHoverButtonWithPic/>
         <AnimatedCardForPerson/>
         <AnimatedCardFlip/>
-        {/* <AnimatedCardWithImageTilt/> */}
+        <AnimatedCardWithImageTilt />
       {/* </StarfieldWarp> */}
     </div>
   );

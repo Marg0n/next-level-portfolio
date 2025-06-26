@@ -12,26 +12,29 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { calculateReadingTime } from "@/utils/readingTime";
+import winterCloth from "@/assets/images/winter_cloth.jpg";
 
 //* Define types for the props
 interface CustomCardProps {
   description?: string;
-  icon?: ReactNode[]; // Allow Optional icon prop to be a ReactNode (string, element, etc.)
+  icon?: ReactNode[]; //? Allow Optional icon prop to be a ReactNode (string, element, etc.)
   handleAnything?: (
     event:
       | React.MouseEvent<HTMLButtonElement>
       | React.FormEvent<HTMLFormElement>,
-  ) => void; // Supports both click and form submit events
-  className?: string; // Allow className to be passed as a prop
-  image?: string; // Only allow string URLs for image prop
+  ) => void; //? Supports both click and form submit events
+  className?: string; //? Allow className to be passed as a prop
+  image?: string; //? Only allow string URLs for image prop
   genre?: string;
   designation?: string;
   title?: string;
   facebook?: boolean;
   x?: boolean;
   linkedin?: boolean;
-  link?: string; // Optional link prop for Learn More button
-  buttonText?: string; // Optional button text prop
+  link?: string; //? Optional link prop for Learn More button
+  buttonText?: string; //? Optional button text prop
+  // textArray?: string[]; //? textArray={["Line 1", "Line 2", "Line 3"]}
+  textArray?: { value: string; className?: string }[]; //? textArray={[{ value: "John Doe", className: "text-white" }, ... ]}
 }
 
 //* creating x logo
@@ -248,7 +251,7 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
   description,
   title,
   link,
-  buttonText
+  buttonText,
 }) => {
   return (
     <div
@@ -298,20 +301,23 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
   );
 };
 
-export const AnimatedCardWithImageTilt = (
-  src?: string,
-  text1?: string,
-  text2?: string,
-  text3?: string,
-  text2Class?: string,
-) => {
+export const AnimatedCardWithImageTilt: React.FC<CustomCardProps> = ({
+  className = ``,
+  image,
+  textArray = [{ value: "The" }, { value: "Winter", className: "text-yellow-500" }, { value: "Collection" }],
+}) => {
   return (
-    <div className="p-4 md:p-0 w-full md:w-96 sm:w-[80%] lg:w-[60%] h-[350px] overflow-hidden rounded-md relative cursor-pointer group">
+    <div
+      className={clsx(
+        "p-4 md:p-0 h-96 w-full md:w-96 overflow-hidden rounded-md relative cursor-pointer group",
+        className,
+      )}
+    >
       {/*  image  */}
       <Image
         src={
-          src ??
-          "https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
+          image ??
+          winterCloth
         }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.15] group-hover:rotate-[8deg] transition-all duration-300 ease-out"
@@ -321,7 +327,8 @@ export const AnimatedCardWithImageTilt = (
 
       {/*  texts  */}
       <div className="absolute bottom-0 left-0 py-[10px] px-[20px]">
-        <h3 className="text-[2rem] font-bold text-white">{text1}</h3>
+        {/* option 1 */}
+        {/* <h3 className="text-[2rem] font-bold text-white">{text1}</h3>
         <h3
           className={
             "text-[2rem] font-bold " +
@@ -330,7 +337,33 @@ export const AnimatedCardWithImageTilt = (
         >
           {text2}
         </h3>
-        <h3 className="text-[2rem] font-bold text-white">{text3}</h3>
+        <h3 className="text-[2rem] font-bold text-white">{text3}</h3> */}
+
+        {/* option 2 */}
+        {/* {textArray?.map((line, index) => (
+          <h3
+            key={index}
+            className={clsx("text-[2rem] font-bold", {
+              "text-yellow-500": index === 1, //? make second line yellow
+              "text-white": index !== 1,
+            })}
+          >
+            {line}
+          </h3>
+        ))} */}
+
+        {/* option 3 */}
+        {textArray?.map((item, index) => (
+          <h3
+            key={index}
+            className={clsx(
+              "text-[2rem] font-bold",
+              item?.className ?? "text-white",
+            )}
+          >
+            {item?.value}
+          </h3>
+        ))}
       </div>
     </div>
   );
