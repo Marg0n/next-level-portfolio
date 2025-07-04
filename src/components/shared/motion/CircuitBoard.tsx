@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useEffect, useState } from "react";
+import { ReactNode } from "react";
 
 interface CircuitNode {
   x: number;
@@ -16,12 +17,16 @@ interface CircuitPath {
   activationLevel: number;
 }
 
-const CircuitBoard = ({ children }: any) => {
+interface CircuitBoardProps {
+  children?: ReactNode;
+}
+
+const CircuitBoard = ({ children }: CircuitBoardProps)  => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const circuitNodesRef = useRef<any[]>([]);
-  const circuitPathsRef = useRef<any[]>([]);
+  const circuitNodesRef = useRef<CircuitNode[]>([]);
+  const circuitPathsRef = useRef<CircuitPath[]>([]);
   const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -48,7 +53,8 @@ const CircuitBoard = ({ children }: any) => {
     const generateCircuit = (width: number, height: number) => {
       const nodeCount = width < 768 ? 30 : 50;
       const nodes: any[] = [];
-      const gridSize = Math.sqrt(nodeCount);
+      // const gridSize = Math.sqrt(nodeCount);
+      const gridSize = Math.floor(Math.sqrt(nodeCount));
       const cellWidth = width / gridSize;
       const cellHeight = height / gridSize;
 
@@ -101,26 +107,26 @@ const CircuitBoard = ({ children }: any) => {
     };
 
     interface DistanceToNode {
-        index: number;
-        distance: number;
+      index: number;
+      distance: number;
     }
 
     const findClosestNodes = (
-        node: CircuitNode,
-        nodes: CircuitNode[],
-        count: number
+      node: CircuitNode,
+      nodes: CircuitNode[],
+      count: number,
     ): number[] => {
-        const distances: DistanceToNode[] = nodes.map((n, index) => {
-            const dx = node.x - n.x;
-            const dy = node.y - n.y;
-            return { index, distance: Math.sqrt(dx * dx + dy * dy) };
-        });
+      const distances: DistanceToNode[] = nodes.map((n, index) => {
+        const dx = node.x - n.x;
+        const dy = node.y - n.y;
+        return { index, distance: Math.sqrt(dx * dx + dy * dy) };
+      });
 
-        return distances
-            .filter((d) => d.distance > 0)
-            .sort((a, b) => a.distance - b.distance)
-            .slice(0, count)
-            .map((d) => d.index);
+      return distances
+        .filter((d) => d.distance > 0)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, count)
+        .map((d) => d.index);
     };
 
     handleResize();
@@ -279,9 +285,9 @@ const CircuitBoard = ({ children }: any) => {
   }, [dimensions, mousePosition]);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center flex-col overflow-hidden rounded-high bg-transparent -z-10">
-      <canvas ref={canvasRef} className="absolute inset-0 !w-full !h-full" />
-
+    <div className="relative w-full h-full flex items-center justify-center flex-col overflow-hidden rounded-high bg-transparent">
+      <canvas ref={canvasRef} className="absolute inset-0 !w-full !h-full pointer-events-none  z-0" />
+      {/* <div className="relative z-10 w-full h-full">{children}</div> */}
       {children}
     </div>
   );
