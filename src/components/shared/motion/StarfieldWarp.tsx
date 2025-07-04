@@ -186,10 +186,11 @@ const StarfieldWarp = ({children}: {children: any}) => {
     return (
         <div
             ref={wrapperRef}
-            className="relative w-full h-full flex items-center justify-center flex-col overflow-hidden rounded-high bg-transparent -z-10"
+            className="relative w-full h-full flex items-center justify-center flex-col overflow-hidden rounded-high bg-transparent"
+            // className="relative w-full h-full min-h-[500px] overflow-hidden"
         >
 
-            <canvas ref={canvasRef} className="absolute inset-0 !w-full !h-full"/>
+            <canvas ref={canvasRef} className="absolute inset-0 !w-full !h-full pointer-events-none z-0"/>
 
             {children}
         </div>

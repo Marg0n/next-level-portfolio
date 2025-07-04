@@ -5,7 +5,6 @@ import { useAOS } from "@/hooks/useAOS";
 import Hero from "@/components/modules/home/Hero";
 import About from "@/components/modules/home/About";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
-// import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
 // import CircuitBoard from "@/components/shared/motion/CircuitBoard";
 import Experience from "./Experience";
 
