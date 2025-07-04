@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 import CircuitBoard from '@/components/shared/motion/CircuitBoard';
+import GridDistortion from '@/components/shared/motion/GridDistortion';
 // import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
 
 const loginSchema = z.object({
@@ -55,7 +56,7 @@ export default function LoginPage() {
 
   return (
     <div className='h-screen '>
-      <CircuitBoard>
+      <GridDistortion>
         <div className="h-full flex items-center justify-center bg-transparent">
           <div className="w-full max-w-md bg-white p-8 rounded shadow">
             <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
@@ -98,7 +99,7 @@ export default function LoginPage() {
             </form>
           </div>
         </div>
-      </CircuitBoard>
+      </GridDistortion>
     </div>
   );
 }
