@@ -8,7 +8,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 import CircuitBoard from '@/components/shared/motion/CircuitBoard';
-import MagneticField from '@/components/shared/motion/MagneticField';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
@@ -55,7 +54,7 @@ export default function LoginPage() {
 
   return (
     <div className='h-screen '>
-      <MagneticField>
+      <CircuitBoard>
         <div className="h-full flex items-center justify-center bg-transparent">
           <div className="w-full max-w-md bg-white p-8 rounded shadow">
             <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
@@ -98,7 +97,7 @@ export default function LoginPage() {
             </form>
           </div>
         </div>
-      </MagneticField>
+      </CircuitBoard>
     </div>
   );
 }

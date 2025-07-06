@@ -151,7 +151,7 @@ const MagneticField = ({ children }: MagneticFieldProps) => {
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+        className="absolute inset-0 !w-full !h-full pointer-events-none z-0"
       />
       <div className="relative z-10 w-full h-full flex justify-center items-center">
         {children}
