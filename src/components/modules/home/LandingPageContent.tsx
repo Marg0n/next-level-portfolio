@@ -6,6 +6,7 @@ import { LabelDivider } from "@/components/shared/divider/Dividers";
 import { useAOS } from "@/hooks/useAOS";
 // import CircuitBoard from "@/components/shared/motion/CircuitBoard";
 import Experience from "./Experience";
+import Education from "./Education";
 
 const LandingPageContent = () => {
   useAOS();
@@ -20,6 +21,8 @@ const LandingPageContent = () => {
         <About />
         <LabelDivider label="Recent Work Experiences" data-aos="fade-down" />
         <Experience />
+        <LabelDivider label="Education" data-aos="fade-down" />
+        <Education/>
       </div>
       {/* </CircuitBoard> */}
     </div>

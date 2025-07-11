@@ -6,7 +6,7 @@ import whoAmI from "@/assets/images/jacky-who-am-i.png";
 const About = () => {
   return (
     <div
-      className="flex flex-col gap-6 w-full p-5 relative"
+      className="flex flex-col gap-6 w-full px-8 relative"
       // style={{backgroundImage: `url(${aboutImage.src})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}
     >
       {/* <div className="absolute inset-0 rounded-3xl container mx-auto opacity-60 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div> */}
