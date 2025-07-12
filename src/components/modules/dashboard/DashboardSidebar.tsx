@@ -2,33 +2,25 @@
 import React, { useState } from "react";
 
 //* react icons
-import {
-  GoHome,
-  GoProjectSymlink,
-  GoSidebarCollapse,
-} from "react-icons/go";
+import { GoHome, GoProjectSymlink, GoSidebarCollapse } from "react-icons/go";
 import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
 import { CiCalendar, CiLogout } from "react-icons/ci";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
-import {
-  IoNotificationsOutline,
-  IoSettingsOutline,
-} from "react-icons/io5";
+import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { RiAccountCircleLine } from "react-icons/ri";
 import Pic from "@/assets/images/SMD.png";
 import Image from "next/image";
 
 const DashboardSidebar: React.FC = () => {
-
   //* states
   const [isCollapse1, setIsCollapse1] = useState<boolean>(true);
 
   //* constants
-  const name = "Sokhorio Margon D' Costa"
+  const name = "Sokhorio Margon D' Costa";
 
   return (
-    <aside className="transition-all duration-300 ease bg-white pt-2">
+    <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full">
       <div
         className={`mt-0 ${
           isCollapse1 ? "px-[20px]" : "px-[10px]"
@@ -37,13 +29,19 @@ const DashboardSidebar: React.FC = () => {
         {isCollapse1 ? (
           <div className="flex items-center justify-between">
             {/* <Image
-                          src={Pic}
-                          alt="logo"
-                          className="w-[130px] cursor-pointer"
-                          width={500}
-                          height={500}
-                        /> */}
-            <h3 className="text-xl font-serif font-bold">Portfolio Dashboard</h3>
+              src={Pic}
+              alt="logo"
+              className="w-[130px] cursor-pointer"
+              width={500}
+              height={500}
+            /> */}
+
+            {/* title */}
+            <h3 className="text-xl font-serif font-bold">
+              Portfolio Dashboard
+            </h3>
+
+            {/* toggle */}
             <div className="relative group">
               <GoSidebarCollapse
                 className="text-[1.5rem] dark:text-[#abc2d3] text-gray-600 cursor-pointer"
@@ -87,44 +85,46 @@ const DashboardSidebar: React.FC = () => {
           </div>
         )}
       </div>
-      
+
+      {/* options */}
+
       {/* Profile section */}
-            <div
-              className={`${
-                isCollapse1 ? "justify-between" : "justify-center"
-              } bg-gray-100 py-3 px-[20px] flex items-center mt-10 dark:bg-slate-800 `}
-            >
-              <div className="flex items-center gap-[10px]">
-                <Image
-                  src={Pic}
-                  alt="avatar"
-                  className="w-[30px] h-[30px] cursor-pointer rounded-full object-contain bg-green-200"
-                  width={500}
-                  height={500}
-                />
-                <h3
-                  className={`${
-                    isCollapse1 ? "inline" : "hidden"
-                  } dark:text-[#abc2d3] text-[0.9rem] text-gray-800 font-semibold font-serif`}
-                >
-                  {name ?? "Jhon Deo"}
-                </h3>
-              </div>
-      
-              <div className={`${isCollapse1 ? "inline" : "hidden"} relative group`}>
-                <BsThreeDots className="text-[1.2rem] dark:text-[#abc2d3] text-gray-500 cursor-pointer" />
-                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 group-hover:z-30 absolute top-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px]">
-                  <li className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-gray-600 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
-                    <RiAccountCircleLine />
-                    Profile
-                  </li>
-                  <li className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-red-500 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
-                    <CiLogout />
-                    Logout
-                  </li>
-                </ul>
-              </div>
-            </div>
+      <div
+        className={`${
+          isCollapse1 ? "justify-between" : "justify-center"
+        } bg-gray-100 py-3 px-[20px] flex items-center mt-10 dark:bg-slate-800 `}
+      >
+        <div className="flex items-center gap-[10px]">
+          <Image
+            src={Pic}
+            alt="avatar"
+            className="w-[30px] h-[30px] cursor-pointer rounded-full object-contain bg-green-200"
+            width={500}
+            height={500}
+          />
+          <h3
+            className={`${
+              isCollapse1 ? "inline" : "hidden"
+            } dark:text-[#abc2d3] text-[0.9rem] text-gray-800 font-semibold font-serif`}
+          >
+            {name ?? "Jhon Doe"}
+          </h3>
+        </div>
+
+        <div className={`${isCollapse1 ? "inline" : "hidden"} relative group`}>
+          <BsThreeDots className="text-[1.2rem] dark:text-[#abc2d3] text-gray-500 cursor-pointer" />
+          <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 group-hover:z-30 absolute top-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px]">
+            <li className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-gray-600 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
+              <RiAccountCircleLine />
+              Profile
+            </li>
+            <li className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-red-500 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
+              <CiLogout />
+              Logout
+            </li>
+          </ul>
+        </div>
+      </div>
     </aside>
   );
 };
