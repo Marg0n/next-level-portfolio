@@ -248,7 +248,7 @@ const ResponsiveSidebar: React.FC = () => {
   );
 };
 
-// Subcomponent for reusable sidebar item
+//* Subcomponent for reusable sidebar item
 interface SidebarItemProps {
   isCollapsed: boolean;
   icon: React.ReactNode;
