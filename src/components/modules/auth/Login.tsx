@@ -50,6 +50,10 @@ const Login = () => {
     }
   };
 
+  const goHome = () => {
+    router.push('/');
+  };
+
     return (
         <div className="h-full flex items-center justify-center bg-transparent">
           <div className="w-full max-w-md bg-white p-8 rounded shadow">
@@ -91,6 +95,13 @@ const Login = () => {
                 {isSubmitting ? 'Logging in...' : 'Login'}
               </button>
             </form>
+
+            <button
+             className='mt-4 text-center bg-red-300 w-full transition hover:bg-red-400 text-white py-2 rounded'
+             onClick={goHome}
+            >
+              Go Home
+            </button>
           </div>
         </div>
     );
