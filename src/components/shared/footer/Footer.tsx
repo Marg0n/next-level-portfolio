@@ -1,13 +1,25 @@
-
+"use client"
 
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import './Footer.css'
+import { FcVip } from 'react-icons/fc';
+import { useRouter } from 'next/navigation';
 
 export function Footer() {
+
+  //* Router
+  const router = useRouter();
+
+  const login = () => {
+    router.push('/login');
+  };
+
   return (
     <footer className="relative bg-black text-white py-12 w-full">
+
       {/* Cosmic Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
+
       {/* Animated Stars */}
       <div className="absolute inset-0 bg-stars bg-cover bg-fixed opacity-40"></div>
       <div className="container mx-auto px-6 z-10">
@@ -32,6 +44,11 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      <button onClick={login} className="absolute top-4 right-4 bg-transparent text-white px-2 py-2 rounded-full hover:bg-gray-500 transition">
+        <FcVip size={25}/>
+      </button>
+        
     </footer>
   );
 }
