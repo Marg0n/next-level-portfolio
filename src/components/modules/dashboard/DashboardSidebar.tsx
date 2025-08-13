@@ -6,7 +6,8 @@ import { GoHome, GoProjectSymlink, GoSidebarCollapse } from "react-icons/go";
 import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
 import { CiCalendar, CiLogout } from "react-icons/ci";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
-import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
+import { FcBusinessman } from "react-icons/fc";
+// import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { RiAccountCircleLine } from "react-icons/ri";
 import Pic from "@/assets/images/SMD.png";
@@ -22,7 +23,7 @@ const DashboardSidebar: React.FC = () => {
 
   return (
     <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col">
-      
+
       {/* Contents */}
       <div className="">
         <div
@@ -103,6 +104,13 @@ const DashboardSidebar: React.FC = () => {
               isCollapsed={isCollapse1}
               icon={<GoHome />}
               label="Home"
+              tooltipOffset="-80px"
+            />
+            {/* Home */}
+            <SidebarItem
+              isCollapsed={isCollapse1}
+              icon={<FcBusinessman />}
+              label="Portfolio"
               tooltipOffset="-80px"
             />
             {/* Calendar */}
