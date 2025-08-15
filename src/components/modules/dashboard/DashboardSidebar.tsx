@@ -12,6 +12,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { RiAccountCircleLine } from "react-icons/ri";
 import Pic from "@/assets/images/SMD.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const DashboardSidebar: React.FC = () => {
   //* states
@@ -106,12 +107,13 @@ const DashboardSidebar: React.FC = () => {
               label="Home"
               tooltipOffset="-80px"
             />
-            {/* Home */}
+            {/* Portfolio */}
             <SidebarItem
               isCollapsed={isCollapse1}
               icon={<FcBusinessman />}
               label="Portfolio"
               tooltipOffset="-80px"
+              link="/"
             />
             {/* Calendar */}
             <SidebarItem
@@ -258,6 +260,7 @@ interface SidebarItemProps {
   icon: React.ReactNode;
   label: string;
   tooltipOffset: string;
+  link?: string;
 }
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
@@ -265,12 +268,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   icon,
   label,
   tooltipOffset,
+  link="",
 }) => {
   return (
-    <div
+    <Link
       className={`${
         isCollapsed ? "justify-between" : "justify-center"
       } flex items-center w-full hover:bg-gray-50 p-[5px] dark:hover:bg-slate-800/50 rounded-md cursor-pointer transition-all duration-200 relative group`}
+      href={link as string}
     >
       <div className="flex items-center gap-[8px]">
         <span className="text-[1.3rem] dark:text-[#abc2d3] text-gray-500">
@@ -293,7 +298,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
           {label}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
