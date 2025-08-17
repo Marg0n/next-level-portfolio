@@ -30,21 +30,27 @@ const Login = () => {
     setServerError('');
     try {
       //* Replace with your actual login API
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      // const response = await fetch('/api/auth/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data),
+      // });
 
-      const result = await response.json();
+      // const result = await response.json();
 
-      if (!response.ok) {
-        throw new Error(result.message || 'Login failed');
-      }
+      // if (!response.ok) {
+      //   throw new Error(result.message || 'Login failed');
+      // }
 
-      router.push('/dashboard'); //* Redirect after login
+      setTimeout(()=>{
+
+      console.log(JSON.stringify(data)) 
+
+        router.push('/dashboard'); //* Redirect after login
+      },1000)
+
     } catch (error: any) {
       setServerError(error.message);
     }
@@ -69,7 +75,7 @@ const Login = () => {
                   {...register('email')}
                   className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>}
+                {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email.message || "Invalid user or password"}</p>}
               </div>
 
               <div className="mb-4">
@@ -82,7 +88,7 @@ const Login = () => {
                   {...register('password')}
                   className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password.message}</p>}
+                {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password.message || "Invalid user or password"}</p>}
               </div>
 
               {serverError && <p className="text-sm text-red-600 mb-4">{serverError}</p>}
