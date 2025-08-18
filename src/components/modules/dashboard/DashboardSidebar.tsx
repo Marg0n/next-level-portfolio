@@ -13,6 +13,7 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import Pic from "@/assets/images/SMD.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const DashboardSidebar: React.FC = () => {
   //* states
@@ -22,9 +23,17 @@ const DashboardSidebar: React.FC = () => {
   //* constants
   const name = "Sokhorio Margon D' Costa";
 
+  //* route
+  const router = useRouter();
+
+  const handleLogout = () => {
+    //? logout logic needed (e.g., clearing cookies, session storage, etc.)
+
+    router.push("/login");
+  };
+
   return (
     <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col">
-
       {/* Contents */}
       <div className="">
         <div
@@ -232,18 +241,21 @@ const DashboardSidebar: React.FC = () => {
               isCollapse1 ? "inline" : "hidden"
             } dark:text-[#abc2d3] text-[0.9rem] text-gray-800 font-semibold font-serif`}
           >
-            {name ?? "Jhon Doe"}
+            {name ?? "Sokhorio Margon D&apos; Costa"}
           </h3>
         </div>
 
         <div className={`${isCollapse1 ? "inline" : "hidden"} relative group`}>
           <BsThreeDots className="text-[1.2rem] dark:text-[#abc2d3] text-gray-500 cursor-pointer" />
-          <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 group-hover:z-30 absolute top-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px]">
+          <ul className="translate-x-[0px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 group-hover:z-30 absolute bottom-0 left-[30px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] border-2">
             <li className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-gray-600 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
               <RiAccountCircleLine />
               Profile
             </li>
-            <li className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-red-500 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer">
+            <li
+              onClick={handleLogout}
+              className="flex items-center dark:text-[#abc2d3] dark:hover:bg-slate-800/50 gap-[7px] text-[0.9rem] text-red-500 hover:bg-gray-50 px-[8px] py-[4px] rounded-md cursor-pointer"
+            >
               <CiLogout />
               Logout
             </li>
@@ -268,7 +280,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   icon,
   label,
   tooltipOffset,
-  link="",
+  link = "",
 }) => {
   return (
     <Link
