@@ -2,8 +2,9 @@
 "use client";
 
 import { useAOS } from "@/hooks/useAOS";
-import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
+// import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
 import { AnimatedCardFlip, AnimatedCardForPerson, AnimatedCardHoverButtonWithPic, AnimatedCardWithImageTilt, AnimatedCardZoomInWithDesc } from '@/components/shared/cards/HoverAnimatedCards';
+import { LabelDivider } from "@/components/shared/divider/Dividers";
 
 const ProjectLandingPage = () => {
   useAOS();
@@ -17,6 +18,20 @@ const ProjectLandingPage = () => {
             Some of My project Lists
           </span>
         </h2>
+
+        <LabelDivider label="FullStack Projects" data-aos="fade-down" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
+          <AnimatedCardZoomInWithDesc/>
+          <AnimatedCardHoverButtonWithPic/>
+          <AnimatedCardForPerson/>
+          <AnimatedCardFlip/>
+          <AnimatedCardWithImageTilt />
+        </div>
+
+        <LabelDivider label="Running Projects" data-aos="fade-down" />
+
+        <LabelDivider label="Upcoming Projects" data-aos="fade-down" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
           <AnimatedCardZoomInWithDesc/>

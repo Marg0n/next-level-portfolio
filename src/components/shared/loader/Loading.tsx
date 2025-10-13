@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImage from "@/assets/images/jacky-who-am-i.png";
+// import aboutImage from "@/assets/images/jacky-who-am-i.png";
 import tired from "@/assets/images/tired-cleaning.png";
 import Image from "next/image";
 import styles from "./Loading.module.css";
@@ -21,7 +21,7 @@ const Loading = () => {
         {/* Front face */}
         <div className={styles["coin-face"]}>
           <Image
-            src={aboutImage}
+            src={"https://avatars.githubusercontent.com/u/54356991?v=4"}
             alt="Coin Front"
             fill
             className="object-cover rounded-full"
@@ -32,13 +32,13 @@ const Loading = () => {
         {/* <div className={styles["coin-edge"]}></div> */}
 
         {/* Edge slices */}
-        {/* {[...Array(40)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <div
             key={i}
             className={styles.edgeSlice}
             style={{ transform: `rotateX(${i * (360 / 40)}deg) translateZ(75px)` }}
           />
-        ))} */}
+        ))}
 
         {/* Back face (optional) */}
         <div className={styles["coin-face"] + " " + styles["coin-back"]}>
