@@ -17,7 +17,7 @@ const EmptyPage = () => {
       </h1>
 
       <p className="text-[0.9rem] dark:text-slate-400 text-gray-500">
-        Please Login to view more updates
+        Please Come again in the future to view more updates
       </p>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import Pic from "@/assets/images/SMD.png";
+import Pic from "@/assets/images/StarboyMG.png";
 import CustomButton from "@/components/shared/buttons/CustomButton";
 import { Button } from "@/components/ui/button";
 import { useAOS } from "@/hooks/useAOS";
@@ -34,7 +34,7 @@ const Hero = () => {
       {/* writings */}
       <div className="flex flex-col gap-6 w-full lg:w-2/3">
         {/* intro */}
-        <div className="flex flex-col justify-center items-start gap-6 h-full z-10">
+        <div className="flex flex-col justify-center items-start gap-6 h-full z-10 ">
           <h3 className="text-2xl font-semibold" data-aos="fade-down">
             Hi, I am
           </h3>
@@ -142,6 +142,7 @@ const Hero = () => {
         <div className="p-[3px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
           <Image
             src={Pic}
+            // src={`https://avatars.githubusercontent.com/u/54356991?v=4`}
             alt="Profile Pic"
             width={500}
             height={500}
