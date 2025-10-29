@@ -5,9 +5,13 @@ import { useAOS } from "@/hooks/useAOS";
 // import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
 import { AnimatedCardFlip, AnimatedCardForPerson, AnimatedCardHoverButtonWithPic, AnimatedCardWithImageTilt, AnimatedCardZoomInWithDesc } from '@/components/shared/cards/HoverAnimatedCards';
 import { LabelDivider } from "@/components/shared/divider/Dividers";
+import { GitHubProjects } from "./github/page";
 
 const ProjectLandingPage = () => {
   useAOS();
+
+  const token = process.env.GITHUB_TOKEN || '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';
+  console.log('Token',token)
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
@@ -20,6 +24,8 @@ const ProjectLandingPage = () => {
         </h2>
 
         <LabelDivider label="FullStack Projects" data-aos="fade-down" />
+
+        <GitHubProjects token={token} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
           <AnimatedCardZoomInWithDesc/>

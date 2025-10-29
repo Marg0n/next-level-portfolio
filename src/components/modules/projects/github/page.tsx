@@ -1,6 +1,7 @@
 
 'use client';  //? Ensure this is a client-side component
 
+import { GetGitID } from '@/app/api/githubProjects/route';
 import { useEffect, useState } from 'react';
 
 type GitHubRepo = {
@@ -16,7 +17,7 @@ type UserInfo = {
   avatar_url: string;
 };
 
-const GitHubProjects = ({ token }: { token: string }) => {
+export const GitHubProjects = ({ token }: { token: string }) => {
   const [data, setData] = useState<{ user: UserInfo; repos: GitHubRepo[] } | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -27,6 +28,9 @@ const GitHubProjects = ({ token }: { token: string }) => {
         const response = await fetch(`/api/githubProjects?token=${token}`);
         const result = await response.json();
         setData(result);
+        //! for debugging
+        const r = await GetGitID(`/api/githubProjects?token=${token}` as unknown as Request);
+        console.log(r)
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -45,12 +49,15 @@ const GitHubProjects = ({ token }: { token: string }) => {
     return <div>No data available</div>;
   }
 
+  //! for debugging
+  console.log(data)
+
   return (
     <div>
       <h1>{data.user.name}&apos;s GitHub Projects</h1>
       {data.user.email && <p>Email: {data.user.email}</p>}
-      <div>
-        {data.repos.map((repo) => (
+      {/* <div>
+        {data.repos?.map((repo) => (
           <div key={repo.id} className="card">
             <h3>{repo.name}</h3>
             <p>{repo.description}</p>
@@ -59,7 +66,7 @@ const GitHubProjects = ({ token }: { token: string }) => {
             </a>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

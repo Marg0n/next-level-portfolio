@@ -1,7 +1,7 @@
 // app/api/githubProjects/route.ts
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
+export async function GetGitID(request: Request) {
   const token = request.url.split('?token=')[1];  //? Get token from query params
 
   try {
