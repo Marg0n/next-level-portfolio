@@ -10,7 +10,7 @@ import { GitHubProjects } from "./github/page";
 const ProjectLandingPage = () => {
   useAOS();
 
-  const token = process.env.GITHUB_TOKEN || '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';
+  const token = process.env.GITHUB_TOKEN || '';
   console.log('Token',token)
 
   return (
