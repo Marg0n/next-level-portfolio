@@ -1,8 +1,7 @@
+"use client"; //? Ensure this is a client-side component
 
-'use client';  //? Ensure this is a client-side component
-
-import { GetGitID } from '@/app/api/githubProjects/route';
-import { useEffect, useState } from 'react';
+import { GetGitID } from "@/app/api/githubProjects/route";
+import { useEffect, useState } from "react";
 
 type GitHubRepo = {
   id: number;
@@ -18,7 +17,10 @@ type UserInfo = {
 };
 
 export const GitHubProjects = ({ token }: { token: string }) => {
-  const [data, setData] = useState<{ user: UserInfo; repos: GitHubRepo[] } | null>(null);
+  const [data, setData] = useState<{
+    user: UserInfo;
+    repos: GitHubRepo[];
+  } | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -29,10 +31,12 @@ export const GitHubProjects = ({ token }: { token: string }) => {
         const result = await response.json();
         setData(result);
         //! for debugging
-        const r = await GetGitID(`/api/githubProjects?token=${token}` as unknown as Request);
-        console.log(r)
+        const r = await GetGitID(
+          `/api/githubProjects?token=${token}` as unknown as Request,
+        );
+        console.log(r);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -50,7 +54,7 @@ export const GitHubProjects = ({ token }: { token: string }) => {
   }
 
   //! for debugging
-  console.log(data)
+  console.log(data);
 
   return (
     <div>
@@ -72,7 +76,7 @@ export const GitHubProjects = ({ token }: { token: string }) => {
 };
 
 export default function Home() {
-  const token = process.env.GITHUB_TOKEN || ''; // Get token from environment variables
+  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || ""; // Get token from environment variables
 
   return (
     <div>
@@ -80,7 +84,6 @@ export default function Home() {
     </div>
   );
 }
-
 
 /**
  * Explanation:
