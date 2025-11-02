@@ -1,8 +1,8 @@
 "use client"; //? Ensure this is a client-side component
 
-import { GetGitID } from "@/app/api/githubProjects/route";
 import { useEffect, useState } from "react";
 
+//* Define types for repository and user data
 type GitHubRepo = {
   id: number;
   name: string;
@@ -27,14 +27,20 @@ export const GitHubProjects = ({ token }: { token: string }) => {
     const fetchGitHubData = async () => {
       setLoading(true);
       try {
+        //? Make the fetch request to the API route with the token as a query parameter
         const response = await fetch(`/api/githubProjects?token=${token}`);
+
+        //? Check if the response is valid (status OK)
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.statusText}`);
+        }
+
+        //? Parse the JSON response
         const result = await response.json();
+
+        //? Store the response data in state
         setData(result);
-        //! for debugging
-        const r = await GetGitID(
-          `/api/githubProjects?token=${token}` as unknown as Request,
-        );
-        console.log(r);
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {

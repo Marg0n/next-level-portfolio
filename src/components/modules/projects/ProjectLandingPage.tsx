@@ -16,7 +16,7 @@ const ProjectLandingPage = () => {
   useAOS();
 
   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || "";
-  console.log("Token", token);
+  // console.log("Token", token);
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
