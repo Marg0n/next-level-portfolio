@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/api/githubProjects/route.ts
 import { NextResponse } from "next/server";
 
@@ -17,7 +18,8 @@ export async function GET(request: Request) {
   try {
     //* Fetch public repos using the fetch API
     const reposResponse = await fetch(
-      "https://api.github.com/users/Marg0n/repos",
+      // "https://api.github.com/users/Marg0n/repos",
+      "https://api.github.com/user/repos",
       {
         headers: {
           Authorization: `token ${token}`,
@@ -36,7 +38,8 @@ export async function GET(request: Request) {
     console.log("Repositories:", repos);
 
     //* Fetch user info (name, email) using fetch API
-    const userResponse = await fetch("https://api.github.com/users/Marg0n", {
+    // const userResponse = await fetch("https://api.github.com/users/Marg0n", {
+    const userResponse = await fetch("https://api.github.com/user", {
       headers: {
         Authorization: `token ${token}`,
       },
@@ -58,10 +61,10 @@ export async function GET(request: Request) {
       repos,
       userResponse,
     });
-  } catch (error) {
-    console.error("Error fetching GitHub data:", error);
+  } catch (error: any) {
+    console.error("Error fetching GitHub data:", error.message || error);
     return NextResponse.json(
-      { error: "Error fetching GitHub data" },
+      { error: error.message || "Error fetching GitHub data" },
       { status: 500 },
     );
   }

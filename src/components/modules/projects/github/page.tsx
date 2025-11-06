@@ -30,6 +30,8 @@ export const GitHubProjects = ({ token }: { token: string }) => {
         //? Make the fetch request to the API route with the token as a query parameter
         const response = await fetch(`/api/githubProjects?token=${token}`);
 
+        console.log(response)
+
         //? Check if the response is valid (status OK)
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
