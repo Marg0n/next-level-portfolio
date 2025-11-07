@@ -28,7 +28,8 @@ export const GitHubProjects = ({ token }: { token: string }) => {
       setLoading(true);
       try {
         //? Make the fetch request to the API route with the token as a query parameter
-        const response = await fetch(`/api/githubProjects?token=${token}`);
+        // const response = await fetch(`/api/githubProjects?token=${token}`);
+        const response = await fetch("/api/githubProjects");
 
         console.log(response)
 

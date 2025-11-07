@@ -49,6 +49,9 @@ const nextConfig: NextConfig = {
     config.resolve.alias["@"] = path.resolve(__dirname, "src");
     return config;
   },
+  env: {
+    GITHUB_TOKEN: process.env.NEXT_PUBLIC_GITHUB_TOKEN, //! Make sure this is here
+  },
 };
 
 export default nextConfig;
