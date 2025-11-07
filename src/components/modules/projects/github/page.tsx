@@ -69,7 +69,7 @@ export const GitHubProjects = ({ token }: { token: string }) => {
     <div>
       <h1>{data.user.name}&apos;s GitHub Projects</h1>
       {data.user.email && <p>Email: {data.user.email}</p>}
-      {/* <div>
+      <div>
         {data.repos?.map((repo) => (
           <div key={repo.id} className="card">
             <h3>{repo.name}</h3>
@@ -79,7 +79,7 @@ export const GitHubProjects = ({ token }: { token: string }) => {
             </a>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };

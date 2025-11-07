@@ -76,42 +76,42 @@ import { NextResponse } from "next/server";
 
 
 
-export async function GET() {
-  const token = process.env.GITHUB_TOKEN;
+// export async function GET() {
+//   const token = process.env.GITHUB_TOKEN;
 
-  if (!token) {
-    return NextResponse.json({ error: "GitHub token not found" }, { status: 500 });
-  }
+//   if (!token) {
+//     return NextResponse.json({ error: "GitHub token not found" }, { status: 500 });
+//   }
 
-  try {
-    const [userRes, reposRes] = await Promise.all([
-      fetch("https://api.github.com/user", {
-        headers: { Authorization: `token ${token}` },
-      }),
-      fetch("https://api.github.com/user/repos", {
-        headers: { Authorization: `token ${token}` },
-      }),
-    ]);
+//   try {
+//     const [userRes, reposRes] = await Promise.all([
+//       fetch("https://api.github.com/user", {
+//         headers: { Authorization: `token ${token}` },
+//       }),
+//       fetch("https://api.github.com/user/repos", {
+//         headers: { Authorization: `token ${token}` },
+//       }),
+//     ]);
 
-    if (!userRes.ok || !reposRes.ok) {
-      const errUser = await userRes.text();
-      const errRepos = await reposRes.text();
-      console.error("GitHub API error:", errUser, errRepos);
-      throw new Error("GitHub API request failed");
-    }
+//     if (!userRes.ok || !reposRes.ok) {
+//       const errUser = await userRes.text();
+//       const errRepos = await reposRes.text();
+//       console.error("GitHub API error:", errUser, errRepos);
+//       throw new Error("GitHub API request failed");
+//     }
 
-    const user = await userRes.json();
-    const repos = await reposRes.json();
+//     const user = await userRes.json();
+//     const repos = await reposRes.json();
 
-    return NextResponse.json({ user, repos });
-  } catch (err: any) {
-    console.error("Error fetching GitHub data:", err.message);
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
-}
+//     return NextResponse.json({ user, repos });
+//   } catch (err: any) {
+//     console.error("Error fetching GitHub data:", err.message);
+//     return NextResponse.json({ error: err.message }, { status: 500 });
+//   }
+// }
 
 
-/*
+
 
 export async function GET() {
   try {
@@ -133,4 +133,3 @@ export async function GET() {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
-*/
