@@ -71,7 +71,7 @@ export const GitHubProjects = ({ token }: { token: string }) => {
       {data.user.email && <p>Email: {data.user.email}</p>}
       <div>
         {data.repos?.map((repo) => (
-          <div key={repo.id} className="card">
+          <div key={repo.id} className="card grid grid-cols-3 gap-4">
             <h3>{repo.name}</h3>
             <p>{repo.description}</p>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
