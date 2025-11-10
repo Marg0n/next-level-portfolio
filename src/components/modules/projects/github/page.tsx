@@ -1,5 +1,6 @@
 "use client"; //? Ensure this is a client-side component
 
+import { AnimatedCardFlip } from "@/components/shared/cards/HoverAnimatedCards";
 import { useEffect, useState } from "react";
 
 //* Define types for repository and user data
@@ -31,7 +32,7 @@ export const GitHubProjects = ({ token }: { token: string }) => {
         // const response = await fetch(`/api/githubProjects?token=${token}`);
         const response = await fetch("/api/githubProjects");
 
-        console.log(response)
+        console.log(response);
 
         //? Check if the response is valid (status OK)
         if (!response.ok) {
@@ -43,7 +44,6 @@ export const GitHubProjects = ({ token }: { token: string }) => {
 
         //? Store the response data in state
         setData(result);
-        
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -69,14 +69,24 @@ export const GitHubProjects = ({ token }: { token: string }) => {
     <div>
       <h1>{data.user.name}&apos;s GitHub Projects</h1>
       {data.user.email && <p>Email: {data.user.email}</p>}
-      <div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {data.repos?.map((repo) => (
-          <div key={repo.id} className="card grid grid-cols-3 gap-4">
-            <h3>{repo.name}</h3>
+          <div
+            key={repo.id}
+           
+          >
+            {/* <h3>{repo.name}</h3>
             <p>{repo.description}</p>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               View Repository
-            </a>
+            </a> */}
+            <AnimatedCardFlip
+              title={repo.name}
+              description={repo.description}
+              link={repo.html_url}
+              buttonText="GitHub Repo"
+              className=""
+            />
           </div>
         ))}
       </div>

@@ -292,6 +292,7 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
           <a
             href={link ?? "#"}
             className="inline-block mt-4 text-blue-500 hover:underline"
+            target="_blank"
           >
             {buttonText ?? "Learn More"}
           </a>
