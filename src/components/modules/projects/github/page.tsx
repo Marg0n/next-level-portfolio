@@ -66,9 +66,9 @@ export const GitHubProjects = ({ token }: { token: string }) => {
   console.log(data);
 
   return (
-    <div>
-      <h1>{data.user.name}&apos;s GitHub Projects</h1>
-      {data.user.email && <p>Email: {data.user.email}</p>}
+    <div className="space-y-6">
+      <h1 className="text-center font-semibold text-lg">{data.user.name}&apos;s GitHub Projects</h1>
+      {data.user.email && <p className="italic">Email: {data.user.email}</p>}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {data.repos?.map((repo) => (
           <div
