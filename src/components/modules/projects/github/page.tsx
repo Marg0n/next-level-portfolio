@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"; //? Ensure this is a client-side component
 
 import { AnimatedCardFlip } from "@/components/shared/cards/HoverAnimatedCards";
+import { LabelDivider } from "@/components/shared/divider/Dividers";
 import { useEffect, useState } from "react";
 
 //* Define types for repository and user data
@@ -17,7 +19,15 @@ type UserInfo = {
   avatar_url: string;
 };
 
-export const GitHubProjects = ({ token }: { token: string }) => {
+export const GitHubProjects = ({
+  token,
+  array,
+  label,
+}: {
+  token: string;
+  array: any[];
+  label: string;
+}) => {
   const [data, setData] = useState<{
     user: UserInfo;
     repos: GitHubRepo[];
@@ -66,43 +76,48 @@ export const GitHubProjects = ({ token }: { token: string }) => {
   console.log(data);
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-center font-semibold text-lg">{data.user.name}&apos;s GitHub Projects</h1>
-      {data.user.email && <p className="italic">Email: {data.user.email}</p>}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-        {data.repos?.map((repo) => (
-          <div
-            key={repo.id}
-           
-          >
-            {/* <h3>{repo.name}</h3>
+    <>
+      {/* lebel */}
+      <LabelDivider label={label} data-aos="fade-down" />
+
+      {/* github data */}
+      <div className="space-y-6">
+        <h1 className="text-center font-semibold text-lg">
+          {data.user.name}&apos;s GitHub Projects
+        </h1>
+        {data.user.email && <p className="italic">Email: {data.user.email}</p>}
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+          {data.repos?.map((repo) => (
+            <div key={repo.id}>
+              {/* <h3>{repo.name}</h3>
             <p>{repo.description}</p>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               View Repository
             </a> */}
-            <AnimatedCardFlip
-              title={repo.name}
-              description={repo.description}
-              link={repo.html_url}
-              buttonText="GitHub Repo"
-              className=""
-            />
-          </div>
-        ))}
+              <AnimatedCardFlip
+                title={repo.name}
+                description={repo.description}
+                link={repo.html_url}
+                buttonText="GitHub Repo"
+                className=""
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default function Home() {
-  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || ""; // Get token from environment variables
+// export default function Home() {
+//   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || ""; // Get token from environment variables
 
-  return (
-    <div>
-      <GitHubProjects token={token} />
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <GitHubProjects token={token} />
+//     </div>
+//   );
+// }
 
 /**
  * Explanation:
