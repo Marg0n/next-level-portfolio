@@ -74,6 +74,7 @@ export const GitHubProjects = ({
 
   //! for debugging
   console.log(data);
+  console.log(array);
 
   return (
     <>
@@ -87,22 +88,24 @@ export const GitHubProjects = ({
         </h1>
         {data.user.email && <p className="italic">Email: {data.user.email}</p>}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-          {data.repos?.map((repo) => (
-            <div key={repo.id}>
-              {/* <h3>{repo.name}</h3>
+          {data.repos
+            ?.filter((repoName) => array.includes(repoName.name))
+            ?.map((repo) => (
+              <div key={repo.id}>
+                {/* <h3>{repo.name}</h3>
             <p>{repo.description}</p>
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               View Repository
             </a> */}
-              <AnimatedCardFlip
-                title={repo.name}
-                description={repo.description}
-                link={repo.html_url}
-                buttonText="GitHub Repo"
-                className=""
-              />
-            </div>
-          ))}
+                <AnimatedCardFlip
+                  title={repo.name}
+                  description={repo.description}
+                  link={repo.html_url}
+                  buttonText="GitHub Repo"
+                  className=""
+                />
+              </div>
+            ))}
         </div>
       </div>
     </>
