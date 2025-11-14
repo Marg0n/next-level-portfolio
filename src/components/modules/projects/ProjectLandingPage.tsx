@@ -21,7 +21,8 @@ const ProjectLandingPage = () => {
 
   //* Filtered data for git project
   const [fullStackProjects, GetFullStackProjects] = useState<string[]>(['best-deals', 'Bicycle', 'MediMartNight', 'MediHouse_Client']);
-  const [runningProjects, GetRunningProjects] = useState([]);
+  const [runningProjects, GetRunningProjects] = useState(["next-level-portfolio", 
+"CourierAndParcelManagementSystem"]);
   const [upcomingProjects, GetUpcomingProjects] = useState([]);
 
   return (
@@ -34,9 +35,10 @@ const ProjectLandingPage = () => {
         </span>
       </h2>
 
-      <LabelDivider label="FullStack Projects" data-aos="fade-down" />
+      {/* <LabelDivider label="FullStack Projects" data-aos="fade-down" /> */}
 
       <GitHubProjects token={token} label="FullStack Projects" array={fullStackProjects} />
+      <GitHubProjects token={token} label="Running Projects" array={runningProjects} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
         <AnimatedCardZoomInWithDesc />

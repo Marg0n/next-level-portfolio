@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"; //? Ensure this is a client-side component
 
-import { AnimatedCardFlip } from "@/components/shared/cards/HoverAnimatedCards";
+import { AnimatedCardFlip, AnimatedCardHoverButtonWithPic } from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import { useEffect, useState } from "react";
 
@@ -73,19 +73,19 @@ export const GitHubProjects = ({
   }
 
   //! for debugging
-  console.log(data);
+  console.log(data.repos?.map((repo) => repo.name));
   console.log(array);
 
   return (
     <>
-      {/* lebel */}
+      {/* label */}
       <LabelDivider label={label} data-aos="fade-down" />
 
       {/* github data */}
       <div className="space-y-6">
-        <h1 className="text-center font-semibold text-lg">
-          {data.user.name}&apos;s GitHub Projects
-        </h1>
+        {/* <h1 className="text-center font-semibold text-lg">
+          {data.user.name}&apos;s GitHub {label}
+        </h1> */}
         {data.user.email && <p className="italic">Email: {data.user.email}</p>}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {data.repos
@@ -97,13 +97,20 @@ export const GitHubProjects = ({
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               View Repository
             </a> */}
-                <AnimatedCardFlip
-                  title={repo.name}
-                  description={repo.description}
-                  link={repo.html_url}
-                  buttonText="GitHub Repo"
-                  className=""
-                />
+                {label === "Fullstack Projects" ? (
+                  <AnimatedCardFlip
+                    title={repo.name}
+                    description={repo.description}
+                    link={repo.html_url}
+                    buttonText="GitHub Repo"
+                    className=""
+                  />
+                ) : (
+                  label === "Running Projects" ?(
+                    <AnimatedCardHoverButtonWithPic />
+                  )
+                  :(<AnimatedCardHoverButtonWithPic />)
+                )}
               </div>
             ))}
         </div>
