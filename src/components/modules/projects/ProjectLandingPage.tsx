@@ -8,6 +8,7 @@ import {
   AnimatedCardHoverButtonWithPic,
   AnimatedCardWithImageTilt,
   AnimatedCardZoomInWithDesc,
+  AnimatedCardOnlyDetailsWithZoomIn,
 } from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import { GitHubProjects } from "./github/page";
@@ -46,6 +47,7 @@ const ProjectLandingPage = () => {
         <AnimatedCardForPerson />
         <AnimatedCardFlip />
         <AnimatedCardWithImageTilt />
+        <AnimatedCardOnlyDetailsWithZoomIn />
       </div>
 
       <LabelDivider label="Running Projects" data-aos="fade-down" />
