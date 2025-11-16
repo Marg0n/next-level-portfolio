@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"; //? Ensure this is a client-side component
 
-import { AnimatedCardFlip, AnimatedCardHoverButtonWithPic } from "@/components/shared/cards/HoverAnimatedCards";
+import { AnimatedCardFlip, AnimatedCardHoverButtonWithPic, AnimatedCardOnlyDetailsWithZoomIn } from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import { useEffect, useState } from "react";
 
@@ -109,7 +109,7 @@ export const GitHubProjects = ({
                   label === "Running Projects" ?(
                     <AnimatedCardHoverButtonWithPic />
                   )
-                  :(<AnimatedCardHoverButtonWithPic />)
+                  :(<AnimatedCardOnlyDetailsWithZoomIn />)
                 )}
               </div>
             ))}
