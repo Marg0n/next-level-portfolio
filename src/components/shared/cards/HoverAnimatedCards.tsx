@@ -380,7 +380,7 @@ export const AnimatedCardOnlyDetailsWithZoomIn: React.FC<CustomCardProps> = ({
   return (
     <div
       className={clsx(
-        "w-full sm:w-[80%] lg:w-[60%] shadow-md h-[350px] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group",
+        "p-4 md:p-0 h-96 w-full md:w-96 shadow-md transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group",
         className,
       )}
     >
