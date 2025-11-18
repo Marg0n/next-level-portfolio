@@ -40,6 +40,7 @@ const ProjectLandingPage = () => {
 
       <GitHubProjects token={token} label="FullStack Projects" array={fullStackProjects} />
       <GitHubProjects token={token} label="Running Projects" array={runningProjects} />
+      <GitHubProjects token={token} label="Upcoming Projects" array={upcomingProjects} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
         <AnimatedCardZoomInWithDesc />
@@ -49,10 +50,6 @@ const ProjectLandingPage = () => {
         <AnimatedCardWithImageTilt />
         <AnimatedCardOnlyDetailsWithZoomIn />
       </div>
-
-      <LabelDivider label="Running Projects" data-aos="fade-down" />
-
-      <LabelDivider label="Upcoming Projects" data-aos="fade-down" />
 
       {/* </StarfieldWarp> */}
     </div>
