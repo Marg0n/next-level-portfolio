@@ -22,9 +22,9 @@ const ProjectLandingPage = () => {
 
   //* Filtered data for git project
   const [fullStackProjects, GetFullStackProjects] = useState<string[]>(['best-deals', 'Bicycle', 'MediMartNight', 'MediHouse_Client']);
-  const [runningProjects, GetRunningProjects] = useState(["next-level-portfolio", 
+  const [runningProjects, GetRunningProjects] = useState<string[]>(["next-level-portfolio", 
 "CourierAndParcelManagementSystem"]);
-  const [upcomingProjects, GetUpcomingProjects] = useState([]);
+  const [upcomingProjects, GetUpcomingProjects] = useState<string[]>([]);
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
@@ -42,14 +42,14 @@ const ProjectLandingPage = () => {
       <GitHubProjects token={token} label="Running Projects" array={runningProjects} />
       <GitHubProjects token={token} label="Upcoming Projects" array={upcomingProjects} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
         <AnimatedCardZoomInWithDesc />
         <AnimatedCardHoverButtonWithPic />
         <AnimatedCardForPerson />
         <AnimatedCardFlip />
         <AnimatedCardWithImageTilt />
         <AnimatedCardOnlyDetailsWithZoomIn />
-      </div>
+      </div> */}
 
       {/* </StarfieldWarp> */}
     </div>

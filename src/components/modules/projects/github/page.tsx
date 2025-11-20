@@ -107,7 +107,13 @@ export const GitHubProjects = ({
                   />
                 ) : (
                   label === "Running Projects" ?(
-                    <AnimatedCardHoverButtonWithPic />
+                    <AnimatedCardHoverButtonWithPic 
+                      title={repo.name}
+                      description={repo.description}
+                      link={repo.html_url}
+                      buttonText="GitHub Repo"
+                      className=""
+                    />
                   )
                   :(<AnimatedCardOnlyDetailsWithZoomIn />)
                 )}
