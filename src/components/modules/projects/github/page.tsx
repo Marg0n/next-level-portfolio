@@ -82,7 +82,7 @@ export const GitHubProjects = ({
       <LabelDivider label={label} data-aos="fade-down" />
 
       {/* github data */}
-      <div className="space-y-6">
+      <div className="space-y-6 mb-6">
         {/* <h1 className="text-center font-semibold text-lg">
           {data.user.name}&apos;s GitHub {label}
         </h1> */}
