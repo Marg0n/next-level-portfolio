@@ -42,7 +42,7 @@ export const GitHubProjects = ({
         // const response = await fetch(`/api/githubProjects?token=${token}`);
         const response = await fetch("/api/githubProjects");
 
-        console.log(response);
+        console.log("response:",response);
 
         //? Check if the response is valid (status OK)
         if (!response.ok) {
@@ -97,7 +97,7 @@ export const GitHubProjects = ({
             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
               View Repository
             </a> */}
-                {label === "Fullstack Projects" ? (
+                {label === "FullStack Projects" ? (
                   <AnimatedCardFlip
                     title={repo.name}
                     description={repo.description}
