@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"; //? Ensure this is a client-side component
 
-import { AnimatedCardFlip, AnimatedCardHoverButtonWithPic, AnimatedCardOnlyDetailsWithZoomIn } from "@/components/shared/cards/HoverAnimatedCards";
+import {
+  AnimatedCardFlip,
+  AnimatedCardHoverButtonWithPic,
+  AnimatedCardOnlyDetailsWithZoomIn,
+} from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import { useEffect, useState } from "react";
 
@@ -25,7 +29,7 @@ export const GitHubProjects = ({
   label,
 }: {
   token: string;
-  array: any[];
+  array: string[];
   label: string;
 }) => {
   const [data, setData] = useState<{
@@ -42,7 +46,7 @@ export const GitHubProjects = ({
         // const response = await fetch(`/api/githubProjects?token=${token}`);
         const response = await fetch("/api/githubProjects");
 
-        console.log("response:",response);
+        console.log("response:", response);
 
         //? Check if the response is valid (status OK)
         if (!response.ok) {
@@ -105,9 +109,17 @@ export const GitHubProjects = ({
                     buttonText="GitHub Repo"
                     className=""
                   />
+                ) : label === "Running Projects" ? (
+                  <AnimatedCardHoverButtonWithPic
+                    title={repo.name}
+                    description={repo.description}
+                    link={repo.html_url}
+                    buttonText="GitHub Repo"
+                    className=""
+                  />
                 ) : (
-                  label === "Running Projects" ?(
-                    <AnimatedCardHoverButtonWithPic 
+                  label === "Upcoming Projects" && (
+                    <AnimatedCardOnlyDetailsWithZoomIn
                       title={repo.name}
                       description={repo.description}
                       link={repo.html_url}
@@ -115,7 +127,6 @@ export const GitHubProjects = ({
                       className=""
                     />
                   )
-                  :(<AnimatedCardOnlyDetailsWithZoomIn />)
                 )}
               </div>
             ))}
