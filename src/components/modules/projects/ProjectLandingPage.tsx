@@ -24,7 +24,7 @@ const ProjectLandingPage = () => {
   const [fullStackProjects, GetFullStackProjects] = useState<string[]>(['best-deals', 'Bicycle', 'MediMartNight', 'MediHouse_Client']);
   const [runningProjects, GetRunningProjects] = useState<string[]>(["next-level-portfolio", 
 "CourierAndParcelManagementSystem"]);
-  const [upcomingProjects, GetUpcomingProjects] = useState<string[]>([]);
+  const [upcomingProjects, GetUpcomingProjects] = useState<string[]>(['kenakata', 'Lenden']);
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
