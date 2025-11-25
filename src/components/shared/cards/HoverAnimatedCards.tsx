@@ -137,7 +137,7 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
 
       {/*  text  */}
       <div className="absolute top-[50%] transform group-hover:translate-y-[-50%] transition-all duration-500 w-full h-full left-0 z-20 right-0 flex items-center justify-center flex-col">
-        <h1 className="text-[1.5rem] font-bold text-white text-center capitalize">
+        <h1 className="text-[1.5rem] font-bold text-white text-center capitalize wrap-anywhere p-4">
           {title ?? "domestic cat"}
         </h1>
         <p className="text-center z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 transition-all duration-700 text-white text-[0.9rem]">
