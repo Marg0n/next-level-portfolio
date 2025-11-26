@@ -46,7 +46,7 @@ export const GitHubProjects = ({
         // const response = await fetch(`/api/githubProjects?token=${token}`);
         const response = await fetch("/api/githubProjects");
 
-        console.log("response:", response);
+        // console.log("response:", response);
 
         //? Check if the response is valid (status OK)
         if (!response.ok) {
@@ -77,7 +77,7 @@ export const GitHubProjects = ({
   }
 
   //! for debugging
-  console.log(data.repos?.map((repo) => repo.name));
+  console.log(data.repos?.map((repo) => repo));
   console.log(array);
 
   return (
@@ -106,6 +106,7 @@ export const GitHubProjects = ({
                     title={repo.name}
                     description={repo.description}
                     link={repo.html_url}
+                    // image={'https://raw.githubusercontent.com/Marg0n/Bicycle/refs/heads/development/src/assets/images/img/bicycle.jpg'}
                     buttonText="GitHub Repo"
                     className=""
                   />
@@ -122,7 +123,7 @@ export const GitHubProjects = ({
                     <AnimatedCardOnlyDetailsWithZoomIn
                       title={repo.name}
                       description={repo.description}
-                      link={repo.html_url}
+                      // link={repo.html_url}
                       buttonText="GitHub Repo"
                       className=""
                     />

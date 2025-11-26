@@ -115,6 +115,7 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
   image,
   title,
   buttonText,
+  link,
 }) => {
   return (
     <div
@@ -146,7 +147,13 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
             : "Lorem Ipsum is simply dummy text of the printing and typesetting industry."}
         </p>
         <button className="bg-gray-400 z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 px-3 py-2 mt-3 hover:bg-gray-500 transition-all duration-1000 text-white rounded-md text-[0.9rem]">
-          {buttonText ?? "View Details"}
+          <a
+            href={link ?? "#"}
+            // className="inline-block mt-4 text-blue-500 hover:underline"
+            target="_blank"
+          >
+            {buttonText ?? "View Details"}
+          </a>
         </button>
       </div>
 
