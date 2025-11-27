@@ -7,6 +7,7 @@ import {
   AnimatedCardOnlyDetailsWithZoomIn,
 } from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
+import Loading from "@/components/shared/loader/Loading";
 import { useEffect, useState } from "react";
 
 //* Define types for repository and user data
@@ -69,7 +70,7 @@ export const GitHubProjects = ({
   }, [token]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div><Loading/></div>;
   }
 
   if (!data) {
