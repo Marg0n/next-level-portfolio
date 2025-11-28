@@ -7,6 +7,7 @@ import {
   AnimatedCardOnlyDetailsWithZoomIn,
 } from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
+import EmptyPage from "@/components/shared/empty/EmptyPage";
 import Loading from "@/components/shared/loader/Loading";
 import { useEffect, useState } from "react";
 
@@ -74,7 +75,8 @@ export const GitHubProjects = ({
   }
 
   if (!data) {
-    return <div>No data available</div>;
+    return <><EmptyPage/></>;
+    // return <div>No data available</div>;
   }
 
   //! for debugging
