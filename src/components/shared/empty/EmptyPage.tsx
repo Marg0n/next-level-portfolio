@@ -1,6 +1,11 @@
 import Image from "next/image";
 import React from "react";
 
+type EmptyPageInfo = {
+  title: string;
+  description: string;
+};
+
 const EmptyPage = () => {
   return (
     <div className="shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)] dark:bg-slate-900 p-6 sm:px-20 sm:py-14 flex items-center justify-center flex-col gap-[4px] rounded-xl">
