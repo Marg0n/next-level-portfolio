@@ -18,7 +18,11 @@ const MyBlogs = () => {
 
   return (
     <div className="flex flex-col gap-6 p-6">
-      <h1 className="text-2xl font-bold mb-4">My LinkedIn Posts</h1>
+      <h2 className="mt-4 font-bold text-4xl tracking-tight">
+        <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          My LinkedIn Posts
+        </span>
+      </h2>
       <LinkedInPosts posts={posts} />
       <iframe
         src="https://www.linkedin.com/embed/feed/update/urn:li:share:1234567890123456789"
