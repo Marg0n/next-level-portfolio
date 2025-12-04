@@ -147,25 +147,3 @@ export const GitHubProjects = ({
     </>
   );
 };
-
-// export default function Home() {
-//   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || ""; // Get token from environment variables
-
-//   return (
-//     <div>
-//       <GitHubProjects token={token} />
-//     </div>
-//   );
-// }
-
-/**
- * Explanation:
-
-TypeScript types: We define GitHubRepo and UserInfo types to represent the structure of the data we get back from GitHub (repos and user info).
-
-State and effect handling: useState and useEffect are used to manage the loading state and the GitHub data after the API request completes.
-
-Token: The GitHub token is passed into the component as a prop. You can get it from environment variables or however you'd like to handle token management.
-
-'use client': This directive is required for client-side components in the App Directory.
- */
