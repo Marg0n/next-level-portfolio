@@ -2,15 +2,7 @@
 
 import { useAOS } from "@/hooks/useAOS";
 // import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
-import {
-  AnimatedCardFlip,
-  AnimatedCardForPerson,
-  AnimatedCardHoverButtonWithPic,
-  AnimatedCardWithImageTilt,
-  AnimatedCardZoomInWithDesc,
-  AnimatedCardOnlyDetailsWithZoomIn,
-} from "@/components/shared/cards/HoverAnimatedCards";
-import { LabelDivider } from "@/components/shared/divider/Dividers";
+
 import { GitHubProjects } from "./github/page";
 import { useState } from "react";
 
@@ -36,7 +28,6 @@ const ProjectLandingPage = () => {
         </span>
       </h2>
 
-      {/* <LabelDivider label="FullStack Projects" data-aos="fade-down" /> */}
 
       <GitHubProjects token={token} label="FullStack Projects" array={fullStackProjects} />
       <GitHubProjects token={token} label="Running Projects" array={runningProjects} />
