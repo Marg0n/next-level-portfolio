@@ -8,7 +8,7 @@ import {
 } from "@/components/shared/cards/HoverAnimatedCards";
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import EmptyPage from "@/components/shared/empty/EmptyPage";
-import Loading from "@/components/shared/loader/Loading";
+import Processing from "@/components/shared/loader/Processing";
 import { useEffect, useState } from "react";
 
 //* Define types for repository and user data
@@ -73,7 +73,7 @@ export const GitHubProjects = ({
   if (loading) {
     return (
       <div>
-        <Loading />
+        <Processing />
       </div>
     );
   }
