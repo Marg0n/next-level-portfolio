@@ -81,7 +81,7 @@ export const GitHubProjects = ({
   if (!data) {
     return (
       <>
-        <EmptyPage />
+        <EmptyPage title={`Facing problem fetching ${label}`}/>
       </>
     );
     // return <div>No data available</div>;
