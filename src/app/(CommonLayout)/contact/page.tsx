@@ -1,19 +1,15 @@
-import React from "react";
-
 // react icons
-import { MdOutlineEmail } from "react-icons/md";
-import { IoLocationOutline } from "react-icons/io5";
-import { CgFacebook } from "react-icons/cg";
-import {
-  BsInstagram,
-  BsLinkedin,
-  BsTwitter,
-  BsFillInfoCircleFill,
-  BsGithub,
-  BsWhatsapp,
-} from "react-icons/bs";
 import mapImage from "@/assets/images/map.jpeg";
 import Image from "next/image";
+import {
+  BsFillInfoCircleFill,
+  BsGithub,
+  BsLinkedin,
+  BsWhatsapp,
+} from "react-icons/bs";
+import { CgFacebook } from "react-icons/cg";
+import { IoLocationOutline } from "react-icons/io5";
+import { MdOutlineEmail } from "react-icons/md";
 
 const ContactForm = () => {
   return (
