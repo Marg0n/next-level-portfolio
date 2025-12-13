@@ -11,8 +11,9 @@ const MyBlogs = () => {
     },
     {
       id: "2",
-      url: "https://www.linkedin.com/posts/yourusername_postid456",
-      title: "Thoughts on frontend performance ⚡",
+      url: "https://www.linkedin.com/posts/sokhorio-margon-d-costa_redux-javascript-webdevelopment-activity-7247725703968784384-YqCz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC2BiyUBHhjf5pGkQMInS59VBZp0qPtHCpA",
+      title:
+        "Exploring Redux: A Game-Changer for State Management in JavaScript Applications ⚡",
     },
   ];
 
@@ -24,13 +25,22 @@ const MyBlogs = () => {
         </span>
       </h2>
       <LinkedInPosts posts={posts} />
-      <iframe
+      {/* <iframe
         src="https://www.linkedin.com/embed/feed/update/urn:li:share:1234567890123456789"
         height="500"
         width="100%"
         frameBorder="0"
         allowFullScreen
-        title="LinkedIn Post"
+        title="Exploring Redux: A Game-Changer for State Management in JavaScript Applications"
+      ></iframe> */}
+
+      <iframe
+        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7247725701204770817"
+        height="1027"
+        width="504"
+        frameborder="0"
+        allowfullscreen=""
+        title="Exploring Redux: A Game-Changer for State Management in JavaScript Applications"
       ></iframe>
 
       <EmptyPage />
