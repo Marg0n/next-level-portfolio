@@ -1,12 +1,15 @@
-import React from "react";
-
 // react icons
-import { MdOutlineEmail } from "react-icons/md";
-import { IoLocationOutline } from "react-icons/io5";
-import { CgFacebook } from "react-icons/cg";
-import { BsInstagram, BsLinkedin, BsTwitter, BsWhatsapp } from "react-icons/bs";
 import mapImage from "@/assets/images/map.jpeg";
 import Image from "next/image";
+import {
+  BsFillInfoCircleFill,
+  BsGithub,
+  BsLinkedin,
+  BsWhatsapp,
+} from "react-icons/bs";
+import { CgFacebook } from "react-icons/cg";
+import { IoLocationOutline } from "react-icons/io5";
+import { MdOutlineEmail } from "react-icons/md";
 
 const ContactForm = () => {
   return (
@@ -71,13 +74,25 @@ const ContactForm = () => {
             <a className="text-[1.3rem] p-1.5 cursor-pointer rounded-full bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300  boxShadow">
               <CgFacebook />
             </a>
-            <a className="text-[1.2rem] p-1.5 cursor-pointer rounded-full  bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300 boxShadow">
-              <BsTwitter />
+            <a
+              href="https://github.com/Marg0n"
+              target="_blank"
+              className="text-[1.2rem] p-1.5 cursor-pointer rounded-full  bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300 boxShadow"
+            >
+              <BsGithub />
             </a>
-            <a className="text-[1.2rem] p-1.5 cursor-pointer rounded-full bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300  boxShadow">
-              <BsInstagram />
+            <a
+              href="https://smd-porfolio.netlify.app/"
+              target="_blank"
+              className="text-[1.2rem] p-1.5 cursor-pointer rounded-full bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300  boxShadow"
+            >
+              <BsFillInfoCircleFill />
             </a>
-            <a className="text-[1.2rem] p-1.5 cursor-pointer rounded-full  bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300 boxShadow">
+            <a
+              href="https://linkedin.com/in/sokhorio-margon-d-costa"
+              target="_blank"
+              className="text-[1.2rem] p-1.5 cursor-pointer rounded-full  bg-orange-500 text-white hover:bg-white hover:text-orange-500 transition-all duration-300 boxShadow"
+            >
               <BsLinkedin />
             </a>
           </div>

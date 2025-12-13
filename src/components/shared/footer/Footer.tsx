@@ -4,6 +4,7 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 import './Footer.css'
 import { FcVip } from 'react-icons/fc';
 import { useRouter } from 'next/navigation';
+import { BsFillInfoCircleFill, BsGithub, BsLinkedin } from 'react-icons/bs';
 
 export function Footer() {
 
@@ -29,14 +30,14 @@ export function Footer() {
             <p className="mt-2 text-lg">Follow me on social media or get in touch!</p>
           </div>
           <div className="flex space-x-6">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-              <Github className="h-8 w-8 text-white hover:text-gray-400 transition-colors" />
+            <a href="https://github.com/Marg0n" target="_blank" rel="noopener noreferrer">
+              <BsGithub className="h-8 w-8 text-white hover:text-gray-400 transition-colors" />
             </a>
-            <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-              <Linkedin className="h-8 w-8 text-white hover:text-gray-400 transition-colors" />
+            <a href="https://linkedin.com/in/sokhorio-margon-d-costa" target="_blank" rel="noopener noreferrer">
+              <BsLinkedin className="h-8 w-8 text-white hover:text-gray-400 transition-colors" />
             </a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-              <Twitter className="h-8 w-8 text-white hover:text-gray-400 transition-colors" />
+            <a href="https://smd-porfolio.netlify.app/" target="_blank" rel="noopener noreferrer">
+              <BsFillInfoCircleFill className="h-8 w-8 text-white hover:text-gray-400 transition-colors" />
             </a>
           </div>
           <div className="mt-6 text-center">
