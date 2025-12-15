@@ -29,10 +29,12 @@ export const GitHubProjects = ({
   token,
   array,
   label,
+  image,
 }: {
   token: string;
   array: string[];
   label: string;
+  image?: string;
 }) => {
   const [data, setData] = useState<{
     user: UserInfo;
@@ -117,7 +119,7 @@ export const GitHubProjects = ({
                     title={repo.name}
                     description={repo.description}
                     link={repo.html_url}
-                    // image={'https://raw.githubusercontent.com/Marg0n/Bicycle/refs/heads/development/src/assets/images/img/bicycle.jpg'}
+                    image={image}
                     buttonText="GitHub Repo"
                     className=""
                   />
