@@ -34,7 +34,7 @@ export const GitHubProjects = ({
   token: string;
   array: string[];
   label: string;
-  image?: string;
+  image?: any;
 }) => {
   const [data, setData] = useState<{
     user: UserInfo;
@@ -92,6 +92,7 @@ export const GitHubProjects = ({
   //! for debugging
   console.log(data.repos?.map((repo) => repo));
   console.log(array);
+  console.log("image",image);
 
   return (
     <>
