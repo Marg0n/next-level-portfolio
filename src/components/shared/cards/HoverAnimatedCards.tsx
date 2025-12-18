@@ -14,6 +14,12 @@ import Image from "next/image";
 import { calculateReadingTime } from "@/utils/readingTime";
 import winterCloth from "@/assets/images/winter_cloth.jpg";
 
+//* Some helper props
+const validImage =
+  typeof image === "string" && image.trim().length > 0
+    ? image
+    : null;
+
 //* Define types for the props
 interface CustomCardProps {
   description?: string;
@@ -24,7 +30,7 @@ interface CustomCardProps {
       | React.FormEvent<HTMLFormElement>,
   ) => void; //? Supports both click and form submit events
   className?: string; //? Allow className to be passed as a prop
-  image?: string; //? Only allow string URLs for image prop
+  image?: string | validImage; //? Only allow string URLs for image prop
   genre?: string;
   designation?: string;
   title?: string;
@@ -272,7 +278,7 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
         <div className="absolute w-full h-full backface-hidden [backface-visibility:hidden]">
           <Image
             src={
-              image
+              typeof image === "string" && image.trim().length > 0  
                 ? image
                 : "https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
             }

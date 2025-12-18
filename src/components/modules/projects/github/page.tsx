@@ -34,7 +34,7 @@ export const GitHubProjects = ({
   token: string;
   array: string[];
   label: string;
-  image?: any;
+  image?: Record<string, string | null>;
 }) => {
   const [data, setData] = useState<{
     user: UserInfo;
@@ -82,9 +82,9 @@ export const GitHubProjects = ({
 
   if (!data) {
     return (
-      <>
-        <EmptyPage title={`Facing problem fetching ${label}`}/>
-      </>
+      <div className="space-y-6 mb-6">
+        <EmptyPage title={`Facing problem fetching ${label}`} />
+      </div>
     );
     // return <div>No data available</div>;
   }
@@ -92,7 +92,7 @@ export const GitHubProjects = ({
   //! for debugging
   console.log(data.repos?.map((repo) => repo));
   console.log(array);
-  console.log("image",image);
+  console.log("image", image);
 
   return (
     <>
@@ -108,43 +108,47 @@ export const GitHubProjects = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {data.repos
             ?.filter((repoName) => array.includes(repoName.name))
-            ?.map((repo) => (
-              <div key={repo.id}>
-                {/* <h3>{repo.name}</h3>
-            <p>{repo.description}</p>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-              View Repository
-            </a> */}
-                {label === "FullStack Projects" ? (
-                  <AnimatedCardFlip
-                    title={repo.name}
-                    description={repo.description}
-                    link={repo.html_url}
-                    image={image}
-                    buttonText="GitHub Repo"
-                    className=""
-                  />
-                ) : label === "Running Projects" ? (
-                  <AnimatedCardHoverButtonWithPic
-                    title={repo.name}
-                    description={repo.description}
-                    link={repo.html_url}
-                    buttonText="GitHub Repo"
-                    className=""
-                  />
-                ) : (
-                  label === "Upcoming Projects" && (
-                    <AnimatedCardOnlyDetailsWithZoomIn
+            ?.map((repo) => {
+              //? image by reponame from props
+              const repoImage = image?.[repo.name] ?? null;
+              return (
+                <div key={repo.id}>
+                  {/* <h3>{repo.name}</h3>
+                <p>{repo.description}</p>
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                  View Repository
+                </a> */}
+                  {label === "FullStack Projects" ? (
+                    <AnimatedCardFlip
                       title={repo.name}
                       description={repo.description}
-                      // link={repo.html_url}
+                      link={repo.html_url}
+                      image={repoImage}
                       buttonText="GitHub Repo"
                       className=""
                     />
-                  )
-                )}
-              </div>
-            ))}
+                  ) : label === "Running Projects" ? (
+                    <AnimatedCardHoverButtonWithPic
+                      title={repo.name}
+                      description={repo.description}
+                      link={repo.html_url}
+                      buttonText="GitHub Repo"
+                      className=""
+                    />
+                  ) : (
+                    label === "Upcoming Projects" && (
+                      <AnimatedCardOnlyDetailsWithZoomIn
+                        title={repo.name}
+                        description={repo.description}
+                        // link={repo.html_url}
+                        buttonText="GitHub Repo"
+                        className=""
+                      />
+                    )
+                  )}
+                </div>
+              );
+            })}
         </div>
       </div>
     </>

@@ -10,7 +10,7 @@ import { NextResponse } from "next/server";
 //   // const url = new URL(request.url);
 //   // const token = await url.searchParams.get("token"); //? Extract token from query params
 
-//   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 
 //   console.log("GitHub Token:", token); //? Log token for debugging
 
@@ -115,9 +115,22 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    // const [userRes, reposRes] = await Promise.all([
+    //   fetch("https://api.github.com/users/Marg0n", {
+    //      headers: { Authorization: `token ${token}` },
+    //    }),
+    //   fetch("https://api.github.com/users/Marg0n/repos", {
+    //      headers: { Authorization: `token ${token}` },
+    //    }),
+    // ]);
+
     const [userRes, reposRes] = await Promise.all([
-      fetch("https://api.github.com/users/Marg0n"),
-      fetch("https://api.github.com/users/Marg0n/repos"),
+      fetch("https://api.github.com/user", {
+        headers: { Authorization: `token ${token}` },
+      }),
+      fetch("https://api.github.com/user/repos", {
+        headers: { Authorization: `token ${token}` },
+      }),
     ]);
 
     if (!userRes.ok || !reposRes.ok) {

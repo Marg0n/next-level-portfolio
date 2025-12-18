@@ -16,10 +16,10 @@ const ProjectLandingPage = () => {
 
   //* Filtered data for git project
   const [fullStackProjects, GetFullStackProjects] = useState<ProjectType[]>([
-    { id: 1, name: "best-deals", image: "" },
+    { id: 1, name: "best-deals", image: null },
     { id: 2, name: "Bicycle", image: "https://raw.githubusercontent.com/Marg0n/Bicycle/refs/heads/development/src/assets/images/img/bicycle.jpg" },
-    { id: 3, name: "MediMartNight", image: "" },
-    { id: 4, name: "MediHouse_Client", image: "" },
+    { id: 3, name: "MediMartNight", image: null },
+    { id: 4, name: "MediHouse_Client", image: null },
   ]);
   const [runningProjects, GetRunningProjects] = useState<ProjectType[]>([
     { id: 1, name: "next-level-portfolio", image: "" },
@@ -29,6 +29,11 @@ const ProjectLandingPage = () => {
     { id: 1, name: "kenakata", image: "" },
     { id: 2, name: "Lenden", image: "" },
   ]);
+
+  //* getting the image from the array object
+  const imageMap = Object.fromEntries(
+  fullStackProjects.map((p) => [p.name, p.image])
+);
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
@@ -44,7 +49,7 @@ const ProjectLandingPage = () => {
         token={token}
         label="FullStack Projects"
         array={fullStackProjects.map((p) => p.name)}
-        image={fullStackProjects.map((p) => p.image)}
+        image={imageMap}
       />
       <GitHubProjects
         token={token}
