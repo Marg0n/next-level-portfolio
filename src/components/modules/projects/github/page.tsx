@@ -60,6 +60,9 @@ export const GitHubProjects = ({
         //? Parse the JSON response
         const result = await response.json();
 
+        //! Expose it to the client
+        // console.log("Rate limit:", result.rateLimit);
+
         //? Store the response data in state
         setData(result);
       } catch (error) {
@@ -90,7 +93,7 @@ export const GitHubProjects = ({
   }
 
   //! for debugging
-  console.log(data.repos?.map((repo) => repo));
+  console.log(data.repos?.map((repo) => repo.name));
   console.log(array);
   console.log("image", image);
 

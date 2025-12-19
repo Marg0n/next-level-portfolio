@@ -283,7 +283,7 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
                 : "https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
             }
             alt={title ?? "animated_card"}
-            className="w-full h-full cursor-pointer object-cover rounded-lg shadow-lg"
+            className="w-full h-full cursor-pointer object-fit rounded-lg shadow-lg"
             width={996}
             height={350}
           />
