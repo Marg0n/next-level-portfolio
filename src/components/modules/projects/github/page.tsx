@@ -107,7 +107,7 @@ export const GitHubProjects = ({
         {/* <h1 className="text-center font-semibold text-lg">
           {data.user.name}&apos;s GitHub {label}
         </h1> */}
-        {data.user.email && <p className="italic">Email: {data.user.email}</p>}
+        {/* {data.user.email && <p className="italic">Email: {data.user.email}</p>} */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {data.repos
             ?.filter((repoName) => array.includes(repoName.name))
