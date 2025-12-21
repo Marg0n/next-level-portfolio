@@ -14,12 +14,6 @@ import Image from "next/image";
 import { calculateReadingTime } from "@/utils/readingTime";
 import winterCloth from "@/assets/images/winter_cloth.jpg";
 
-//* Some helper props
-const validImage =
-  typeof image === "string" && image.trim().length > 0
-    ? image
-    : null;
-
 //* Define types for the props
 interface CustomCardProps {
   description?: string;
@@ -30,7 +24,7 @@ interface CustomCardProps {
       | React.FormEvent<HTMLFormElement>,
   ) => void; //? Supports both click and form submit events
   className?: string; //? Allow className to be passed as a prop
-  image?: string | validImage; //? Only allow string URLs for image prop
+  image?: string; //? Only allow string URLs for image prop
   genre?: string;
   designation?: string;
   title?: string;
