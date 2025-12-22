@@ -1,12 +1,24 @@
 "use client";
 
 import { useAOS } from "@/hooks/useAOS";
+import bestDeals from "@/assets/images/bestdeals.png";
+import mediHouse from "@/assets/images/mediHouse.png";
+import mediMart from "@/assets/images/mediMart.png";
+import portfolio from "@/assets/images/portfolio.png";
+import bicycle from "@/assets/images/bicycle.png";
+
+// import bicycle from "https://raw.githubusercontent.com/Marg0n/Bicycle/refs/heads/development/src/assets/images/img/bicycle.jpg"
 // import StarfieldWarp from "@/components/shared/motion/StarfieldWarp";
 
 import { GitHubProjects } from "./github/page";
 import { useState } from "react";
+import { StaticImageData } from "next/image";
 
-type ProjectType = { id: number; name: string; image: string };
+type ProjectType = {
+  id: number;
+  name: string;
+  image: string | StaticImageData | null;
+};
 
 const ProjectLandingPage = () => {
   useAOS();
@@ -16,13 +28,17 @@ const ProjectLandingPage = () => {
 
   //* Filtered data for git project
   const [fullStackProjects, GetFullStackProjects] = useState<ProjectType[]>([
-    { id: 1, name: "best-deals", image: null },
-    { id: 2, name: "Bicycle", image: "https://raw.githubusercontent.com/Marg0n/Bicycle/refs/heads/development/src/assets/images/img/bicycle.jpg" },
-    { id: 3, name: "MediMartNight", image: null },
-    { id: 4, name: "MediHouse_Client", image: null },
+    { id: 1, name: "best-deals", image: bestDeals },
+    {
+      id: 2,
+      name: "Bicycle",
+      image: bicycle,
+    },
+    { id: 3, name: "MediMartNight", image: mediMart },
+    { id: 4, name: "MediHouse_Client", image: mediHouse },
   ]);
   const [runningProjects, GetRunningProjects] = useState<ProjectType[]>([
-    { id: 1, name: "next-level-portfolio", image: "" },
+    { id: 1, name: "next-level-portfolio", image: portfolio },
     { id: 2, name: "CourierAndParcelManagementSystem", image: "" },
   ]);
   const [upcomingProjects, GetUpcomingProjects] = useState<ProjectType[]>([
@@ -31,9 +47,8 @@ const ProjectLandingPage = () => {
   ]);
 
   //* getting the image from the array object
-  const imageMap = Object.fromEntries(
-  fullStackProjects.map((p) => [p.name, p.image])
-);
+  const imageMap: Record<string, StaticImageData | string | null> =
+    Object.fromEntries(fullStackProjects.map((p) => [p.name, p.image]));
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">

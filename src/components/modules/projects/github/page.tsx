@@ -9,6 +9,7 @@ import {
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import EmptyPage from "@/components/shared/empty/EmptyPage";
 import Processing from "@/components/shared/loader/Processing";
+import { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
 //* Define types for repository and user data
@@ -34,7 +35,7 @@ export const GitHubProjects = ({
   token: string;
   array: string[];
   label: string;
-  image?: Record<string, string | null>;
+  image?: Record<string, string | StaticImageData | null>;
 }) => {
   const [data, setData] = useState<{
     user: UserInfo;
@@ -114,6 +115,7 @@ export const GitHubProjects = ({
             ?.map((repo) => {
               //? image by reponame from props
               const repoImage = image?.[repo.name] ?? null;
+              console.log(repoImage)
               return (
                 <div key={repo.id}>
                   {/* <h3>{repo.name}</h3>
@@ -135,6 +137,7 @@ export const GitHubProjects = ({
                       title={repo.name}
                       description={repo.description}
                       link={repo.html_url}
+                      image={repoImage}
                       buttonText="GitHub Repo"
                       className=""
                     />
@@ -143,6 +146,7 @@ export const GitHubProjects = ({
                       <AnimatedCardOnlyDetailsWithZoomIn
                         title={repo.name}
                         description={repo.description}
+                        image={repoImage}
                         // link={repo.html_url}
                         buttonText="GitHub Repo"
                         className=""

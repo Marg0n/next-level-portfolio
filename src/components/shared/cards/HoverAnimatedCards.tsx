@@ -10,7 +10,7 @@ import {
   Facebook,
   Linkedin,
 } from "lucide-react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { calculateReadingTime } from "@/utils/readingTime";
 import winterCloth from "@/assets/images/winter_cloth.jpg";
 
@@ -21,10 +21,10 @@ interface CustomCardProps {
   handleAnything?: (
     event:
       | React.MouseEvent<HTMLButtonElement>
-      | React.FormEvent<HTMLFormElement>,
+      | React.FormEvent<HTMLFormElement>
   ) => void; //? Supports both click and form submit events
   className?: string; //? Allow className to be passed as a prop
-  image?: string; //? Only allow string URLs for image prop
+  image?: string | StaticImageData | null; //? Only allow string URLs for image prop
   genre?: string;
   designation?: string;
   title?: string;
@@ -67,7 +67,7 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
     <div
       className={clsx(
         "w-full md:w-96 shadow-md h-[350px] hover:scale-[1.05] transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group",
-        className,
+        className
       )}
     >
       {/*  icons  */}
@@ -121,14 +121,17 @@ export const AnimatedCardHoverButtonWithPic: React.FC<CustomCardProps> = ({
     <div
       className={clsx(
         "p-4 md:p-0 w-full md:w-96 h-96 relative overflow-hidden group cursor-pointer rounded-md",
-        className,
+        className
       )}
     >
       {/*  image  */}
       <Image
         src={
-          image ??
-          "https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"
+          typeof image === "string" && image.trim().length > 0
+            ? image
+            : image
+            ? image //? static image
+            : "https://img.freepik.com/free-photo/close-up-adorable-kitten-couch_23-2150782439.jpg?t=st=1728056952~exp=1728060552~hmac=6c6249502066e36b15e7d040c623af0bc46dd1dbda0274440f8a8de2b85288ca&w=360"
         }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.1] transition-all duration-700"
@@ -177,7 +180,7 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
     <div
       className={clsx(
         "p-4 md:p-0 w-full md:w-96 h-96 rounded-md relative group overflow-hidden",
-        className,
+        className
       )}
     >
       {/*  image  */}
@@ -206,7 +209,7 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
           <div
             className={clsx(
               "translate-y-[100px] group-hover:translate-y-0 transition-all duration-500 opacity-0 group-hover:opacity-100",
-              !facebook && "hidden",
+              !facebook && "hidden"
             )}
           >
             <Facebook className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
@@ -214,7 +217,7 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
           <div
             className={clsx(
               "translate-y-[100px] group-hover:translate-y-0 transition-all duration-[800ms] opacity-0 group-hover:opacity-100",
-              !x && "hidden",
+              !x && "hidden"
             )}
           >
             <XIcon className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
@@ -222,7 +225,7 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
           <div
             className={clsx(
               "translate-y-[100px] group-hover:translate-y-0 transition-all duration-[1100ms] opacity-0 group-hover:opacity-100",
-              !linkedin && "hidden",
+              !linkedin && "hidden"
             )}
           >
             <Linkedin className="text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200" />
@@ -239,7 +242,7 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
                 ? React.cloneElement(IconEl as React.ReactElement<any>, {
                     className: clsx(
                       "text-[1.3rem] text-white cursor-pointer hover:scale-[1.3] transition-all duration-200",
-                      (IconEl.props as any)?.className, // allow merging user-passed classes
+                      (IconEl.props as any)?.className // allow merging user-passed classes
                     ),
                   })
                 : IconEl}
@@ -264,7 +267,7 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
     <div
       className={clsx(
         "group [perspective:1000px] p-4 md:p-0 h-96 w-full md:w-96",
-        className,
+        className
       )}
     >
       <div className="relative w-full h-full transition-transform duration-[600ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
@@ -272,8 +275,10 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
         <div className="absolute w-full h-full backface-hidden [backface-visibility:hidden]">
           <Image
             src={
-              typeof image === "string" && image.trim().length > 0  
+              typeof image === "string" && image.trim().length > 0
                 ? image
+                : image
+                ? image //? StaticImageData
                 : "https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
             }
             alt={title ?? "animated_card"}
@@ -323,7 +328,7 @@ export const AnimatedCardWithImageTilt: React.FC<CustomCardProps> = ({
     <div
       className={clsx(
         "p-4 md:p-0 h-96 w-full md:w-96 overflow-hidden rounded-md relative cursor-pointer group",
-        className,
+        className
       )}
     >
       {/*  image  */}
@@ -368,7 +373,7 @@ export const AnimatedCardWithImageTilt: React.FC<CustomCardProps> = ({
             key={index}
             className={clsx(
               "text-[2rem] font-bold",
-              item?.className ?? "text-white",
+              item?.className ?? "text-white"
             )}
           >
             {item?.value}
@@ -389,7 +394,7 @@ export const AnimatedCardOnlyDetailsWithZoomIn: React.FC<CustomCardProps> = ({
     <div
       className={clsx(
         "p-4 md:p-0 h-96 w-full md:w-96 shadow-md transition-all duration-300 overflow-hidden rounded-md relative cursor-pointer group",
-        className,
+        className
       )}
     >
       <Image
