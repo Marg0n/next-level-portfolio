@@ -39,16 +39,20 @@ const ProjectLandingPage = () => {
   ]);
   const [runningProjects, GetRunningProjects] = useState<ProjectType[]>([
     { id: 1, name: "next-level-portfolio", image: portfolio },
-    { id: 2, name: "CourierAndParcelManagementSystem", image: "" },
+    { id: 2, name: "CourierAndParcelManagementSystem", image: null },
   ]);
   const [upcomingProjects, GetUpcomingProjects] = useState<ProjectType[]>([
-    { id: 1, name: "kenakata", image: "" },
-    { id: 2, name: "Lenden", image: "" },
+    { id: 1, name: "kenakata", image: null },
+    { id: 2, name: "Lenden", image: null },
   ]);
 
   //* getting the image from the array object
   const imageMap: Record<string, StaticImageData | string | null> =
     Object.fromEntries(fullStackProjects.map((p) => [p.name, p.image]));
+  const imageMapRunning: Record<string, StaticImageData | string | null> =
+    Object.fromEntries(runningProjects.map((p) => [p.name, p.image]));
+  const imageMapUpcoming: Record<string, StaticImageData | string | null> =
+    Object.fromEntries(upcomingProjects.map((p) => [p.name, p.image]));
 
   return (
     <div className="min-h-[80vh] w-full flex flex-col items-center justify-center space-y-6 overflow-x-hidden ">
@@ -70,11 +74,13 @@ const ProjectLandingPage = () => {
         token={token}
         label="Running Projects"
         array={runningProjects.map((p) => p.name)}
+        image={imageMapRunning}
       />
       <GitHubProjects
         token={token}
         label="Upcoming Projects"
         array={upcomingProjects.map((p) => p.name)}
+        image={imageMapUpcoming}
       />
 
       {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">

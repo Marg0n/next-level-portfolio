@@ -282,7 +282,7 @@ export const AnimatedCardFlip: React.FC<CustomCardProps> = ({
                 : "https://img.freepik.com/free-photo/social-media-marketing-concept-marketing-with-applications_23-2150063136.jpg?t=st=1728142095~exp=1728145695~hmac=01edb1d4b68f37689510f834a442804bd4fb7bf68d8f795d7d30f7cc87f79a8b&w=996"
             }
             alt={title ?? "animated_card"}
-            className="w-full h-full cursor-pointer object-fit rounded-lg shadow-lg"
+            className="w-full h-full cursor-pointer object-cover rounded-lg shadow-lg"
             width={996}
             height={350}
           />
@@ -399,8 +399,11 @@ export const AnimatedCardOnlyDetailsWithZoomIn: React.FC<CustomCardProps> = ({
     >
       <Image
         src={
-          image ??
-          "https://img.freepik.com/free-photo/beautiful-rainbow-nature_23-2151498366.jpg?t=st=1728230691~exp=1728234291~hmac=4670c1df1a791e3506bdebcdc7aecc5d09bfd2ed8fff51551b39ad3f5f237899&w=996"
+          typeof image === "string" && image.trim().length > 0
+            ? image
+            : image
+            ? image //? StaticImageData
+            : "https://img.freepik.com/free-photo/beautiful-rainbow-nature_23-2151498366.jpg?t=st=1728230691~exp=1728234291~hmac=4670c1df1a791e3506bdebcdc7aecc5d09bfd2ed8fff51551b39ad3f5f237899&w=996"
         }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.2] transition-all duration-300"

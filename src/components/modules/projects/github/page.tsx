@@ -95,8 +95,8 @@ export const GitHubProjects = ({
 
   //! for debugging
   console.log(data.repos?.map((repo) => repo.name));
-  console.log(array);
-  console.log("image", image);
+  // console.log(array);
+  // console.log("image", image);
 
   return (
     <>
@@ -115,7 +115,6 @@ export const GitHubProjects = ({
             ?.map((repo) => {
               //? image by reponame from props
               const repoImage = image?.[repo.name] ?? null;
-              console.log(repoImage)
               return (
                 <div key={repo.id}>
                   {/* <h3>{repo.name}</h3>
