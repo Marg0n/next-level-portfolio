@@ -333,7 +333,12 @@ export const AnimatedCardWithImageTilt: React.FC<CustomCardProps> = ({
     >
       {/*  image  */}
       <Image
-        src={image ?? winterCloth}
+        src={
+          typeof image === "string" && image.trim().length > 0
+            ? image
+            : image  //? StaticImageData
+            ?? winterCloth
+        }
         alt="animated_card"
         className="w-full h-full object-cover group-hover:scale-[1.15] group-hover:rotate-[8deg] transition-all duration-300 ease-out"
         width={750}
