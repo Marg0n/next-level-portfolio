@@ -186,8 +186,10 @@ export const AnimatedCardForPerson: React.FC<CustomCardProps> = ({
       {/*  image  */}
       <Image
         src={
-          image ??
-          "https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
+          typeof image === "string" && image.trim().length > 0
+            ? image
+            : image  //? StaticImageData
+            ?? "https://img.freepik.com/free-photo/indoor-picture-cheerful-handsome-young-man-having-folded-hands-looking-directly-smiling-sincerely-wearing-casual-clothes_176532-10257.jpg?t=st=1728139729~exp=1728143329~hmac=dd0870841ecbe138afdb639fee17206241a94b02b17e1e681ad16eba38f0bd7b&w=996"
         }
         alt={title ?? "Person Image"}
         className="w-full h-[350px] object-cover"
