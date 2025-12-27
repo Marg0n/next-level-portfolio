@@ -84,8 +84,10 @@ export const AnimatedCardZoomInWithDesc: React.FC<CustomCardProps> = ({
       {/*  image  */}
       <Image
         src={
-          image ??
-          "https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+          typeof image === "string" && image.trim().length > 0
+            ? image
+            : image  //? StaticImageData
+            ?? "https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
         } //? If image is defined (not null or undefined), it will be used as the source of the image if not then the fallback URL will be used.
         alt="animated_card"
         className="w-full h-[60%] object-cover group-hover:opacity-40 group-hover:h-full transition-all duration-300 ease-out"
