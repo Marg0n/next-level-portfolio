@@ -1,17 +1,10 @@
 import DashboardSidebar from "./DashboardSidebar";
 // import ResponsiveSidebar from './ResponsiveSidebar';
 import Image from "next/image";
-import Pic from "@/assets/images/SMD.png";
+import Pic from "@/assets/images/StarboyMG.png";
 
 const Dashboard = () => {
   return (
-    // <div className="flex h-screen  bg-red-500">
-    //   <div>
-    //     {/* <ResponsiveSidebar/> */}
-    //     <DashboardSidebar />
-    //   </div>
-    //   <div>This is a dashboard</div>
-    // </div>
 
     <div className="flex h-screen bg-gray-100 dark:bg-slate-900">
       {/* Sidebar */}
@@ -20,7 +13,7 @@ const Dashboard = () => {
       {/* Main content */}
       <main className="flex-1 p-6 overflow-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col gap-4 md:gap-0 md:flex-row justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800 dark:text-[#abc2d3]">
             Dashboard Home
           </h1>
@@ -28,14 +21,15 @@ const Dashboard = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="px-4 py-2 rounded-md border border-gray-300 dark:border-slate-700 dark:bg-slate-800 dark:text-[#abc2d3] focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="px-4 py-2 rounded-md border border-gray-300 dark:border-slate-700 dark:bg-slate-800 dark:text-[#abc2d3] focus:outline-none focus:ring-2 focus:ring-indigo-400 w-44 md:w-auto"
             />
             <Image
               src={Pic}
-              alt="User"
+              alt="Sokhorio Margon D&apos; Costa"
               width={40}
               height={40}
-              className="rounded-full"
+              className="rounded-full hidden md:block"
+              title="Sokhorio Margon D&apos; Costa"
             />
           </div>
         </div>
