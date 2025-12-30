@@ -13,7 +13,7 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import Pic from "@/assets/images/SMD.png";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const DashboardSidebar: React.FC = () => {
   //* states
@@ -217,6 +217,7 @@ const DashboardSidebar: React.FC = () => {
               icon={<FiPieChart />}
               label="Goals"
               tooltipOffset="-76px"
+              link="/dashboard/goals"
             />
           </div>
         </div>
@@ -266,7 +267,7 @@ const DashboardSidebar: React.FC = () => {
   );
 };
 
-//* Subcomponent for reusable sidebar item
+//* Sub-component for reusable sidebar item
 interface SidebarItemProps {
   isCollapsed: boolean;
   icon: React.ReactNode;
@@ -282,29 +283,49 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   tooltipOffset,
   link = "",
 }) => {
+  //* Active route detection
+  const pathname = usePathname();
+  const isActive = pathname === link;
+  console.log(pathname)
+
   return (
     <Link
-      className={`${
-        isCollapsed ? "justify-between" : "justify-center"
-      } flex items-center w-full hover:bg-gray-50 p-[5px] dark:hover:bg-slate-800/50 rounded-md cursor-pointer transition-all duration-200 relative group`}
+      className={`${isCollapsed ? "justify-between" : "justify-center"} 
+      ${
+        isActive
+          ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20"
+          : "hover:bg-gray-50 dark:hover:bg-slate-800/50"
+      }
+      flex items-center w-full hover:bg-gray-50 p-[5px] dark:hover:bg-slate-800/50 rounded-md cursor-pointer transition-all duration-200 relative group`}
       href={link as string}
     >
+      {/* Icon + Label */}
       <div className="flex items-center gap-[8px]">
-        <span className="text-[1.3rem] dark:text-[#abc2d3] text-gray-500">
+        <span className={`text-[1.3rem]
+            ${isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"}
+          `}>
           {icon}
         </span>
         <p
-          className={`${
-            isCollapsed ? "inline" : "hidden"
-          } text-[1rem] font-[400] text-gray-500 dark:text-[#abc2d3]`}
+          className={`
+            ${isCollapsed ? "inline" : "hidden"}
+            text-[1rem] font-[400]
+            ${isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"}
+          `}
         >
           {label}
         </p>
       </div>
+
+      {/* Tooltip (collapsed mode) */}
       <div
-        className={`${
-          isCollapsed ? "hidden" : "inline"
-        } absolute top-0 right-[${tooltipOffset}] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
+        style={{ right: tooltipOffset }}
+        className="absolute top-0 translate-x-[20px] opacity-0 z-[-1]
+            group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1]
+            transition-all duration-500"
+        // className={`${
+        //   isCollapsed ? "hidden" : "inline"
+        // } absolute top-0 right-[${tooltipOffset}] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
       >
         <p className="text-[0.9rem] w-max dark:bg-slate-800 dark:text-[#abc2d3] bg-gray-600 text-secondary rounded px-3 py-[5px]">
           {label}
