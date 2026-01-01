@@ -115,6 +115,7 @@ const DashboardSidebar: React.FC = () => {
               icon={<GoHome />}
               label="Home"
               tooltipOffset="-80px"
+              link="/dashboard"
             />
             {/* Portfolio */}
             <SidebarItem
@@ -286,6 +287,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   //* Active route detection
   const pathname = usePathname();
   const isActive = pathname === link;
+  // const isActive = link && pathname.startsWith(link);
+
   console.log(pathname)
 
   return (

@@ -6,12 +6,7 @@ import Pic from "@/assets/images/StarboyMG.png";
 const Dashboard = () => {
   return (
 
-    <div className="flex h-screen bg-gray-100 dark:bg-slate-900">
-      {/* Sidebar */}
-      <DashboardSidebar />
-
-      {/* Main content */}
-      <main className="flex-1 p-6 overflow-auto">
+      <>
         {/* Header */}
         <div className="flex flex-col gap-4 md:gap-0 md:flex-row justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800 dark:text-[#abc2d3]">
@@ -101,8 +96,8 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
-      </main>
-    </div>
+      </>
+    
   );
 };
 

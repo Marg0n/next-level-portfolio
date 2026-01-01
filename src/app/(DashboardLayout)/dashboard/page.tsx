@@ -1,4 +1,4 @@
-import DashboardMainframe from '@/components/modules/dashboard/DashboardMainframe';
+import Dashboard from '@/components/modules/dashboard/Dashboard';
 import React from 'react';
 
 // meta tags
@@ -10,7 +10,7 @@ export const metadata = {
 const dashboard = () => {
     return (
         <div>
-            <DashboardMainframe/>
+            <Dashboard/>
         </div>
     );
 };
