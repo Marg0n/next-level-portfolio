@@ -212,6 +212,7 @@ const DashboardSidebar: React.FC = () => {
               icon={<FiBarChart />}
               label="Progress"
               tooltipOffset="-100px"
+              link="/dashboard/progress"
             />
             <SidebarItem
               isCollapsed={isCollapse1}
