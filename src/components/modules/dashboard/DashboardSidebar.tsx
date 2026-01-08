@@ -32,6 +32,24 @@ const DashboardSidebar: React.FC = () => {
     router.push("/login");
   };
 
+  //* Projects lists
+  const listOfProjects = (
+    <>
+      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
+        Google
+      </li>
+      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
+        Facebook
+      </li>
+      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
+        Twitter
+      </li>
+      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
+        Linkedin
+      </li>
+    </>
+  );
+
   return (
     <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col">
       {/* Contents */}
@@ -166,18 +184,7 @@ const DashboardSidebar: React.FC = () => {
 
               {!isCollapse1 && (
                 <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
-                  <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[20px] py-[5px] rounded-md">
-                    Google
-                  </li>
-                  <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[20px] py-[5px] rounded-md">
-                    Facebook
-                  </li>
-                  <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[20px] py-[5px] rounded-md">
-                    Twitter
-                  </li>
-                  <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[20px] py-[5px] rounded-md">
-                    Linkedin
-                  </li>
+                  {listOfProjects}
                 </ul>
               )}
             </div>
@@ -192,18 +199,7 @@ const DashboardSidebar: React.FC = () => {
                 isCollapse1 ? "inline" : "hidden"
               } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] dark:text-[#abc2d3] text-gray-500`}
             >
-              <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md">
-                Google
-              </li>
-              <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md">
-                Facebook
-              </li>
-              <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md">
-                Twitter
-              </li>
-              <li className="hover:bg-gray-50 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md">
-                Linkedin
-              </li>
+              {listOfProjects}
             </ul>
 
             {/* Progress & Goals */}
@@ -290,7 +286,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const isActive = pathname === link;
   // const isActive = link && pathname.startsWith(link);
 
-  console.log(pathname)
+  console.log(pathname);
 
   return (
     <Link
@@ -305,16 +301,22 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     >
       {/* Icon + Label */}
       <div className="flex items-center gap-[8px]">
-        <span className={`text-[1.3rem]
-            ${isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"}
-          `}>
+        <span
+          className={`text-[1.3rem]
+            ${
+              isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
+            }
+          `}
+        >
           {icon}
         </span>
         <p
           className={`
             ${isCollapsed ? "inline" : "hidden"}
             text-[1rem] font-[400]
-            ${isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"}
+            ${
+              isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
+            }
           `}
         >
           {label}
