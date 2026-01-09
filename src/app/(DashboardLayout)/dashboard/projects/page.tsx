@@ -1,4 +1,4 @@
-import Progress from '@/components/modules/dashboard/Progress';
+import Projects from '@/components/modules/dashboard/Projects';
 import React from 'react';
 
 // meta tags
@@ -10,7 +10,7 @@ export const metadata = {
 const projects = () => {
     return (
         <div>
-            <Progress/>
+            <Projects/>
         </div>
     );
 };

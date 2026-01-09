@@ -9,22 +9,10 @@ import {
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import EmptyPage from "@/components/shared/empty/EmptyPage";
 import Processing from "@/components/shared/loader/Processing";
+import { GitHubRepo, UserInfo } from "@/types/types";
 import { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
-//* Define types for repository and user data
-type GitHubRepo = {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-};
-
-type UserInfo = {
-  name: string;
-  email: string | null;
-  avatar_url: string;
-};
 
 export const GitHubProjects = ({
   token,
@@ -41,6 +29,8 @@ export const GitHubProjects = ({
     user: UserInfo;
     repos: GitHubRepo[];
   } | null>(null);
+
+
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
