@@ -11,3 +11,10 @@ export type UserInfo = {
   email: string | null;
   avatar_url: string;
 };
+
+
+//* GitHub Data Type
+export type GitHubData = {
+  user: UserInfo;
+  repos: GitHubRepo[];
+};

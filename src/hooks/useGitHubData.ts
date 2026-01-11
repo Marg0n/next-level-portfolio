@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GitHubRepo, UserInfo } from "@/types/types";
+import { GitHubData } from "@/types/types";
 
-type GitHubData = {
-  user: UserInfo;
-  repos: GitHubRepo[];
-};
+//8 API endpoint for fetching data from github
+const endpoint = "/api/githubProjects";
 
 export const useGitHubData = (token?: string) => {
   const [data, setData] = useState<GitHubData | null>(null);
@@ -19,13 +17,23 @@ export const useGitHubData = (token?: string) => {
       setError(null);
 
       try {
-        const response = await fetch("/api/githubProjects");
+        //? Make the fetch request to the API route with the token as a query parameter
+        const response = await fetch(endpoint);
 
+        // console.log("response:", response);
+
+        //? Check if the response is valid (status OK)
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
 
+        //? Parse the JSON response
         const result: GitHubData = await response.json();
+
+        //! Expose it to the client
+        // console.log("Rate limit:", result.rateLimit);
+
+        //? Store the response data in state
         setData(result);
       } catch (err) {
         console.error("Error fetching GitHub data:", err);
