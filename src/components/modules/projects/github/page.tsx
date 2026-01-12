@@ -9,9 +9,8 @@ import {
 import { LabelDivider } from "@/components/shared/divider/Dividers";
 import EmptyPage from "@/components/shared/empty/EmptyPage";
 import Processing from "@/components/shared/loader/Processing";
-import { GitHubRepo, UserInfo } from "@/types/types";
+import { useGitHubData } from "@/hooks/useGitHubData";
 import { StaticImageData } from "next/image";
-import { useEffect, useState } from "react";
 
 
 export const GitHubProjects = ({
@@ -25,47 +24,9 @@ export const GitHubProjects = ({
   label: string;
   image?: Record<string, string | StaticImageData | null>;
 }) => {
-  const [data, setData] = useState<{
-    user: UserInfo;
-    repos: GitHubRepo[];
-  } | null>(null);
-
-
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchGitHubData = async () => {
-      setLoading(true);
-      try {
-        //? Make the fetch request to the API route with the token as a query parameter
-        // const response = await fetch(`/api/githubProjects?token=${token}`);
-        const response = await fetch("/api/githubProjects");
-
-        // console.log("response:", response);
-
-        //? Check if the response is valid (status OK)
-        if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.statusText}`);
-        }
-
-        //? Parse the JSON response
-        const result = await response.json();
-
-        //! Expose it to the client
-        // console.log("Rate limit:", result.rateLimit);
-
-        //? Store the response data in state
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGitHubData();
-  }, [token]);
-
+  
+  const { data, loading, error } = useGitHubData(token);
+ 
   if (loading) {
     return (
       <div>
@@ -74,7 +35,7 @@ export const GitHubProjects = ({
     );
   }
 
-  if (!data) {
+  if (error || !data) {
     return (
       <div className="space-y-6 mb-6">
         <EmptyPage title={`Facing problem fetching ${label}`} />
