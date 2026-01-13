@@ -23,6 +23,7 @@ type ProjectType = {
 const ProjectLandingPage = () => {
   useAOS();
 
+  //* Token
   const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || "";
   // console.log("Token", token);
 

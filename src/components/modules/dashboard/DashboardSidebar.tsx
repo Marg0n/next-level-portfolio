@@ -14,6 +14,7 @@ import Pic from "@/assets/images/SMD.png";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useGitHubData } from "@/hooks/useGitHubData";
 
 const DashboardSidebar: React.FC = () => {
   //* states
@@ -22,6 +23,9 @@ const DashboardSidebar: React.FC = () => {
 
   //* constants
   const name = "Sokhorio Margon D' Costa";
+
+  //* GitHub Token
+  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || "";
 
   //* route
   const router = useRouter();
@@ -32,10 +36,16 @@ const DashboardSidebar: React.FC = () => {
     router.push("/login");
   };
 
+  //* GitHub Projects Lists
+  const { data, loading, error } = useGitHubData(token);
+
+  //! for debugging
+  console.log(data?.repos?.map((repo) => repo.name));
+
   //* Projects lists
   const listOfProjects = (
     <>
-      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
+      {/* <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
         Google
       </li>
       <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
@@ -46,7 +56,19 @@ const DashboardSidebar: React.FC = () => {
       </li>
       <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
         Linkedin
-      </li>
+      </li> */}
+      {
+        data?.repos?.map((repo) => {
+          return(
+            <li 
+              className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer"
+              key={repo.id}
+            >
+              {repo.name}
+            </li>
+          )
+        })
+      }
     </>
   );
 
