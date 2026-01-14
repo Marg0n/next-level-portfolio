@@ -205,7 +205,7 @@ const DashboardSidebar: React.FC = () => {
               </div>
 
               {!isCollapse1 && (
-                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500">
+                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500 h-54 overflow-y-auto">
                   {listOfProjects}
                 </ul>
               )}
@@ -215,7 +215,7 @@ const DashboardSidebar: React.FC = () => {
             <ul
               className={`${
                 isDropdownOpen
-                  ? "h-auto my-3 opacity-100 z-[1]"
+                  ? "h-54 overflow-y-auto my-3 opacity-100 z-[1]"
                   : "opacity-0 z-[-1] h-0"
               } ${
                 isCollapse1 ? "inline" : "hidden"
