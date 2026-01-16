@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //* react icons
 import { GoHome, GoProjectSymlink, GoSidebarCollapse } from "react-icons/go";
@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useGitHubData } from "@/hooks/useGitHubData";
+import { Bounce, toast } from "react-toastify";
 
 const DashboardSidebar: React.FC = () => {
   //* states
@@ -57,20 +58,47 @@ const DashboardSidebar: React.FC = () => {
       <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
         Linkedin
       </li> */}
-      {
+      {loading && (
+        <li className="px-[10px] py-[5px] text-gray-400 italic">
+          Loading projects...
+        </li>
+      )}
+
+      {!loading && data?.repos?.length === 0 && (
+        <li className="px-[10px] py-[5px] text-gray-400 italic">
+          No projects found!!
+        </li>
+      )}
+      {!loading &&
         data?.repos?.map((repo) => {
-          return(
-            <li 
+          return (
+            <li
               className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer"
               key={repo.id}
             >
               {repo.name}
             </li>
-          )
-        })
-      }
+          );
+        })}
     </>
   );
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message || "Something went wrong!", {
+        toastId: "github-error", //? prevents duplicates
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  }, [error]);
 
   return (
     <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col">
