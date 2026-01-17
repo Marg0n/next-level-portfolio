@@ -75,6 +75,7 @@ const DashboardSidebar: React.FC = () => {
             <li
               className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer"
               key={repo.id}
+              onClick={() => router.push(`/dashboard/projects/${repo.name}`)}
             >
               {repo.name}
             </li>

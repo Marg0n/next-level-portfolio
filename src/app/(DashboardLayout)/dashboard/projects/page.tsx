@@ -1,4 +1,4 @@
-import Projects from '@/components/modules/dashboard/Projects';
+import Projects from '@/components/modules/dashboard/ProjectDetails';
 import React from 'react';
 
 // meta tags
