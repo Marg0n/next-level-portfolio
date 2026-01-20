@@ -31,7 +31,7 @@ const ProjectDetails = () => {
       <div className="flex gap-4 text-sm text-gray-500">
         <span>⭐ Stars: {project.stargazers_count}</span>
         <span>🍴 Forks: {project.forks_count}</span>
-        <span>🧑‍💻 Language: {project.language}</span>
+        <span>🧑‍💻 Language: {project.language ?? "N/A"}</span>
       </div>
 
       <a

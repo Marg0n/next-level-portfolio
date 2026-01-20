@@ -101,6 +101,8 @@ const DashboardSidebar: React.FC = () => {
     }
   }, [error]);
 
+  //todo pathname.startsWith("/dashboard/projects")
+
   return (
     <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col">
       {/* Contents */}
