@@ -31,6 +31,11 @@ const DashboardSidebar: React.FC = () => {
   //* route
   const router = useRouter();
 
+  //* Active route detection for repo projects
+  const pathname = usePathname();
+  const isProjectActive = (repoName: string) =>
+    pathname === `/dashboard/projects/${repoName}`;
+
   const handleLogout = () => {
     //? logout logic needed (e.g., clearing cookies, session storage, etc.)
 
@@ -71,13 +76,27 @@ const DashboardSidebar: React.FC = () => {
       )}
       {!loading &&
         data?.repos?.map((repo) => {
+          const active = isProjectActive(repo.name);
           return (
             <li
-              className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer"
+              // className={"hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer"}
+              // onClick={() => router.push(`/dashboard/projects/${repo.name}`)}
               key={repo.id}
-              onClick={() => router.push(`/dashboard/projects/${repo.name}`)}
             >
-              {repo.name}
+              <Link
+                href={`/dashboard/projects/${repo.name}`}
+                className={`
+                  flex items-center w-full px-[10px] py-[5px] rounded-md
+                  transition-all duration-200 cursor-pointer
+                  ${
+                    active
+                      ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20"
+                      : "hover:bg-gray-50 dark:hover:bg-slate-800/50"
+                  }
+                `}
+              >
+                {repo.name}
+              </Link>
             </li>
           );
         })}
