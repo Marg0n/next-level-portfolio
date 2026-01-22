@@ -12,6 +12,12 @@ import {
   FaGithub,
 } from "react-icons/fa";
 
+const options = { 
+  day: '2-digit', 
+  month: 'short', // 'long', 'short', 'numeric', '2-digit'
+  year: 'numeric' 
+};
+
 const ProjectDetails = () => {
   const { repoName } = useParams<{ repoName: string }>();
 
@@ -19,10 +25,10 @@ const ProjectDetails = () => {
   const { data, loading, error } = useGitHubData(token);
 
   if (loading)
-    return <p className="text-center text-gray-500">Loading project...</p>;
+    return <p className="h-screen flex justify-center items-center text-gray-500">Loading project...</p>;
 
   if (error)
-    return <p className="text-center text-red-500">Error loading project</p>;
+    return <p className="h-screen flex justify-center items-center text-red-500">Error loading project</p>;
 
   const project = data?.repos?.find(
     (repo) => repo.name === repoName
@@ -34,7 +40,7 @@ const ProjectDetails = () => {
 
   return (
     // UPDATED: Centered card layout
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="min-w-3xl mx-auto p-6 h-screen flex justify-center items-center">
       <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm p-6">
 
         {/* Project title */}
@@ -85,7 +91,9 @@ const ProjectDetails = () => {
           {/* NEW: Last updated */}
           <span>
             ⏱ Last updated:{" "}
-            {new Date(project.updated_at).toLocaleDateString()}
+            <strong className="text-gray-700 dark:text-gray-300">
+              {new Date(project.updated_at as string).toLocaleDateString('en-GB', options )}
+            </strong>
           </span>
         </div>
 

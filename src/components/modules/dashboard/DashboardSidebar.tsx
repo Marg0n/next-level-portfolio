@@ -51,18 +51,6 @@ const DashboardSidebar: React.FC = () => {
   //* Projects lists
   const listOfProjects = (
     <>
-      {/* <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
-        Google
-      </li>
-      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
-        Facebook
-      </li>
-      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
-        Twitter
-      </li>
-      <li className="hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer">
-        Linkedin
-      </li> */}
       {loading && (
         <li className="px-[10px] py-[5px] text-gray-400 italic">
           Loading projects...
@@ -78,16 +66,14 @@ const DashboardSidebar: React.FC = () => {
         data?.repos?.map((repo) => {
           const active = isProjectActive(repo.name);
           return (
-            <li
-              // className={"hover:bg-blue-300 dark:hover:bg-slate-800/50 px-[10px] py-[5px] rounded-md cursor-pointer"}
-              // onClick={() => router.push(`/dashboard/projects/${repo.name}`)}
+            <li              
               key={repo.id}
             >
               <Link
                 href={`/dashboard/projects/${repo.name}`}
                 className={`
-                  flex items-center w-full px-[10px] py-[5px] rounded-md
-                  transition-all duration-200 cursor-pointer
+                  flex items-center w-32 py-[5px] rounded-md
+                  transition-all duration-200 cursor-pointer text-xs text-pretty
                   ${
                     active
                       ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20"
@@ -123,7 +109,7 @@ const DashboardSidebar: React.FC = () => {
   //todo pathname.startsWith("/dashboard/projects")
 
   return (
-    <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col overflow-hidden">
+    <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-screen flex flex-col">
       {/* Contents */}
       <div className="">
         <div
@@ -222,7 +208,7 @@ const DashboardSidebar: React.FC = () => {
               label="Calendar"
               tooltipOffset="-99px"
             />
-            {/* All Projects with dropdown */}
+            {/* All Projects with sidebar collapsed*/}
             <div
               className={`${isCollapse1 && "justify-center"} ${
                 isDropdownOpen && "bg-gray-50 dark:bg-slate-800"
@@ -249,31 +235,40 @@ const DashboardSidebar: React.FC = () => {
                   className={`${
                     isDropdownOpen ? "rotate-[180deg]" : "rotate-0"
                   } ${
-                    isCollapse1 ? "inline" : "hidden"
+                    isCollapse1 ? "block" : "hidden"
                   } transition-all duration-300 text-[1rem] text-gray-500`}
                 />
               </div>
 
               {/* collapsed view */}
               {!isCollapse1 && (
-                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500 h-54 overflow-y-auto">
+                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500 h-54 overflow-y-auto overflow-x-hidden">
                   {listOfProjects}
                 </ul>
               )}
             </div>
 
-            {/* All Projects Dropdown when expanded */}
-            <ul
-              className={`${
-                isDropdownOpen
-                  ? "h-32 overflow-y-auto my-3 opacity-100 z-[1]"
-                  : "opacity-0 z-[-1] h-0"
-              } ${
-                isCollapse1 ? "inline" : "hidden"
-              } transition-all duration-300 list-disc marker:text-blue-400 ml-[35px] flex flex-col gap-[3px] text-[1rem] dark:text-[#abc2d3] text-gray-500`}
-            >
-              {listOfProjects}
-            </ul>
+            {/* All Projects Dropdown when expanded */}            
+            
+            {isCollapse1 && (
+              <div
+                className={`overflow-y-auto transition-[max-height,opacity] duration-300 ${
+                  isDropdownOpen
+                    ? "max-h-[calc(100vh-500px)] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul
+                  className="my-1
+                    list-disc marker:text-blue-400 ml-[35px]
+                    flex flex-col gap-[3px]
+                    text-[1rem] dark:text-[#abc2d3] text-gray-500"
+                >
+                  {listOfProjects}
+                </ul>
+              </div>
+            )}
+
 
             {/* Progress & Goals */}
             <SidebarItem
@@ -359,7 +354,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const isActive = pathname === link;
   // const isActive = link && pathname.startsWith(link);
 
-  console.log(pathname);
+  // console.log(pathname);
 
   return (
     <Link
@@ -402,9 +397,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         className="absolute top-0 translate-x-[20px] opacity-0 z-[-1]
             group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1]
             transition-all duration-500"
-        // className={`${
-        //   isCollapsed ? "hidden" : "inline"
-        // } absolute top-0 right-[${tooltipOffset}] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500`}
       >
         <p className="text-[0.9rem] w-max dark:bg-slate-800 dark:text-[#abc2d3] bg-gray-600 text-secondary rounded px-3 py-[5px]">
           {label}
