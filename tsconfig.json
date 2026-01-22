@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     /* Target & Modules */
-    "target": "ESNext",         // 1. Upgrade from ES2017
+    "target": "ESNext", // 1. Upgrade from ES2017
     "module": "ESNext",
     "moduleResolution": "Bundler", // 2. Optimal for Turbopack & Bun
-    "lib": ["dom", "dom.iterable", "esnext"],
-    
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     /* Strictness & Safety */
     "strict": true,
     "noEmit": true,
@@ -14,26 +17,29 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowJs": true,
-    
     /* JSX & Framework Specifics */
     "jsx": "preserve",
     "incremental": true,
     "plugins": [
-      { 
-        "name": "next" 
-        }
-      ],
-    
+      {
+        "name": "next"
+      }
+    ],
     /* Path Aliases */
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
-    "next-env.d.ts", 
-    "**/*.ts", 
-    "**/*.tsx", 
-    ".next/types/**/*.ts"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

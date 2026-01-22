@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import path from "path";
+// import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
@@ -51,10 +51,10 @@ const nextConfig: NextConfig = {
   // 2. Remove the 'webpack' block entirely. 
   // Next.js 16 uses Turbopack, and it automatically handles the "@" 
   // alias from your tsconfig.json. Manual aliasing here can break builds
-  webpack: (config) => {
-    config.resolve.alias["@"] = path.resolve(__dirname, "src");
-    return config;
-  },
+  // webpack: (config) => {
+  //   config.resolve.alias["@"] = path.resolve(__dirname, "src");
+  //   return config;
+  // },
   // 3. Environment variables are handled automatically if prefixed with NEXT_PUBLIC_.
   // You only need this 'env' block for variables NOT prefixed with NEXT_PUBLIC_.
   env: {
