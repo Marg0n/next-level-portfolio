@@ -12,7 +12,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 
-const options = { 
+const options: Intl.DateTimeFormatOptions = { 
   day: '2-digit', 
   month: 'short', // 'long', 'short', 'numeric', '2-digit'
   year: 'numeric' 
