@@ -20,7 +20,7 @@ import { Bounce, toast } from "react-toastify";
 const DashboardSidebar: React.FC = () => {
   //* states
   const [isCollapse1, setIsCollapse1] = useState<boolean>(true);
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   //* constants
   const name = "Sokhorio Margon D' Costa";
@@ -123,7 +123,7 @@ const DashboardSidebar: React.FC = () => {
   //todo pathname.startsWith("/dashboard/projects")
 
   return (
-    <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col">
+    <aside className="transition-all duration-300 ease bg-white justify-between pt-2 h-full flex flex-col overflow-hidden">
       {/* Contents */}
       <div className="">
         <div
@@ -222,7 +222,7 @@ const DashboardSidebar: React.FC = () => {
               label="Calendar"
               tooltipOffset="-99px"
             />
-            {/* Projects with dropdown */}
+            {/* All Projects with dropdown */}
             <div
               className={`${isCollapse1 && "justify-center"} ${
                 isDropdownOpen && "bg-gray-50 dark:bg-slate-800"
@@ -241,7 +241,7 @@ const DashboardSidebar: React.FC = () => {
                       isCollapse1 ? "inline" : "hidden"
                     } text-[1rem] font-[400] text-gray-500 dark:text-[#abc2d3]`}
                   >
-                    Projects
+                    All Projects
                   </p>
                 </div>
 
@@ -254,6 +254,7 @@ const DashboardSidebar: React.FC = () => {
                 />
               </div>
 
+              {/* collapsed view */}
               {!isCollapse1 && (
                 <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500 h-54 overflow-y-auto">
                   {listOfProjects}
@@ -261,11 +262,11 @@ const DashboardSidebar: React.FC = () => {
               )}
             </div>
 
-            {/* Dropdown when expanded */}
+            {/* All Projects Dropdown when expanded */}
             <ul
               className={`${
                 isDropdownOpen
-                  ? "h-54 overflow-y-auto my-3 opacity-100 z-[1]"
+                  ? "h-32 overflow-y-auto my-3 opacity-100 z-[1]"
                   : "opacity-0 z-[-1] h-0"
               } ${
                 isCollapse1 ? "inline" : "hidden"
