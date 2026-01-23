@@ -12,6 +12,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 
+//* Date format view option e.g. 25 Feb 2026
 const options: Intl.DateTimeFormatOptions = { 
   day: '2-digit', 
   month: 'short', // 'long', 'short', 'numeric', '2-digit'
