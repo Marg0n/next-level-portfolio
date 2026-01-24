@@ -76,7 +76,7 @@ export const GitHubProjects = ({
                   {label === "FullStack Projects" ? (
                     <AnimatedCardFlip
                       title={repo.name}
-                      description={repo.description}
+                      description={repo.description!}
                       link={repo.html_url}
                       image={repoImage}
                       buttonText="GitHub Repo"
@@ -85,7 +85,7 @@ export const GitHubProjects = ({
                   ) : label === "Running Projects" ? (
                     <AnimatedCardHoverButtonWithPic
                       title={repo.name}
-                      description={repo.description}
+                      description={repo.description!}
                       link={repo.html_url}
                       image={repoImage}
                       buttonText="GitHub Repo"
@@ -95,7 +95,7 @@ export const GitHubProjects = ({
                     label === "Upcoming Projects" && (
                       <AnimatedCardOnlyDetailsWithZoomIn
                         title={repo.name}
-                        description={repo.description}
+                        description={repo.description!}
                         image={repoImage}
                         // link={repo.html_url}
                         buttonText="GitHub Repo"
