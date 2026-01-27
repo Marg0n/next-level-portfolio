@@ -18,7 +18,7 @@
     "resolveJsonModule": true,
     "allowJs": true,
     /* JSX & Framework Specifics */
-    "jsx": "preserve",
+    "jsx": "react-jsx", // alt: "preserve",
     "incremental": true,
     "plugins": [
       {
