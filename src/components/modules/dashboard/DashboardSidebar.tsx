@@ -6,7 +6,7 @@ import { GoHome, GoProjectSymlink, GoSidebarCollapse } from "react-icons/go";
 import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
 import { CiCalendar, CiLogout } from "react-icons/ci";
 import { FiBarChart, FiPieChart } from "react-icons/fi";
-import { FcBusinessman } from "react-icons/fc";
+import { FcBusinessman, FcVideoProjector } from "react-icons/fc";
 // import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { RiAccountCircleLine } from "react-icons/ri";
@@ -16,11 +16,18 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useGitHubData } from "@/hooks/useGitHubData";
 import { Bounce, toast } from "react-toastify";
+import { GiFinishLine, GiRunningNinja } from "react-icons/gi";
+import { SiJfrogpipelines } from "react-icons/si";
 
 const DashboardSidebar: React.FC = () => {
-  //* states
+  //* states for All projects
   const [isCollapse1, setIsCollapse1] = useState<boolean>(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+
+  //* States for Project Insights
+  const [isProjectCollapse, setIsProjectCollapse] = useState<boolean>(true);
+  const [isProjectDropdownOpen, setIsProjectDropdownOpen] =
+    useState<boolean>(false);
 
   //* constants
   const name = "Sokhorio Margon D' Costa";
@@ -48,6 +55,48 @@ const DashboardSidebar: React.FC = () => {
   //! for debugging
   console.log(data?.repos?.map((repo) => repo.name));
 
+  //* Project Insights lists
+  const projectInsights = (
+    <>
+      <li className="py-[5px] text-gray-400 italic">
+        {/* Home */}
+        <SidebarItem
+          isCollapsed={isProjectCollapse}
+          icon={<GiFinishLine />}
+          label="Fullstack Projects"
+          tooltipOffset="-80px"
+          link="/dashboard/projectsInsights/fullstackProjects"
+          iconClass="text-lg"
+          lebelClass="text-sm"
+        />
+      </li>
+      <li className="py-[5px] text-gray-400 italic">
+        {/* Home */}
+        <SidebarItem
+          isCollapsed={isProjectCollapse}
+          icon={<GiRunningNinja />}
+          label="Running Projects"
+          tooltipOffset="-80px"
+          link="/dashboard/projectsInsights/runningProjects"
+          iconClass="text-lg"
+          lebelClass="text-sm"
+        />
+      </li>
+      <li className="py-[5px] text-gray-400 italic">
+        {/* Home */}
+        <SidebarItem
+          isCollapsed={isProjectCollapse}
+          icon={<SiJfrogpipelines />}
+          label="Upcoming Projects"
+          tooltipOffset="-80px"
+          link="/dashboard/projectsInsights/upcomingProjects"
+          iconClass="text-lg"
+          lebelClass="text-sm"
+        />
+      </li>
+    </>
+  );
+
   //* Projects lists
   const listOfProjects = (
     <>
@@ -66,9 +115,7 @@ const DashboardSidebar: React.FC = () => {
         data?.repos?.map((repo) => {
           const active = isProjectActive(repo.name);
           return (
-            <li              
-              key={repo.id}
-            >
+            <li key={repo.id}>
               <Link
                 href={`/dashboard/projects/${repo.name}`}
                 className={`
@@ -136,7 +183,10 @@ const DashboardSidebar: React.FC = () => {
               <div className="relative group">
                 <GoSidebarCollapse
                   className="text-[1.5rem] dark:text-[#abc2d3] text-gray-600 cursor-pointer"
-                  onClick={() => setIsCollapse1(false)}
+                  onClick={() => {
+                    setIsCollapse1(false);
+                    setIsProjectCollapse(false);
+                  }}
                 />
                 <div className="absolute -top-1 right-[-115px] translate-x-[20px] opacity-0 z-[-1] group-hover:translate-x-0 group-hover:opacity-100 group-hover:z-[1] transition-all duration-500">
                   <p className="text-[0.9rem] w-max dark:bg-slate-800 dark:text-[#abc2d3] bg-gray-600 text-secondary rounded px-3 py-[5px]">
@@ -150,7 +200,7 @@ const DashboardSidebar: React.FC = () => {
               src={Pic}
               alt="logo"
               className="w-20 h-20 mx-auto rounded-full cursor-pointer object-contain border-2 border-indigo-400 bg-green-200"
-              onClick={() => setIsCollapse1(!isCollapse1)}
+              onClick={() => {setIsCollapse1(!isCollapse1); setIsProjectCollapse(!isProjectCollapse)}}
               width={500}
               height={500}
             />
@@ -248,8 +298,8 @@ const DashboardSidebar: React.FC = () => {
               )}
             </div>
 
-            {/* All Projects Dropdown when expanded */}            
-            
+            {/* All Projects Dropdown when expanded */}
+
             {isCollapse1 && (
               <div
                 className={`overflow-y-auto transition-[max-height,opacity] duration-300 ${
@@ -269,6 +319,65 @@ const DashboardSidebar: React.FC = () => {
               </div>
             )}
 
+            {/* Project Insights with sidebar collapsed */}
+            <div
+              className={`${isProjectCollapse && "justify-center"} ${
+                isProjectDropdownOpen && "bg-gray-50 dark:bg-slate-800"
+              } flex w-full hover:bg-gray-50 p-[5px] dark:hover:bg-slate-800/50 rounded-md cursor-pointer transition-all duration-200 relative group flex-col`}
+              onClick={() => setIsProjectDropdownOpen(!isProjectDropdownOpen)}
+            >
+              <div
+                className={`${
+                  isProjectCollapse ? " justify-between" : "justify-center"
+                } flex items-center gap-[8px] w-full`}
+              >
+                <div className="flex items-center gap-[8px]">
+                  <FcVideoProjector className="text-[1.3rem] dark:text-[#abc2d3] text-gray-500" />
+                  <p
+                    className={`${
+                      isProjectCollapse ? "inline" : "hidden"
+                    } text-[1rem] font-[400] text-gray-500 dark:text-[#abc2d3]`}
+                  >
+                    Project Insights
+                  </p>
+                </div>
+
+                <IoIosArrowDown
+                  className={`${
+                    isProjectDropdownOpen ? "rotate-[180deg]" : "rotate-0"
+                  } ${
+                    isProjectCollapse ? "block" : "hidden"
+                  } transition-all duration-300 text-[1rem] text-gray-500`}
+                />
+              </div>
+
+              {/* collapsed collapsed view */}
+              {!isProjectCollapse && (
+                <ul className="translate-y-[20px] opacity-0 z-[-1] group-hover:translate-y-0 group-hover:opacity-100 dark:bg-slate-900 dark:text-[#abc2d3] group-hover:z-30 absolute top-0 left-[70px] bg-white boxShadow transition-all duration-300 p-[8px] rounded-md flex flex-col gap-[3px] text-[1rem] text-gray-500 max-h-54 overflow-y-auto overflow-x-hidden">
+                  {projectInsights}
+                </ul>
+              )}
+            </div>
+
+            {/* Project Insights Dropdown when expanded */}
+            {isProjectCollapse && (
+              <div
+                className={`transition-[max-height,opacity] duration-300 ${
+                  isProjectDropdownOpen
+                    ? "max-h-[calc(100vh-500px)] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul
+                  className="my-1
+                    list-disc marker:text-blue-400 ml-[35px]
+                    flex flex-col gap-[3px]
+                    text-[1rem] dark:text-[#abc2d3] text-gray-500"
+                >
+                  {projectInsights}
+                </ul>
+              </div>
+            )}
 
             {/* Progress & Goals */}
             <SidebarItem
@@ -340,6 +449,8 @@ interface SidebarItemProps {
   label: string;
   tooltipOffset: string;
   link?: string;
+  iconClass?: string;
+  lebelClass?: string;
 }
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
@@ -348,6 +459,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   tooltipOffset,
   link = "",
+  iconClass = "",
+  lebelClass = "",
 }) => {
   //* Active route detection
   const pathname = usePathname();
@@ -370,7 +483,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       {/* Icon + Label */}
       <div className="flex items-center gap-[8px]">
         <span
-          className={`text-[1.3rem]
+          className={` ${iconClass? iconClass : "text-[1.3rem]"}
             ${
               isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
             }
@@ -381,7 +494,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         <p
           className={`
             ${isCollapsed ? "inline" : "hidden"}
-            text-[1rem] font-[400]
+            ${ lebelClass ? lebelClass : "text-[1rem] font-[400]"}
             ${
               isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
             }
