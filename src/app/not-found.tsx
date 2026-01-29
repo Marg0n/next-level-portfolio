@@ -9,7 +9,7 @@ export default function NotFound() {
   const router = useRouter();
 
   return (
-    <div className="h-screen flex items-center justify-center text-center">
+    <div className="h-[calc(100vh-100px)] flex items-center justify-center text-center">
       <div>
         <Image
          src={serverError} 

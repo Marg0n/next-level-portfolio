@@ -19,6 +19,9 @@ import { Bounce, toast } from "react-toastify";
 import { GiFinishLine, GiRunningNinja } from "react-icons/gi";
 import { SiJfrogpipelines } from "react-icons/si";
 
+//* Constants
+import { PROJECT_TYPES } from "@/constants/constants";
+
 const DashboardSidebar: React.FC = () => {
   //* states for All projects
   const [isCollapse1, setIsCollapse1] = useState<boolean>(true);
@@ -53,7 +56,10 @@ const DashboardSidebar: React.FC = () => {
   const { data, loading, error } = useGitHubData(token);
 
   //! for debugging
-  console.log(data?.repos?.map((repo) => repo.name));
+  // console.log(data?.repos?.map((repo) => repo.name));
+
+  //* Base URL for Project Insights
+  const BASE_PATH = "/dashboard/process"
 
   //* Project Insights lists
   const projectInsights = (
@@ -65,9 +71,9 @@ const DashboardSidebar: React.FC = () => {
           icon={<GiFinishLine />}
           label="Fullstack Projects"
           tooltipOffset="-80px"
-          link="/dashboard/projectsInsights/fullstackProjects"
+          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
           iconClass="text-lg"
-          lebelClass="text-sm"
+          labelClass="text-sm"
         />
       </li>
       <li className="py-[5px] text-gray-400 italic">
@@ -77,9 +83,9 @@ const DashboardSidebar: React.FC = () => {
           icon={<GiRunningNinja />}
           label="Running Projects"
           tooltipOffset="-80px"
-          link="/dashboard/projectsInsights/runningProjects"
+          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
           iconClass="text-lg"
-          lebelClass="text-sm"
+          labelClass="text-sm"
         />
       </li>
       <li className="py-[5px] text-gray-400 italic">
@@ -89,9 +95,9 @@ const DashboardSidebar: React.FC = () => {
           icon={<SiJfrogpipelines />}
           label="Upcoming Projects"
           tooltipOffset="-80px"
-          link="/dashboard/projectsInsights/upcomingProjects"
+          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
           iconClass="text-lg"
-          lebelClass="text-sm"
+          labelClass="text-sm"
         />
       </li>
     </>
@@ -450,7 +456,7 @@ interface SidebarItemProps {
   tooltipOffset: string;
   link?: string;
   iconClass?: string;
-  lebelClass?: string;
+  labelClass?: string;
 }
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
@@ -460,7 +466,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   tooltipOffset,
   link = "",
   iconClass = "",
-  lebelClass = "",
+  labelClass = "",
 }) => {
   //* Active route detection
   const pathname = usePathname();
@@ -494,7 +500,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         <p
           className={`
             ${isCollapsed ? "inline" : "hidden"}
-            ${ lebelClass ? lebelClass : "text-[1rem] font-[400]"}
+            ${ labelClass ? labelClass : "text-[1rem] font-[400]"}
             ${
               isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
             }
