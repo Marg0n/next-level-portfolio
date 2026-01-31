@@ -83,7 +83,7 @@ const DashboardSidebar: React.FC = () => {
           icon={<GiRunningNinja />}
           label="Running Projects"
           tooltipOffset="-80px"
-          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
+          link={`${BASE_PATH}/${PROJECT_TYPES.RUNNING}`}
           iconClass="text-lg"
           labelClass="text-sm"
         />
@@ -95,7 +95,7 @@ const DashboardSidebar: React.FC = () => {
           icon={<SiJfrogpipelines />}
           label="Upcoming Projects"
           tooltipOffset="-80px"
-          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
+          link={`${BASE_PATH}/${PROJECT_TYPES.UPCOMING}`}
           iconClass="text-lg"
           labelClass="text-sm"
         />
