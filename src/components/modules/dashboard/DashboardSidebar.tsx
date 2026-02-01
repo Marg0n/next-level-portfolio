@@ -89,7 +89,8 @@ const DashboardSidebar: React.FC = () => {
         label={item.label}
         link={`${BASE_PATH}/${item.type}`}
         iconClass="text-lg"
-        lebelClass="text-sm"
+        labelClass="text-sm"
+        tooltipOffset="-99px"
       />
     ));
   }
@@ -489,7 +490,7 @@ interface SidebarItemProps {
   isCollapsed: boolean;
   icon: React.ReactNode;
   label: string;
-  tooltipOffset: string;
+  tooltipOffset?: string;
   link?: string;
   iconClass?: string;
   labelClass?: string;
