@@ -59,7 +59,40 @@ const DashboardSidebar: React.FC = () => {
   // console.log(data?.repos?.map((repo) => repo.name));
 
   //* Base URL for Project Insights
-  const BASE_PATH = "/dashboard/process"
+  const BASE_PATH = "/dashboard/process";
+
+  //* Project Insights sidebar
+  const PROJECT_SIDEBAR_ITEMS = [
+    {
+      label: "Fullstack Projects",
+      icon: <GiFinishLine />,
+      type: PROJECT_TYPES.FULLSTACK,
+    },
+    {
+      label: "Running Projects",
+      icon: <GiRunningNinja />,
+      type: PROJECT_TYPES.RUNNING,
+    },
+    {
+      label: "Upcoming Projects",
+      icon: <SiJfrogpipelines />,
+      type: PROJECT_TYPES.UPCOMING,
+    },
+  ];
+
+  {
+    PROJECT_SIDEBAR_ITEMS.map((item) => (
+      <SidebarItem
+        key={item.type}
+        isCollapsed={isProjectCollapse}
+        icon={item.icon}
+        label={item.label}
+        link={`${BASE_PATH}/${item.type}`}
+        iconClass="text-lg"
+        lebelClass="text-sm"
+      />
+    ));
+  }
 
   //* Project Insights lists
   const projectInsights = (
@@ -83,7 +116,7 @@ const DashboardSidebar: React.FC = () => {
           icon={<GiRunningNinja />}
           label="Running Projects"
           tooltipOffset="-80px"
-          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
+          link={`${BASE_PATH}/${PROJECT_TYPES.RUNNING}`}
           iconClass="text-lg"
           labelClass="text-sm"
         />
@@ -95,7 +128,7 @@ const DashboardSidebar: React.FC = () => {
           icon={<SiJfrogpipelines />}
           label="Upcoming Projects"
           tooltipOffset="-80px"
-          link={`${BASE_PATH}/${PROJECT_TYPES.FULLSTACK}`}
+          link={`${BASE_PATH}/${PROJECT_TYPES.UPCOMING}`}
           iconClass="text-lg"
           labelClass="text-sm"
         />
@@ -206,7 +239,10 @@ const DashboardSidebar: React.FC = () => {
               src={Pic}
               alt="logo"
               className="w-20 h-20 mx-auto rounded-full cursor-pointer object-contain border-2 border-indigo-400 bg-green-200"
-              onClick={() => {setIsCollapse1(!isCollapse1); setIsProjectCollapse(!isProjectCollapse)}}
+              onClick={() => {
+                setIsCollapse1(!isCollapse1);
+                setIsProjectCollapse(!isProjectCollapse);
+              }}
               width={500}
               height={500}
             />
@@ -489,7 +525,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       {/* Icon + Label */}
       <div className="flex items-center gap-[8px]">
         <span
-          className={` ${iconClass? iconClass : "text-[1.3rem]"}
+          className={` ${iconClass ? iconClass : "text-[1.3rem]"}
             ${
               isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
             }
@@ -500,7 +536,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         <p
           className={`
             ${isCollapsed ? "inline" : "hidden"}
-            ${ labelClass ? labelClass : "text-[1rem] font-[400]"}
+            ${labelClass ? labelClass : "text-[1rem] font-[400]"}
             ${
               isActive ? "text-indigo-600" : "text-gray-500 dark:text-[#abc2d3]"
             }
