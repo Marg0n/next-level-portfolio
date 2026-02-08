@@ -16,7 +16,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-black text-white py-12 w-full">
+    <footer className="relative bg-black text-white py-12 w-full mt-12">
 
       {/* Cosmic Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50"></div>
