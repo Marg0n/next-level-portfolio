@@ -51,6 +51,9 @@ export type UserInfo = {
   name: string;
   email: string | null;
   avatar_url: string;
+  lastLogin?: Date;
+  lastUpdated?: Date;
+  lastLoginIP?: string;
 };
 
 
@@ -59,3 +62,16 @@ export type GitHubData = {
   user: UserInfo;
   repos: GitHubRepo[];
 };
+
+//* Zustand login auth state
+export interface AuthState {
+  user: UserInfo | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+  login: (userData: {
+    user: UserInfo;
+    accessToken: string;
+    refreshToken: string;
+  }) => void;
+  logout: () => void;
+}
