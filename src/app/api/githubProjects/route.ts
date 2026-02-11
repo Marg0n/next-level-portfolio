@@ -30,6 +30,7 @@ export async function GET() {
     //    }),
     // ]);
 
+    //? Headers for fetch requests
     const headers = {
       Authorization: `token ${token}`,
       "User-Agent": "NextJS-App",
@@ -80,7 +81,7 @@ export async function GET() {
     const user = await userRes.json();
     const repos = await reposRes.json();
 
-    //? Expose it to the client
+    //? Expose it to the client for testing
     // return NextResponse.json({
     //   user,
     //   repos,
