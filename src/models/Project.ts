@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
+//* Interface for Project schema
 export interface IProject extends Document {
   githubId: number;
 
