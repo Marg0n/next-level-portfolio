@@ -37,7 +37,7 @@ export async function GET(req: Request) {
       Accept: "application/vnd.github+json", //? Specifies API version format
     };
 
-    //? Handle pagination
+    //? Handle pagination (Handles >100 Repos)
     let page = 1;
     const perPage = 100;
     let allRepos: any[] = [];
@@ -84,17 +84,19 @@ export async function GET(req: Request) {
       },
     }));
 
+    //? Execute Everything At Once
     if (bulkOps.length > 0) {
       await Project.bulkWrite(bulkOps);
     }
 
     //? Delete removed repos
-    const githubIds = allRepos.map((repo: any) => repo.id);
+    const githubIds = allRepos.map((repo: any) => repo.id); //? Collect GitHub IDs
 
     await Project.deleteMany({
       githubId: { $nin: githubIds },
     });
 
+    //? Delete Orphaned Records
     return NextResponse.json({
       message: "GitHub synced successfully",
       totalSynced: allRepos.length,
