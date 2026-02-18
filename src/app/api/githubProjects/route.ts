@@ -142,7 +142,7 @@ export async function GET() {
 
     // 2️⃣ Fetch ALL repos (pagination)
     let page = 1;
-    let allRepos: any[] = [];
+    let allRepos: GitHubRepo[] = [];
 
     while (true) {
       const res = await fetch(

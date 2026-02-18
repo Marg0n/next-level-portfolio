@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Project from "@/models/Project";
+import { GitHubRepo } from "@/types/types";
 
 //? Forces the route to run in the Node.js runtime instead of the Edge runtime
 export const runtime = "nodejs";
@@ -16,7 +17,7 @@ const syncSecret = process.env.SYNC_SECRET;
 export async function GET(req: Request) {
   try {
     //? Protect route with secret
-    const providedSecret = req.headers.get("x-sync-secret");
+    const providedSecret = req.headers.get("authorization")?.replace("Bearer","").trim();
 
     if (!syncSecret || providedSecret !== syncSecret) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -40,7 +41,7 @@ export async function GET(req: Request) {
     //? Handle pagination (Handles >100 Repos)
     let page = 1;
     const perPage = 100;
-    let allRepos: any[] = [];
+    let allRepos: GitHubRepo[] = [];
     let hasMore = true;
 
     //? Fetch Repositories from GitHub
@@ -56,7 +57,7 @@ export async function GET(req: Request) {
       }
 
       //? Parse GitHub Response
-      const repos = await res.json();
+      const repos: GitHubRepo[] = await res.json();
       allRepos = [...allRepos, ...repos];
 
       hasMore = repos.length === perPage;
@@ -101,13 +102,12 @@ export async function GET(req: Request) {
       message: "GitHub synced successfully",
       totalSynced: allRepos.length,
     });
-
-} catch (err: any) {
+  } catch (err: any) {
     return NextResponse.json(
-        { error: err.message || "Internal Server Error" },
-        { status: 500 },
+      { error: err.message || "Internal Server Error" },
+      { status: 500 },
     );
-}
+  }
 }
 
 /*
@@ -126,7 +126,7 @@ if (!reposRes.ok) {
 }
 
 //? Parse GitHub Response
-const repos = await reposRes.json();
+const repos: GitHubRepo[] = await reposRes.json();
 
 //? Sync Each Repo to MongoDB
 for (const repo of repos) {
