@@ -1,5 +1,3 @@
-"use client"
-
 
 import Login from '@/components/modules/auth/Login';
 // import CircuitBoard from '@/components/shared/motion/CircuitBoard';

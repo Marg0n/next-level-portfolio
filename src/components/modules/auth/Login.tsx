@@ -1,4 +1,4 @@
-
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState } from 'react';
@@ -27,29 +27,33 @@ const Login = () => {
   const router = useRouter();
 
   const onSubmit = async (data: LoginFormInputs) => {
+    
     setServerError('');
+
     try {
-      //* Replace with your actual login API
-      // const response = await fetch('/api/auth/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(data),
-      // });
+      //? Call login API
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      // const result = await response.json();
+      const result = await response.json();
 
-      // if (!response.ok) {
-      //   throw new Error(result.message || 'Login failed');
-      // }
+      if (!response.ok) {
+        throw new Error(result.message || result.error || 'Login failed');
+      }
 
-      setTimeout(()=>{
+      // setTimeout(()=>{
 
-      console.log(JSON.stringify(data)) 
+      // console.log(JSON.stringify(data)) 
 
-        router.push('/dashboard'); //* Redirect after login
-      },1000)
+      //   router.push('/dashboard'); //* Redirect after login
+      // },1000)
+
+      router.push("/admin");
 
     } catch (error: any) {
       setServerError(error.message);
@@ -63,7 +67,7 @@ const Login = () => {
     return (
         <div className="h-full flex items-center justify-center bg-transparent">
           <div className="w-full max-w-md bg-white p-8 rounded shadow">
-            <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+            <h2 className="text-2xl font-semibold text-center mb-6">Admin Login</h2>
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium mb-1">
