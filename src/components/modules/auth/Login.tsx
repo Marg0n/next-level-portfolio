@@ -53,7 +53,7 @@ const Login = () => {
       //   router.push('/dashboard'); //* Redirect after login
       // },1000)
 
-      router.push("/admin");
+      router.push("/dashboard");
 
     } catch (error: any) {
       setServerError(error.message);
