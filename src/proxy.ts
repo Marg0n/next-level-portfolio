@@ -21,5 +21,6 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: ["/(DashboardLayout)/:path*"],
+  // matcher: "/dashboard/:path*",
 };
