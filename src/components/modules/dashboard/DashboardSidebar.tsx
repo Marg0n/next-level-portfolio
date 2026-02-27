@@ -46,10 +46,19 @@ const DashboardSidebar: React.FC = () => {
   const isProjectActive = (repoName: string) =>
     pathname === `/dashboard/projects/${repoName}`;
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     //? logout logic needed (e.g., clearing cookies, session storage, etc.)
 
-    router.push("/login");
+    try {
+      await fetch("/api/admin/logout", {
+        method: "POST",
+      });
+
+      router.push("/login");
+      router.refresh(); //! IMPORTANT - forces middleware recheck
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
   };
 
   //* GitHub Projects Lists
