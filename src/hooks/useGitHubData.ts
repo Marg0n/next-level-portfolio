@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { GitHubData } from "@/types/types";
 
 //8 API endpoint for fetching data from github
-const endpoint = "/api/githubProjects";
+// const endpoint = "/api/githubProjects"; //! It was a previous iteration api which called api in client
+const endpoint = "/api/projects";
 
 export const useGitHubData = (token?: string) => {
   const [data, setData] = useState<GitHubData | null>(null);
