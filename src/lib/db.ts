@@ -7,6 +7,15 @@ if (!MONGODB_URI) {
   throw new Error("Please define DB!!");
 }
 
+//? It lets TypeScript know that mongoose is in global object
+// declare global {
+//   let mongoose: {
+//     conn: Mongoose | null;
+//     promise: Promise<Mongoose> | null;
+//   };
+// }
+
+//? global cash check setup which is good for Next.js hot reload
 let cached = (global as any).mongoose;
 
 if (!cached) {
@@ -23,9 +32,17 @@ export async function connectDB() {
   // }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI);
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
+      return mongoose;
+    });
   }
 
-  cached.conn = await cached.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
   return cached.conn;
 }

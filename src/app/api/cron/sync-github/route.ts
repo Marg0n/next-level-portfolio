@@ -6,6 +6,8 @@ import { GitHubRepo } from "@/types/types";
 
 //? Forces the route to run in the Node.js runtime instead of the Edge runtime
 export const runtime = "nodejs";
+//? To avoid caching, ensures it always runs fresh.
+export const dynamic = "force-dynamic";
 
 //* Github token
 const token = process.env.GITHUB_TOKEN;
@@ -104,7 +106,7 @@ export async function GET(req: Request) {
     });
   } catch (err: any) {
     return NextResponse.json(
-      { error: err.message || "Internal Server Error" },
+      { error: err.message || "GitHub sync failed" },
       { status: 500 },
     );
   }
