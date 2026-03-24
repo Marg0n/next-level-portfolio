@@ -14,8 +14,14 @@ export interface IProject extends Document {
 
   stargazersCount: number;
   forksCount: number;
+  watchersCount?: number;
+  openIssuesCount?: number;
 
   language?: string | null;
+
+  createdAtGitHub?: string;
+  updatedAtGitHub?: string;
+  pushedAtGitHub?: string;
 
   //? Portfolio custom fields
   imageUrl?: string;
@@ -40,6 +46,13 @@ const ProjectSchema = new Schema<IProject>(
     forksCount: Number,
 
     language: String,
+
+    watchersCount: Number,
+    openIssuesCount: Number,
+
+    createdAtGitHub: String,
+    updatedAtGitHub: String,
+    pushedAtGitHub: String,
 
     //? Custom portfolio controls
     imageUrl: String,
