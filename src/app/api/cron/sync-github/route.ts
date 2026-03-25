@@ -19,7 +19,10 @@ const syncSecret = process.env.SYNC_SECRET;
 export async function GET(req: Request) {
   try {
     //? Protect route with secret
-    const providedSecret = req.headers.get("authorization")?.replace("Bearer","").trim();
+    const providedSecret = req.headers
+      .get("authorization")
+      ?.replace("Bearer", "")
+      .trim();
 
     if (!syncSecret || providedSecret !== syncSecret) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -80,7 +83,12 @@ export async function GET(req: Request) {
             htmlUrl: repo.html_url,
             stargazersCount: repo.stargazers_count,
             forksCount: repo.forks_count,
+            watchersCount: repo.watchers_count,
+            openIssuesCount: repo.open_issues_count,
             language: repo.language,
+            createdAtGitHub: repo.created_at,
+            updatedAtGitHub: repo.updated_at,
+            pushedAtGitHub: repo.pushed_at,
           },
         },
         upsert: true,
