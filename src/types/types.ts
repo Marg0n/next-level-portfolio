@@ -1,4 +1,4 @@
-//* Define types for repository and user data
+//* Define types for repository and user data (fetching)
 export type GitHubRepo = {
   /** Core identifiers */
   id: number;
@@ -56,7 +56,6 @@ export type UserInfo = {
   lastLoginIP?: string;
 };
 
-
 //* GitHub Data Type
 export type GitHubData = {
   user: UserInfo;
@@ -75,3 +74,34 @@ export interface AuthState {
   }) => void;
   logout: () => void;
 }
+
+//* Frontend Project Type for github (for useGitHubData)
+export type Project = {
+  _id: string;
+
+  githubId: number;
+
+  name: string;
+  fullName?: string;
+
+  description?: string | null;
+  homepage?: string | null;
+
+  htmlUrl: string;
+
+  stargazersCount: number;
+  forksCount: number;
+  watchersCount?: number;
+  openIssuesCount?: number;
+
+  language?: string | null;
+
+  createdAtGitHub?: string;
+  updatedAtGitHub?: string;
+  pushedAtGitHub?: string;
+
+  imageUrl?: string;
+  isFeatured: boolean;
+  isHidden: boolean;
+  order: number;
+};
