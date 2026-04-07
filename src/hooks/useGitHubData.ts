@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GitHubData } from "@/types/types";
+import { GitHubData, Project } from "@/types/types";
 
 //8 API endpoint for fetching data from github
 // const endpoint = "/api/githubProjects"; //! It was a previous iteration api which called api in client
 const endpoint = "/api/projects";
 
 export const useGitHubData = (token?: string) => {
-  const [data, setData] = useState<GitHubData | null>(null);
+  // const [data, setData] = useState<GitHubData | null>(null);
+  const [data, setData] = useState<Project[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -29,7 +30,7 @@ export const useGitHubData = (token?: string) => {
         }
 
         //? Parse the JSON response
-        const result: GitHubData = await response.json();
+        const result: Project[] = await response.json();
 
         //! Expose it to the client
         // console.log("Rate limit:", result.rateLimit);
@@ -46,7 +47,8 @@ export const useGitHubData = (token?: string) => {
     };
 
     fetchGitHubData();
-  }, [token]);
+  // }, [token]);
+  }, []);
 
   return { data, loading, error };
 };

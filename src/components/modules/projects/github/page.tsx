@@ -19,7 +19,7 @@ export const GitHubProjects = ({
   label,
   image,
 }: {
-  token: string;
+  token?: string;
   array: string[];
   label: string;
   image?: Record<string, string | StaticImageData | null>;
@@ -45,7 +45,8 @@ export const GitHubProjects = ({
   }
 
   //! for debugging
-  console.log(data.repos?.map((repo) => repo.name));
+  console.log(data?.map((repo) => repo.name));
+  // console.log(data.repos?.map((repo) => repo.name));
   // console.log(array);
   // console.log("image", image);
 
@@ -61,13 +62,14 @@ export const GitHubProjects = ({
         </h1> */}
         {/* {data.user.email && <p className="italic">Email: {data.user.email}</p>} */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-          {data.repos
+          {data
+            // .repos
             ?.filter((repoName) => array.includes(repoName.name))
             ?.map((repo) => {
               //? image by reponame from props
               const repoImage = image?.[repo.name] ?? null;
               return (
-                <div key={repo.id}>
+                <div key={repo._id}>
                   {/* <h3>{repo.name}</h3>
                 <p>{repo.description}</p>
                 <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
@@ -77,7 +79,7 @@ export const GitHubProjects = ({
                     <AnimatedCardFlip
                       title={repo.name}
                       description={repo.description!}
-                      link={repo.html_url}
+                      link={repo.htmlUrl}
                       image={repoImage}
                       buttonText="GitHub Repo"
                       className=""
@@ -86,7 +88,7 @@ export const GitHubProjects = ({
                     <AnimatedCardHoverButtonWithPic
                       title={repo.name}
                       description={repo.description!}
-                      link={repo.html_url}
+                      link={repo.htmlUrl}
                       image={repoImage}
                       buttonText="GitHub Repo"
                       className=""

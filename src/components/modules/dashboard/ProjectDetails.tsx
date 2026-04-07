@@ -31,7 +31,11 @@ const ProjectDetails = () => {
   if (error)
     return <p className="h-screen flex justify-center items-center text-red-500">Error loading project</p>;
 
-  const project = data?.repos?.find(
+  // const project = data?.repos?.find(
+  //   (repo) => repo.name === repoName
+  // );
+
+  const project = data?.find(
     (repo) => repo.name === repoName
   );
 
@@ -59,24 +63,24 @@ const ProjectDetails = () => {
 
           <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <FaStar className="text-yellow-500" />
-            <span>{project.stargazers_count} Stars</span>
+            <span>{project.stargazersCount} Stars</span>
           </div>
 
           <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <FaCodeBranch className="text-indigo-500" />
-            <span>{project.forks_count} Forks</span>
+            <span>{project.forksCount} Forks</span>
           </div>
 
           {/* NEW: Watchers */}
           <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <FaEye className="text-green-500" />
-            <span>{project.watchers_count} Watchers</span>
+            <span>{project.watchersCount} Watchers</span>
           </div>
 
           {/* NEW: Open Issues */}
           <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
             <FaBug className="text-red-500" />
-            <span>{project.open_issues_count} Issues</span>
+            <span>{project.openIssuesCount} Issues</span>
           </div>
         </div>
 
@@ -93,14 +97,14 @@ const ProjectDetails = () => {
           <span>
             ⏱ Last updated:{" "}
             <strong className="text-gray-700 dark:text-gray-300">
-              {new Date(project.updated_at as string).toLocaleDateString('en-GB', options )}
+              {new Date(project.updatedAtGitHub as string).toLocaleDateString('en-GB', options )}
             </strong>
           </span>
         </div>
 
         {/* UPDATED: Modern button */}
         <a
-          href={project.html_url}
+          href={project.htmlUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 transition"

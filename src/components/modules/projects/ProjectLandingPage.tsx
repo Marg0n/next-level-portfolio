@@ -24,7 +24,7 @@ const ProjectLandingPage = () => {
   useAOS();
 
   //* Token
-  const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || "";
+  // const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || "";
   // console.log("Token", token);
 
   //* Filtered data for git project
@@ -66,19 +66,19 @@ const ProjectLandingPage = () => {
       </h2>
 
       <GitHubProjects
-        token={token}
+        // token={token}
         label="FullStack Projects"
         array={fullStackProjects.map((p) => p.name)}
         image={imageMap}
       />
       <GitHubProjects
-        token={token}
+        // token={token}
         label="Running Projects"
         array={runningProjects.map((p) => p.name)}
         image={imageMapRunning}
       />
       <GitHubProjects
-        token={token}
+        // token={token}
         label="Upcoming Projects"
         array={upcomingProjects.map((p) => p.name)}
         image={imageMapUpcoming}
