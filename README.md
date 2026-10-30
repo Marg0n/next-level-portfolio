@@ -1,9 +1,11 @@
-## Hi there, Friends! 👋
 
-I am ✨**Sokhorio Margon D' Costa**✨, a simple and humble ***MERN stack*** / ***Next.js*** web developer. 
+# Hi, I'm ✨**Sokhorio Margon D' Costa**✨ 👋
 
-I love coding so I play around with it to get it know more. Coding gives me fulfillment, and I love to learn new things continuously to enhancing knowledge and work more to be proficient on it.
+### MERN Stack | Next.js | Nest.js | React Developer
 
+I'm a web developer who enjoys building practical, user-friendly web applications. I work primarily with JavaScript, TypeScript, React, Next.js, Node.js, Nest.js and MongoDB. I love coding so I play around with it to get it know more. Coding gives me joy, and  and I love to learn new things continuously to enhancing knowledge and work more to be proficient on I work & love.
+
+<br/>
 
 
 
